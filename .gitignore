@@ -1,0 +1,6 @@
+sjf.xlsm
+web/*
+build/*
+packages/*
+pubspec.lock
+pubspec.yaml
