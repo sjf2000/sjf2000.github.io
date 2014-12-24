@@ -6993,7 +6993,7 @@ var $$ = Object.create(null);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.areas_open_click$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x($.store_areas_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.areas_click$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    areas_string = store_string.split("\r\n\r\n");
+    areas_string = store_string.split("\n\n");
     areas_count = areas_string.length;
     areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count, 8) + 1;
     for (i = 0; i < 8; ++i) {
@@ -7011,28 +7011,22 @@ var $$ = Object.create(null);
     }
     window.alert(C.JSInt_methods.toString$0(areas_count));
     for (area_no = 0; area_no < areas_count; ++area_no) {
-      window.alert("00");
       if (area_no >= areas_string.length)
         return H.ioore(areas_string, area_no);
       area_string = areas_string[area_no];
-      window.alert("01");
+      window.alert(area_string);
       t1 = J.getInterceptor$asx(area_string);
-      pos = t1.indexOf$1(area_string, "\r\n");
-      window.alert("02");
+      pos = t1.indexOf$1(area_string, "\n");
       area_name = t1.substring$2(area_string, 0, pos);
       window.alert(area_name);
-      window.alert("1");
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
-      window.alert("2");
       t1 = $.store_areas_open_view;
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
-      cell = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
-      window.alert("3");
-      cell.textContent = area_name;
-      rows_string = C.JSString_methods.substring$1(area_string, pos + 2).split("\r\n");
+      H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement").textContent = area_name;
+      rows_string = C.JSString_methods.substring$1(area_string, pos + 1).split("\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
       area_view.id = area_name;
@@ -7101,17 +7095,17 @@ var $$ = Object.create(null);
     $.owners_product = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, [P.Map, P.String, P.$int]);
     t1 = httpRequest.responseText;
     $.product_string = t1;
-    owners_string = t1.split("\r\n\r\n");
+    owners_string = t1.split("\n\n");
     owners_count = owners_string.length;
     for (owner = 0; owner < owners_count; ++owner) {
       if (owner >= owners_string.length)
         return H.ioore(owners_string, owner);
       owner_string = owners_string[owner];
       t1 = J.getInterceptor$asx(owner_string);
-      pos = t1.indexOf$1(owner_string, "\r\n");
+      pos = t1.indexOf$1(owner_string, "\n");
       if (pos !== -1) {
         owner_name = t1.substring$2(owner_string, 0, pos);
-        products_string = C.JSString_methods.substring$1(owner_string, pos + 2).split("\r\n");
+        products_string = C.JSString_methods.substring$1(owner_string, pos + 1).split("\n");
         products_count = products_string.length;
         products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.$int);
         for (product = 0; product < products_count; ++product) {
