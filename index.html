@@ -7015,8 +7015,10 @@ var $$ = Object.create(null);
       if (area_no >= areas_string.length)
         return H.ioore(areas_string, area_no);
       area_string = areas_string[area_no];
+      window.alert("01");
       t1 = J.getInterceptor$asx(area_string);
       pos = t1.indexOf$1(area_string, "\r\n");
+      window.alert("02");
       area_name = t1.substring$2(area_string, 0, pos);
       window.alert(area_name);
       window.alert("1");
