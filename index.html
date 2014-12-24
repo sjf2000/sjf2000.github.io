@@ -1,4 +1,4 @@
-<html>
+<html manifest="sjf.manifest">
 	<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7009,16 +7009,13 @@ var $$ = Object.create(null);
       }
       $.store_areas_open_view.appendChild(line_view);
     }
-    window.alert(C.JSInt_methods.toString$0(areas_count));
     for (area_no = 0; area_no < areas_count; ++area_no) {
       if (area_no >= areas_string.length)
         return H.ioore(areas_string, area_no);
       area_string = areas_string[area_no];
-      window.alert(area_string);
       t1 = J.getInterceptor$asx(area_string);
       pos = t1.indexOf$1(area_string, "\n");
       area_name = t1.substring$2(area_string, 0, pos);
-      window.alert(area_name);
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
       t1 = $.store_areas_open_view;
