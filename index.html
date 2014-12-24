@@ -6985,7 +6985,6 @@ var $$ = Object.create(null);
     t1 = t1.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
-    window.alert("1");
     t1 = document.createElement("div", null);
     $.store_areas_view = t1;
     t1.id = "areas";
@@ -6996,7 +6995,6 @@ var $$ = Object.create(null);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.areas_click$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     areas_string = store_string.split("\r\n\r\n");
     areas_count = areas_string.length;
-    window.alert("2");
     areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count, 8) + 1;
     for (i = 0; i < 8; ++i) {
       line_view = document.createElement("div", null);
@@ -7011,7 +7009,6 @@ var $$ = Object.create(null);
       }
       $.store_areas_open_view.appendChild(line_view);
     }
-    window.alert("3");
     for (area_no = 0; area_no < areas_count; ++area_no) {
       if (area_no >= areas_string.length)
         return H.ioore(areas_string, area_no);
@@ -7019,13 +7016,18 @@ var $$ = Object.create(null);
       t1 = J.getInterceptor$asx(area_string);
       pos = t1.indexOf$1(area_string, "\r\n");
       area_name = t1.substring$2(area_string, 0, pos);
+      window.alert(area_name);
+      window.alert("1");
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
+      window.alert("2");
       t1 = $.store_areas_open_view;
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
-      H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement").textContent = area_name;
+      cell = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
+      window.alert("3");
+      cell.textContent = area_name;
       rows_string = C.JSString_methods.substring$1(area_string, pos + 2).split("\r\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
