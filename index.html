@@ -6914,6 +6914,7 @@ var $$ = Object.create(null);
     t1 = document.createElement("div", null);
     $.store_view = t1;
     t1.id = "store_view";
+    window.alert("d");
     httpRequest = new XMLHttpRequest();
     C.HttpRequest_methods.open$3$async(httpRequest, "GET", "product.txt", false);
     d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure(httpRequest));
