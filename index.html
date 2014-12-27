@@ -1,4 +1,4 @@
-<html>
+<html manifest="sjf.manifest">
 	<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -6985,6 +6985,7 @@ var $$ = Object.create(null);
   }, "call$0", "main$closure", 0, 0, 2],
   processStoreString: function(httpRequest) {
     var store_string, t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, rows_string, rows_count, area_view, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, product_name, t10, result;
+    window.alert("02");
     store_string = httpRequest.responseText;
     t1 = document.createElement("div", null);
     $.store_areas_open_view = t1;
@@ -7097,6 +7098,7 @@ var $$ = Object.create(null);
   },
   processProductString: function(httpRequest) {
     var t1, owners_string, owners_count, owner, owner_string, pos, owner_name, products_string, products_count, products, product, product_string;
+    window.alert("01");
     $.owners_product = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, [P.Map, P.String, P.$int]);
     t1 = httpRequest.responseText;
     $.product_string = t1;
