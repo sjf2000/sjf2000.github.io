@@ -17,5 +17,5 @@ function main(){
   httpRequest=null;
 }
 function processProductString(s){
-  window.alert(s.target.responseText);
+  window.alert("");
 }
