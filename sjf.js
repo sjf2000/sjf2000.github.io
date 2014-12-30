@@ -141,7 +141,8 @@ function processStoreString(s) {
 	for (var area_no = 0; area_no < areas_count; ++area_no) {
 		var area_string = areas_string[area_no];
 		var pos = area_string.indexOf("\n");
-		var area_name = area_string.substr(0, pos); {
+		var area_name = area_string.substr(0, pos); 
+		{
 			var row = Math.round(area_no / areas_columns_count);
 			var column = area_no % areas_columns_count;
 			var line_view = store_areas_open_view.childNodes.item(row);
