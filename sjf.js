@@ -10,12 +10,23 @@ function main(){
   store_view = document.createElement("div");
   store_view.id="store_view";
 
-  var product_file_name = "http://sjf2000.github.io/product.txt";
+  var product_file_name = "product.txt";
   var httpRequest =new XMLHttpRequest();
   httpRequest.open("GET",product_file_name,false);
   httpRequest.onloadend=processProductString;
   httpRequest.send(null);
-  httpRequest=null;
+  httpRequest.onloadend=null;
+
+  var store_file_name = "store.txt";
+  httpRequest.open("GET",store_file_name,false);
+  httpRequest.onloadend=processStoreString;
+  httpRequest.send(null);
+  httpRequest.onloadend=null;
+  var depot_file_name = "depot.txt";
+  httpRequest.open("GET",depot_file_name,false);
+  httpRequest.onloadend=processDepotString;
+  httpRequest.send(null);
+  httpRequest.onloadend=null;
 }
 function processProductString(s){
   owners_product = new Object();
@@ -39,7 +50,13 @@ function processProductString(s){
     }
   }
 }
+function processStoreString(s){
+  window.alert("store");
+}
 
+function processDepotString(s){
+  window.alert("depot");
+}
 
 function store_take_stock_num_click(e) {
   var num_e = e.target;
