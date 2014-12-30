@@ -8,6 +8,7 @@ divs = new Array();
 
 store_view = document.createElement("div");
 store_view.id = "store_view";
+store_view.style.display="inline";
 
 var product_file_name = "product.txt";
 var httpRequest = new XMLHttpRequest();
@@ -76,6 +77,7 @@ store_view.appendChild(store_take_stock_view);
 top1 = document.getElementById("top");
 top1.className = "top";
 top1.appendChild(store_view);
+top1.style.display="inline";
 
 document.getElementById("store_open").onClick = onStoreOpen;
 document.getElementById("depot_open").onClick = onDepotOpen;
