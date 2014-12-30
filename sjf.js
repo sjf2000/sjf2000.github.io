@@ -29,7 +29,7 @@ httpRequest.onloadend = null;
 
 store_take_stock_view = document.createElement("div");
 store_take_stock_view.className = "top";
-store_take_stock_view.style..flexFlow = "column";
+store_take_stock_view.style.flexFlow = "column";
 
 store_take_stock_product_view =document.createElement("input");
 store_take_stock_product_view.type="button";
@@ -281,7 +281,7 @@ void areas_open_click(Event e) {
 	ButtonElement n = e.target as ButtonElement;
 	var str = n.text;
 	if (str != "") {
-		var n2 = querySelector("#areas") as DivElement;
+		var n2 = querySelector("#areas") as D..ivElement;
 		n2.style.display = "inline";
 		var nn = querySelector("#" + str) as DivElement;
 		nn.style.display = "inline";
