@@ -1,18 +1,22 @@
-<html manifest="sjf.manifest">
-	<head>
-	<meta charset="utf-8"/>
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="sjf.css"/>
-	</head>
-
-	<body onbeforeunload="return '退出'"">
-		<div id="top"></div>
-		<div id="bottom">
-			<button id="store_open">商店</button>
-			<button id="depot_open">仓库</button>
-			<button id="back">返回</button>
-		</div>
-		<script src="sjf.js"></script>
-	</body>
-
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script async type="application/dart" src="sjf.dart"></script>
+<script async src="packages/browser/dart.js"></script>
+<link rel="stylesheet" href="sjf.css">
+</head>
+<body onbeforeunload="return '退出'"">
+  <div id="top"></div>
+  <div id="bottom">
+    <button id="store_open">商店<br>
+    <span id="store_num1"></span><br>
+    <span id="store_num2"></span>
+    </button>
+    <button id="depot_open">仓库<br>
+    <span id="depot_num1"></span><br>
+    <span id="depot_num2"></span></button>
+    <button id="back">返回</button>
+  </div>
+</body>
 </html>
