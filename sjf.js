@@ -6223,15 +6223,15 @@ var $$ = Object.create(null);
   },
   Document: {
     "^": "Node;",
-    querySelector$1: function(receiver, selectors) {
-      return receiver.querySelector(selectors);
+    querySelectorAll$1: function(receiver, selectors) {
+      return W._FrozenElementList$_wrap(receiver.querySelectorAll(selectors), null);
     },
     "%": "Document|HTMLDocument|XMLDocument"
   },
   DocumentFragment: {
     "^": "Node;",
-    querySelector$1: function(receiver, selectors) {
-      return receiver.querySelector(selectors);
+    querySelectorAll$1: function(receiver, selectors) {
+      return W._FrozenElementList$_wrap(receiver.querySelectorAll(selectors), null);
     },
     "%": "DocumentFragment|ShadowRoot"
   },
@@ -6293,14 +6293,14 @@ var $$ = Object.create(null);
     get$attributes: function(receiver) {
       return new W._ElementAttributeMap(receiver);
     },
+    querySelectorAll$1: function(receiver, selectors) {
+      return W._FrozenElementList$_wrap(receiver.querySelectorAll(selectors), null);
+    },
     get$classes: function(receiver) {
       return new W._ElementCssClassSet(receiver);
     },
     toString$0: function(receiver) {
       return receiver.localName;
-    },
-    querySelector$1: function(receiver, selectors) {
-      return receiver.querySelector(selectors);
     },
     get$onClick: function(receiver) {
       return C.EventStreamProvider_click.forElement$1(receiver);
@@ -6415,7 +6415,7 @@ var $$ = Object.create(null);
     "%": "DragEvent|MSPointerEvent|MouseEvent|MouseScrollEvent|MouseWheelEvent|PointerEvent|WheelEvent"
   },
   Node: {
-    "^": "EventTarget;text:textContent%",
+    "^": "EventTarget;firstChild=,text:textContent%",
     toString$0: function(receiver) {
       var t1 = receiver.nodeValue;
       return t1 == null ? J.Interceptor.prototype.toString$0.call(this, receiver) : t1;
@@ -7530,15 +7530,13 @@ var $$ = Object.create(null);
     t1 = J.getInterceptor(t);
     t1 = t1.$eq(t, "") || t1.$eq(t, "0");
     t2 = J.getInterceptor$x(e);
-    if (t1) {
-      e.textContent = "";
-      t2.get$classes(e).remove$1(0, "need");
-      t2.get$classes(e).add$1(0, "need_not");
-    } else {
-      e.textContent = t;
-      t2.get$classes(e).remove$1(0, "need_not");
-      t2.get$classes(e).add$1(0, "need");
-    }
+    if (t1)
+      t2.set$text(e, "");
+    else
+      t2.set$text(e, t);
+    t1 = J.getInterceptor$x(e);
+    if (!t1.get$classes(e).readClasses$0().contains$1(0, "need"))
+      t1.get$classes(e).add$1(0, "need");
   },
   set_num: function(e, n) {
     var t1, t2, t3;
@@ -8092,10 +8090,11 @@ var $$ = Object.create(null);
     for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
       product_open_view = t1._current;
       t2 = J.getInterceptor$x(product_open_view);
-      t3 = t2.get$text(product_open_view);
+      t3 = J.get$text$x(t2.get$firstChild(product_open_view));
       t4 = $.product_name;
       if (t3 == null ? t4 == null : t3 === t4) {
-        B.set_num(t2.querySelector$1(product_open_view, "span"), num);
+        t1 = t2.querySelectorAll$1(product_open_view, "span");
+        B.set_num(t1.elementAt$1(t1, 1), num);
         break;
       }
     }
@@ -8223,19 +8222,26 @@ var $$ = Object.create(null);
   onNoenough: [function(e) {
   }, "call$1", "onNoenough$closure", 2, 0, 11],
   onRemain: [function(e) {
-    var num_text, t, product_open_views, t1, product_open_view, t2, t3, t4, span;
+    var num_text, t, product_open_views, t1, product_open_view, t2, t3, t4, spans, span1;
     num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
-    $.depot_product_open_view.querySelector("span").textContent = num_text;
+    B.set_text($.depot_product_open_view.querySelector("span"), num_text);
     B.set_remain($.depot_product_open_view, num_text);
     t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
     product_open_views = W._FrozenElementList$_wrap($.store_areas_view.querySelectorAll(t), null);
     for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
       product_open_view = t1._current;
       t2 = J.getInterceptor$x(product_open_view);
-      t3 = t2.get$text(product_open_view);
-      t4 = $.product_name;
-      if (t3 == null ? t4 == null : t3 === t4) {
-        span = t2.querySelector$1(product_open_view, "span");
+      if (t2.get$text(product_open_view) !== "") {
+        t3 = J.get$text$x(product_open_view.firstChild);
+        t4 = $.product_name;
+        t4 = t3 == null ? t4 == null : t3 === t4;
+        t3 = t4;
+      } else
+        t3 = false;
+      if (t3) {
+        spans = t2.querySelectorAll$1(product_open_view, "span");
+        span1 = spans.elementAt$1(spans, 0);
+        B.set_num(spans.elementAt$1(spans, 1), 0);
         if (num_text === "0") {
           t2.get$classes(product_open_view).remove$1(0, "remain");
           t2.get$classes(product_open_view).add$1(0, "remain_not");
@@ -8243,7 +8249,7 @@ var $$ = Object.create(null);
           t2.get$classes(product_open_view).remove$1(0, "remain_not");
           t2.get$classes(product_open_view).add$1(0, "remain");
         }
-        B.set_text(span, num_text);
+        B.set_text(span1, num_text);
         break;
       }
     }
