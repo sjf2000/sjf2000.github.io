@@ -7525,19 +7525,6 @@ var $$ = Object.create(null);
     t1 = J.get$onClick$x(document.querySelector("#back"));
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onBack$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
   }, "call$0", "main$closure", 0, 0, 2],
-  set_text: function(e, t) {
-    var t1, t2;
-    t1 = J.getInterceptor(t);
-    t1 = t1.$eq(t, "") || t1.$eq(t, "0");
-    t2 = J.getInterceptor$x(e);
-    if (t1)
-      t2.set$text(e, "");
-    else
-      t2.set$text(e, t);
-    t1 = J.getInterceptor$x(e);
-    if (!t1.get$classes(e).readClasses$0().contains$1(0, "need"))
-      t1.get$classes(e).add$1(0, "need");
-  },
   set_num: function(e, n) {
     var t1, t2, t3;
     t1 = J.getInterceptor(n);
@@ -7683,14 +7670,14 @@ var $$ = Object.create(null);
       C.CssStyleDeclaration_methods.set$flexFlow(t1, "row");
       C.CssStyleDeclaration_methods.set$flex(t1, "1");
       for (j = 0; j < 5; ++j) {
-        ++count;
         text = C.JSInt_methods.toString$0(count);
-        if (count === 15)
+        if (count === 14)
           text = "N";
         e = document.createElement("button", null);
         e.textContent = text;
         J.set$flex$x(e.style, "1");
         line.appendChild(e);
+        ++count;
       }
       remain_view.appendChild(line);
     }
@@ -7801,7 +7788,7 @@ var $$ = Object.create(null);
                     t2.get$classes(column_e).remove$1(0, "remain_not");
                     t2.get$classes(column_e).add$1(0, "remain");
                   }
-                  B.set_text(span1, remain);
+                  span1.textContent = remain;
                   B.set_num(span2, product_info.set);
                 }
               }
@@ -7934,7 +7921,7 @@ var $$ = Object.create(null);
                     t2.get$classes(column_e).remove$1(0, "remain_not");
                     t2.get$classes(column_e).add$1(0, "remain");
                   }
-                  B.set_text(span1, remain);
+                  span1.textContent = remain;
                   B.set_num(span2, product_info.set);
                 }
               }
@@ -8222,10 +8209,14 @@ var $$ = Object.create(null);
   onNoenough: [function(e) {
   }, "call$1", "onNoenough$closure", 2, 0, 11],
   onRemain: [function(e) {
-    var num_text, t, product_open_views, t1, product_open_view, t2, t3, t4, spans, span1;
+    var num_text, spans, span1, span2, t, product_open_views, t1, product_open_view, t2, t3, t4;
     num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
-    B.set_text($.depot_product_open_view.querySelector("span"), num_text);
+    spans = W._FrozenElementList$_wrap($.depot_product_open_view.querySelectorAll("span"), null);
+    span1 = spans.elementAt$1(spans, 0);
+    span2 = spans.elementAt$1(spans, 1);
+    J.set$text$x(span1, num_text);
     B.set_remain($.depot_product_open_view, num_text);
+    B.set_num(span2, 0);
     t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
     product_open_views = W._FrozenElementList$_wrap($.store_areas_view.querySelectorAll(t), null);
     for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
@@ -8249,7 +8240,7 @@ var $$ = Object.create(null);
           t2.get$classes(product_open_view).remove$1(0, "remain_not");
           t2.get$classes(product_open_view).add$1(0, "remain");
         }
-        B.set_text(span1, num_text);
+        J.set$text$x(span1, num_text);
         break;
       }
     }
