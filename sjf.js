@@ -7562,16 +7562,16 @@ var $$ = Object.create(null);
     t1 = absract_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
-    C.CssStyleDeclaration_methods.set$flex(t1, "4");
+    C.CssStyleDeclaration_methods.set$flex(t1, "5");
     t1 = J.get$onClick$x(absract_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onAbsract$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    for (count = 0, i = 0; i < 4; ++i) {
+    for (count = 0, i = 0; i < 5; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
       J.getInterceptor$x(t1).set$display(t1, "flex");
       C.CssStyleDeclaration_methods.set$flexFlow(t1, "row");
       C.CssStyleDeclaration_methods.set$flex(t1, "1");
-      for (j = 0; j < 5; ++j) {
+      for (j = 0; j < 10; ++j) {
         e = document.createElement("button", null);
         e.textContent = "-" + C.JSInt_methods.toString$0(count);
         J.set$flex$x(e.style, "1");
@@ -7586,14 +7586,14 @@ var $$ = Object.create(null);
     t1 = plus_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
-    C.CssStyleDeclaration_methods.set$flex(t1, "2");
-    for (count = 0, i = 0; i < 2; ++i) {
+    C.CssStyleDeclaration_methods.set$flex(t1, "1");
+    for (count = 0, i = 0; i < 1; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
       J.getInterceptor$x(t1).set$display(t1, "flex");
       C.CssStyleDeclaration_methods.set$flexFlow(t1, "row");
       C.CssStyleDeclaration_methods.set$flex(t1, "1");
-      for (j = 0; j < 5; ++j) {
+      for (j = 0; j < 10; ++j) {
         e = document.createElement("button", null);
         e.textContent = "+" + C.JSInt_methods.toString$0(count);
         J.set$flex$x(e.style, "1");
@@ -7790,7 +7790,8 @@ var $$ = Object.create(null);
                   }
                   span1.textContent = remain;
                   B.set_num(span2, product_info.set);
-                }
+                } else
+                  window.alert(column_str);
               }
             }
           }
@@ -7923,7 +7924,8 @@ var $$ = Object.create(null);
                   }
                   span1.textContent = remain;
                   B.set_num(span2, product_info.set);
-                }
+                } else
+                  window.alert(column_str);
               }
             }
           }
