@@ -525,6 +525,11 @@ var $$ = Object.create(null);
         throw H.wrapException(P.ArgumentError$(other));
       return receiver < other;
     },
+    $gt: function(receiver, other) {
+      if (typeof other !== "number")
+        throw H.wrapException(P.ArgumentError$(other));
+      return receiver > other;
+    },
     $ge: function(receiver, other) {
       if (typeof other !== "number")
         throw H.wrapException(P.ArgumentError$(other));
@@ -5801,13 +5806,16 @@ var $$ = Object.create(null);
   Duration: {
     "^": "Object;_duration<",
     $add: function(_, other) {
-      return P.Duration$(0, 0, C.JSInt_methods.$add(this._duration, other.get$_duration()), 0, 0, 0);
+      return P.Duration$(0, 0, this._duration + other.get$_duration(), 0, 0, 0);
     },
     $sub: function(_, other) {
       return P.Duration$(0, 0, this._duration - other.get$_duration(), 0, 0, 0);
     },
     $lt: function(_, other) {
       return C.JSInt_methods.$lt(this._duration, other.get$_duration());
+    },
+    $gt: function(_, other) {
+      return C.JSInt_methods.$gt(this._duration, other.get$_duration());
     },
     $ge: function(_, other) {
       return C.JSInt_methods.$ge(this._duration, other.get$_duration());
@@ -6223,6 +6231,9 @@ var $$ = Object.create(null);
   },
   Document: {
     "^": "Node;",
+    querySelector$1: function(receiver, selectors) {
+      return receiver.querySelector(selectors);
+    },
     querySelectorAll$1: function(receiver, selectors) {
       return W._FrozenElementList$_wrap(receiver.querySelectorAll(selectors), null);
     },
@@ -6232,6 +6243,9 @@ var $$ = Object.create(null);
     "^": "Node;",
     querySelectorAll$1: function(receiver, selectors) {
       return W._FrozenElementList$_wrap(receiver.querySelectorAll(selectors), null);
+    },
+    querySelector$1: function(receiver, selectors) {
+      return receiver.querySelector(selectors);
     },
     "%": "DocumentFragment|ShadowRoot"
   },
@@ -6301,6 +6315,9 @@ var $$ = Object.create(null);
     },
     toString$0: function(receiver) {
       return receiver.localName;
+    },
+    querySelector$1: function(receiver, selectors) {
+      return receiver.querySelector(selectors);
     },
     get$onClick: function(receiver) {
       return C.EventStreamProvider_click.forElement$1(receiver);
@@ -6415,7 +6432,7 @@ var $$ = Object.create(null);
     "%": "DragEvent|MSPointerEvent|MouseEvent|MouseScrollEvent|MouseWheelEvent|PointerEvent|WheelEvent"
   },
   Node: {
-    "^": "EventTarget;firstChild=,text:textContent%",
+    "^": "EventTarget;text:textContent%",
     toString$0: function(receiver) {
       var t1 = receiver.nodeValue;
       return t1 == null ? J.Interceptor.prototype.toString$0.call(this, receiver) : t1;
@@ -7440,7 +7457,7 @@ var $$ = Object.create(null);
 ["", "sjf.dart", , B, {
   "^": "",
   main: [function() {
-    var t1, httpRequest, d, text, nums_text, l;
+    var t1, httpRequest, d, text, l;
     $.local_storage = window.localStorage;
     $.store_num1_e = document.querySelector("#store_num1");
     $.store_num2_e = document.querySelector("#store_num2");
@@ -7454,6 +7471,10 @@ var $$ = Object.create(null);
     t1 = document.createElement("div", null);
     $.store_view = t1;
     t1.id = "store_view";
+    $.store_num1 = 0;
+    $.store_num2 = 0;
+    $.depot_num1 = 0;
+    $.depot_num2 = 0;
     httpRequest = new XMLHttpRequest();
     C.HttpRequest_methods.open$3$async(httpRequest, "GET", "product.txt", false);
     d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure(httpRequest));
@@ -7474,35 +7495,11 @@ var $$ = Object.create(null);
       httpRequest.send("");
       d.cancel$0();
     }
-    text = $.local_storage.getItem("num");
-    if (text == null) {
-      $.store_num1 = 0;
-      $.store_num2 = 0;
-      $.depot_num1 = 0;
-      $.depot_num2 = 0;
-      B.set_num($.store_num1_e, 0);
-      B.set_num($.store_num2_e, 0);
-      B.set_num($.depot_num1_e, 0);
-      B.set_num($.depot_num2_e, 0);
-    } else {
-      nums_text = text.split(",");
-      if (0 >= nums_text.length)
-        return H.ioore(nums_text, 0);
-      $.store_num1 = H.Primitives_parseInt(nums_text[0], null, null);
-      if (1 >= nums_text.length)
-        return H.ioore(nums_text, 1);
-      $.store_num2 = H.Primitives_parseInt(nums_text[1], null, null);
-      if (2 >= nums_text.length)
-        return H.ioore(nums_text, 2);
-      $.depot_num1 = H.Primitives_parseInt(nums_text[2], null, null);
-      if (3 >= nums_text.length)
-        return H.ioore(nums_text, 3);
-      $.depot_num2 = H.Primitives_parseInt(nums_text[3], null, null);
-      B.set_num($.store_num1_e, $.store_num1);
-      B.set_num($.store_num2_e, $.store_num2);
-      B.set_num($.depot_num1_e, $.depot_num1);
-      B.set_num($.depot_num2_e, $.depot_num2);
-    }
+    $.local_storage.getItem("num");
+    $.store_num1_e.textContent = J.toString$0($.store_num1);
+    B.set_need($.store_num2_e, $.store_num2);
+    $.depot_num1_e.textContent = J.toString$0($.depot_num1);
+    B.set_need($.depot_num2_e, $.depot_num2);
     B.gen_store_product_view();
     B.gen_depot_product_view();
     $.store_view.appendChild($.store_areas_open_view);
@@ -7525,18 +7522,17 @@ var $$ = Object.create(null);
     t1 = J.get$onClick$x(document.querySelector("#back"));
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onBack$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
   }, "call$0", "main$closure", 0, 0, 2],
-  set_num: function(e, n) {
-    var t1, t2, t3;
+  set_need: function(e, n) {
+    var t1, t2;
     t1 = J.getInterceptor(n);
-    t2 = t1.$eq(n, 0) ? "" : t1.toString$0(n);
-    t3 = J.getInterceptor$x(e);
-    t3.set$text(e, t2);
+    t2 = J.getInterceptor$x(e);
+    t2.set$text(e, t1.toString$0(n));
     if (t1.$eq(n, 0)) {
-      t3.get$classes(e).remove$1(0, "need");
-      t3.get$classes(e).add$1(0, "need_not");
+      t2.get$classes(e).remove$1(0, "need");
+      t2.get$classes(e).add$1(0, "need_not");
     } else {
-      t3.get$classes(e).remove$1(0, "need_not");
-      t3.get$classes(e).add$1(0, "need");
+      t2.get$classes(e).remove$1(0, "need_not");
+      t2.get$classes(e).add$1(0, "need");
     }
   },
   set_remain: function(e, n) {
@@ -7562,10 +7558,10 @@ var $$ = Object.create(null);
     t1 = absract_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
-    C.CssStyleDeclaration_methods.set$flex(t1, "5");
+    C.CssStyleDeclaration_methods.set$flex(t1, "4");
     t1 = J.get$onClick$x(absract_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onAbsract$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    for (count = 0, i = 0; i < 5; ++i) {
+    for (count = 0, i = 0; i < 4; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
       J.getInterceptor$x(t1).set$display(t1, "flex");
@@ -7586,8 +7582,8 @@ var $$ = Object.create(null);
     t1 = plus_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
-    C.CssStyleDeclaration_methods.set$flex(t1, "1");
-    for (count = 0, i = 0; i < 1; ++i) {
+    C.CssStyleDeclaration_methods.set$flex(t1, "2");
+    for (count = 0, i = 0; i < 2; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
       J.getInterceptor$x(t1).set$display(t1, "flex");
@@ -7639,7 +7635,7 @@ var $$ = Object.create(null);
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
     C.CssStyleDeclaration_methods.set$flex(t1, "3");
     t1 = J.get$onClick$x(noenough_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onNoenough$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onGet$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     for (count = 0, i = 0; i < 3; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
@@ -7647,14 +7643,14 @@ var $$ = Object.create(null);
       C.CssStyleDeclaration_methods.set$flexFlow(t1, "row");
       C.CssStyleDeclaration_methods.set$flex(t1, "1");
       for (j = 0; j < 5; ++j) {
-        ++count;
         C.JSInt_methods.toString$0(count);
-        if (count === 15)
+        if (count === 14)
           ;
         e = document.createElement("button", null);
         e.textContent = "+" + C.JSInt_methods.toString$0(count);
         J.set$flex$x(e.style, "1");
         line.appendChild(e);
+        ++count;
       }
       noenough_view.appendChild(line);
     }
@@ -7688,7 +7684,7 @@ var $$ = Object.create(null);
     $.depot_product_view.appendChild(remain_view);
   },
   processStoreString: function(store_string) {
-    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, rows_string, rows_count, area_view, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span1, span2, products, product_info, remain, t10, result;
+    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, span1, span2, rows_string, rows_count, area_view, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
     t1 = document.createElement("div", null);
     $.store_areas_open_view = t1;
     t1.id = "store_areas_open";
@@ -7731,7 +7727,15 @@ var $$ = Object.create(null);
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
-      H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement").textContent = area_name;
+      area_open_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
+      area_open_view.textContent = area_name;
+      area_open_view.setAttribute("name", area_name);
+      area_open_view.appendChild(document.createElement("br", null));
+      span1 = document.createElement("span", null);
+      area_open_view.appendChild(span1);
+      area_open_view.appendChild(document.createElement("br", null));
+      span2 = document.createElement("span", null);
+      area_open_view.appendChild(span2);
       rows_string = C.JSString_methods.substring$1(area_string, pos + 1).split("\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
@@ -7769,27 +7773,41 @@ var $$ = Object.create(null);
             else {
               column_e.textContent = product_name;
               column_e.appendChild(document.createElement("br", null));
-              span1 = document.createElement("span", null);
-              column_e.appendChild(span1);
+              span10 = document.createElement("span", null);
+              column_e.appendChild(span10);
               column_e.appendChild(document.createElement("br", null));
-              span2 = document.createElement("span", null);
-              column_e.appendChild(span2);
+              span20 = document.createElement("span", null);
+              column_e.appendChild(span20);
               products = $.groups_products.$index(0, group_name);
               if (products != null) {
                 product_info = J.$index$asx(products, product_name);
                 if (product_info != null) {
                   remain = product_info.get$remain();
-                  span1.textContent = remain;
-                  t2 = J.getInterceptor$x(column_e);
-                  if (J.$eq(remain, "0")) {
-                    t2.get$classes(column_e).remove$1(0, "remain");
-                    t2.get$classes(column_e).add$1(0, "remain_not");
+                  span10.textContent = remain;
+                  t2 = J.getInterceptor(remain);
+                  t3 = J.getInterceptor$x(column_e);
+                  if (t2.$eq(remain, "0")) {
+                    t3.get$classes(column_e).remove$1(0, "remain");
+                    t3.get$classes(column_e).add$1(0, "remain_not");
                   } else {
-                    t2.get$classes(column_e).remove$1(0, "remain_not");
-                    t2.get$classes(column_e).add$1(0, "remain");
+                    t3.get$classes(column_e).remove$1(0, "remain_not");
+                    t3.get$classes(column_e).add$1(0, "remain");
                   }
-                  span1.textContent = remain;
-                  B.set_num(span2, product_info.set);
+                  span10.textContent = remain;
+                  set = product_info.set;
+                  t3 = $.store_num1;
+                  if (typeof t3 !== "number")
+                    return t3.$add();
+                  if (typeof set !== "number")
+                    return H.iae(set);
+                  $.store_num1 = t3 + set;
+                  if (!t2.$eq(remain, "0")) {
+                    t2 = $.store_num2;
+                    if (typeof t2 !== "number")
+                      return t2.$add();
+                    $.store_num2 = t2 + set;
+                  }
+                  B.set_need(span20, set);
                 } else
                   window.alert(column_str);
               }
@@ -7818,11 +7836,13 @@ var $$ = Object.create(null);
         }
         area_view.appendChild(row_e);
       }
+      span1.textContent = C.JSInt_methods.toString$0(0);
+      B.set_need(span2, 0);
       $.store_areas_view.appendChild(area_view);
     }
   },
   processDepotString: function(depot_string) {
-    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, rows_string, rows_count, area_view, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span1, span2, products, product_info, remain, t10, result;
+    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
     t1 = document.createElement("div", null);
     $.depot_areas_open_view = t1;
     t1.id = "depot_areas_open";
@@ -7865,14 +7885,22 @@ var $$ = Object.create(null);
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
-      H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement").textContent = area_name;
+      area_open_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
+      area_open_view.textContent = area_name;
+      area_open_view.setAttribute("name", area_name);
+      area_open_view.appendChild(document.createElement("br", null));
+      span1 = document.createElement("span", null);
+      area_open_view.appendChild(span1);
+      area_open_view.appendChild(document.createElement("br", null));
+      span2 = document.createElement("span", null);
+      area_open_view.appendChild(span2);
       rows_string = C.JSString_methods.substring$1(area_string, pos + 1).split("\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
       area_view.id = area_name;
       area_view.className = "top";
       J.set$overflow$x(area_view.style, "scroll");
-      for (row = 0; row < rows_count; ++row) {
+      for (num1 = 0, num2 = 0, row = 0; row < rows_count; ++row) {
         if (row >= rows_string.length)
           return H.ioore(rows_string, row);
         row_str = rows_string[row];
@@ -7903,27 +7931,43 @@ var $$ = Object.create(null);
             else {
               column_e.textContent = product_name;
               column_e.appendChild(document.createElement("br", null));
-              span1 = document.createElement("span", null);
-              column_e.appendChild(span1);
+              span10 = document.createElement("span", null);
+              column_e.appendChild(span10);
               column_e.appendChild(document.createElement("br", null));
-              span2 = document.createElement("span", null);
-              column_e.appendChild(span2);
+              span20 = document.createElement("span", null);
+              column_e.appendChild(span20);
               products = $.groups_products.$index(0, group_name);
               if (products != null) {
                 product_info = J.$index$asx(products, product_name);
                 if (product_info != null) {
                   remain = product_info.get$remain();
-                  span1.textContent = remain;
-                  t2 = J.getInterceptor$x(column_e);
-                  if (J.$eq(remain, "0")) {
-                    t2.get$classes(column_e).remove$1(0, "remain");
-                    t2.get$classes(column_e).add$1(0, "remain_not");
+                  span10.textContent = remain;
+                  t2 = J.getInterceptor(remain);
+                  t3 = J.getInterceptor$x(column_e);
+                  if (t2.$eq(remain, "0")) {
+                    t3.get$classes(column_e).remove$1(0, "remain");
+                    t3.get$classes(column_e).add$1(0, "remain_not");
                   } else {
-                    t2.get$classes(column_e).remove$1(0, "remain_not");
-                    t2.get$classes(column_e).add$1(0, "remain");
+                    t3.get$classes(column_e).remove$1(0, "remain_not");
+                    t3.get$classes(column_e).add$1(0, "remain");
                   }
-                  span1.textContent = remain;
-                  B.set_num(span2, product_info.set);
+                  span10.textContent = remain;
+                  set = product_info.set;
+                  t3 = $.depot_num1;
+                  if (typeof t3 !== "number")
+                    return t3.$add();
+                  if (typeof set !== "number")
+                    return H.iae(set);
+                  $.depot_num1 = t3 + set;
+                  num1 += set;
+                  if (!t2.$eq(remain, "0")) {
+                    t2 = $.depot_num2;
+                    if (typeof t2 !== "number")
+                      return t2.$add();
+                    $.depot_num2 = t2 + set;
+                    num2 += set;
+                  }
+                  B.set_need(span20, set);
                 } else
                   window.alert(column_str);
               }
@@ -7954,6 +7998,8 @@ var $$ = Object.create(null);
         }
         area_view.appendChild(row_e);
       }
+      span1.textContent = C.JSNumber_methods.toString$0(num1);
+      B.set_need(span2, num2);
       $.depot_areas_view.appendChild(area_view);
     }
   },
@@ -8068,30 +8114,92 @@ var $$ = Object.create(null);
     areas_view.toString;
     t2 = new W._ChildNodeListLazy(areas_view);
     t2.forEach$1(t2, new B.unload_closure1(t1));
-    C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add("", J.$add$ns(J.toString$0($.store_num1), ",")), J.$add$ns(J.toString$0($.store_num2), ",")), J.$add$ns(J.toString$0($.depot_num1), ",")), J.toString$0($.depot_num2));
   }, "call$1", "unload$closure", 2, 0, 11],
-  store_product_add: function(num) {
-    var t1, t, product_open_views, product_open_view, t2, t3, t4;
-    t1 = W._FrozenElementList$_wrap($.store_product_open_view.querySelectorAll("span"), null);
-    B.set_num(t1.elementAt$1(t1, 1), num);
-    t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
-    product_open_views = W._FrozenElementList$_wrap($.depot_areas_view.querySelectorAll(t), null);
-    for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
-      product_open_view = t1._current;
-      t2 = J.getInterceptor$x(product_open_view);
-      t3 = J.get$text$x(t2.get$firstChild(product_open_view));
-      t4 = $.product_name;
-      if (t3 == null ? t4 == null : t3 === t4) {
-        t1 = t2.querySelectorAll$1(product_open_view, "span");
-        B.set_num(t1.elementAt$1(t1, 1), num);
-        break;
+  product_set: function(num) {
+    var area_spans, area_remain_set_span, area_set_span, t1, area_remain_set, area_set, product_spans, product_remain_span, product_set_span, product_remain, product_set, t2, t3, t4;
+    if ($.store_product_open_view != null) {
+      area_spans = W._FrozenElementList$_wrap($.store_area_open_view.querySelectorAll("span"), null);
+      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
+      area_set_span = area_spans.elementAt$1(area_spans, 1);
+      t1 = J.getInterceptor$x(area_remain_set_span);
+      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
+      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
+      product_spans = J.querySelectorAll$1$x($.store_product_open_view, "span");
+      product_remain_span = product_spans.elementAt$1(product_spans, 0);
+      product_set_span = product_spans.elementAt$1(product_spans, 1);
+      product_remain = J.get$text$x(product_remain_span);
+      product_set = H.Primitives_parseInt(J.get$text$x(product_set_span), null, null);
+      t1.set$text(area_remain_set_span, J.toString$0(J.$sub$n(J.$add$ns(area_remain_set, num), product_set)));
+      t1 = product_remain !== "0";
+      if (t1)
+        B.set_need(area_set_span, J.$sub$n(J.$add$ns(area_set, num), product_set));
+      t2 = $.store_num1;
+      t3 = J.getInterceptor$n(num);
+      t4 = t3.$sub(num, product_set);
+      if (typeof t2 !== "number")
+        return t2.$add();
+      if (typeof t4 !== "number")
+        return H.iae(t4);
+      t4 = t2 + t4;
+      $.store_num1 = t4;
+      $.store_num1_e.textContent = C.JSNumber_methods.toString$0(t4);
+      if (t1) {
+        t1 = $.store_num2;
+        t3 = t3.$sub(num, product_set);
+        if (typeof t1 !== "number")
+          return t1.$add();
+        if (typeof t3 !== "number")
+          return H.iae(t3);
+        t3 = t1 + t3;
+        $.store_num2 = t3;
+        B.set_need($.store_num2_e, t3);
       }
+      B.set_need(product_set_span, num);
+    }
+    if ($.depot_product_open_view != null) {
+      area_spans = W._FrozenElementList$_wrap($.depot_area_open_view.querySelectorAll("span"), null);
+      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
+      area_set_span = area_spans.elementAt$1(area_spans, 1);
+      t1 = J.getInterceptor$x(area_remain_set_span);
+      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
+      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
+      product_spans = J.querySelectorAll$1$x($.depot_product_open_view, "span");
+      product_remain_span = product_spans.elementAt$1(product_spans, 0);
+      product_set_span = product_spans.elementAt$1(product_spans, 1);
+      product_remain = J.get$text$x(product_remain_span);
+      product_set = H.Primitives_parseInt(J.get$text$x(product_set_span), null, null);
+      t1.set$text(area_remain_set_span, J.toString$0(J.$sub$n(J.$add$ns(area_remain_set, num), product_set)));
+      t1 = product_remain !== "0";
+      if (t1)
+        B.set_need(area_set_span, J.$sub$n(J.$add$ns(area_set, num), product_set));
+      t2 = $.depot_num1;
+      t3 = J.getInterceptor$n(num);
+      t4 = t3.$sub(num, product_set);
+      if (typeof t2 !== "number")
+        return t2.$add();
+      if (typeof t4 !== "number")
+        return H.iae(t4);
+      t4 = t2 + t4;
+      $.depot_num1 = t4;
+      $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t4);
+      if (t1) {
+        t1 = $.depot_num2;
+        t3 = t3.$sub(num, product_set);
+        if (typeof t1 !== "number")
+          return t1.$add();
+        if (typeof t3 !== "number")
+          return H.iae(t3);
+        t3 = t1 + t3;
+        $.depot_num2 = t3;
+        B.set_need($.depot_num2_e, t3);
+      }
+      B.set_need(product_set_span, num);
     }
     if ($.divs.length > 1)
       B.hide_last();
   },
   onPlus: [function(e) {
-    B.store_product_add(H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null));
+    B.product_set(H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null));
   }, "call$1", "onPlus$closure", 2, 0, 11],
   onAbsract: [function(e) {
     var num, p, n;
@@ -8102,11 +8210,16 @@ var $$ = Object.create(null);
       if (n != null)
         num = J.$sub$n(n, num);
     }
-    B.store_product_add(num);
+    B.product_set(num);
   }, "call$1", "onAbsract$closure", 2, 0, 11],
   onStoreAreasOpen: [function(e) {
-    var str, n2, t1, nn, l;
-    str = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
+    var t1, str, n2, nn, l;
+    t1 = J.getInterceptor$x(e);
+    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+      $.store_area_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
+      $.store_area_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+    str = J.get$text$x($.store_area_open_view.firstChild);
     if (str !== "") {
       n2 = H.interceptedTypeCast(document.querySelector("#store_areas"), "$isDivElement");
       J.set$display$x(n2.style, "inline");
@@ -8120,7 +8233,7 @@ var $$ = Object.create(null);
     }
   }, "call$1", "onStoreAreasOpen$closure", 2, 0, 11],
   onStoreProductOpen: [function(e) {
-    var l, t1;
+    var l, t1, t, product_open_views, product_open_view, t2, t3;
     J.set$display$x($.store_product_view.style, "flex");
     l = H.setRuntimeTypeInfo([], [W.DivElement]);
     l.push($.store_product_view);
@@ -8130,19 +8243,43 @@ var $$ = Object.create(null);
       $.store_product_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
     else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
       $.store_product_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
-    $.group_name = $.store_product_open_view.getAttribute("group_name");
+    $.group_name = J.get$attributes$x($.store_product_open_view)._html$_element.getAttribute("group_name");
     t1 = $.store_product_open_view;
     t1.toString;
     t1 = new W._ChildNodeListLazy(t1);
-    $.product_name = J.get$text$x(t1.get$first(t1));
-    t1 = $.store_product_view;
-    t1.toString;
-    t1 = new W._ChildNodeListLazy(t1);
-    J.set$text$x(t1.get$first(t1), $.product_name);
+    t1 = J.get$text$x(t1.get$first(t1));
+    $.product_name = t1;
+    J.set$text$x($.store_product_view.firstChild, t1);
+    t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
+    product_open_views = W._FrozenElementList$_wrap($.depot_areas_view.querySelectorAll(t), null);
+    for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
+      product_open_view = t1._current;
+      if (J.get$text$x(product_open_view) !== "") {
+        t2 = J.get$text$x(product_open_view.firstChild);
+        t3 = $.product_name;
+        t3 = t2 == null ? t3 == null : t2 === t3;
+        t2 = t3;
+      } else
+        t2 = false;
+      if (t2) {
+        t = C.JSString_methods.$add("*[name=\"", product_open_view.parentElement.parentElement.id) + "\"]";
+        $.depot_area_open_view = $.depot_areas_open_view.querySelector(t);
+        $.depot_product_open_view = product_open_view;
+        break;
+      } else {
+        $.depot_area_open_view = null;
+        $.depot_product_open_view = null;
+      }
+    }
   }, "call$1", "onStoreProductOpen$closure", 2, 0, 11],
   onDepotAreasOpen: [function(e) {
-    var str, n2, t1, nn, l;
-    str = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
+    var t1, str, n2, nn, l;
+    t1 = J.getInterceptor$x(e);
+    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+      $.depot_area_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
+      $.depot_area_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+    str = J.get$text$x($.depot_area_open_view.firstChild);
     if (str !== "") {
       n2 = H.interceptedTypeCast(document.querySelector("#depot_areas"), "$isDivElement");
       J.set$display$x(n2.style, "inline");
@@ -8156,7 +8293,7 @@ var $$ = Object.create(null);
     }
   }, "call$1", "onDepotAreasOpen$closure", 2, 0, 11],
   onDepotProductOpen: [function(e) {
-    var l, t1;
+    var l, t1, t, product_open_views, product_open_view, t2, t3;
     J.set$display$x($.depot_product_view.style, "flex");
     l = H.setRuntimeTypeInfo([], [W.DivElement]);
     l.push($.depot_product_view);
@@ -8166,15 +8303,34 @@ var $$ = Object.create(null);
       $.depot_product_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
     else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
       $.depot_product_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
-    $.group_name = $.depot_product_open_view.getAttribute("group_name");
+    $.group_name = J.get$attributes$x($.depot_product_open_view)._html$_element.getAttribute("group_name");
     t1 = $.depot_product_open_view;
     t1.toString;
     t1 = new W._ChildNodeListLazy(t1);
-    $.product_name = J.get$text$x(t1.get$first(t1));
-    t1 = $.depot_product_view;
-    t1.toString;
-    t1 = new W._ChildNodeListLazy(t1);
-    J.set$text$x(t1.get$first(t1), $.product_name);
+    t1 = J.get$text$x(t1.get$first(t1));
+    $.product_name = t1;
+    J.set$text$x($.depot_product_view.firstChild, t1);
+    t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
+    product_open_views = W._FrozenElementList$_wrap($.store_areas_view.querySelectorAll(t), null);
+    for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
+      product_open_view = t1._current;
+      if (J.get$text$x(product_open_view) !== "") {
+        t2 = J.get$text$x(product_open_view.firstChild);
+        t3 = $.product_name;
+        t3 = t2 == null ? t3 == null : t2 === t3;
+        t2 = t3;
+      } else
+        t2 = false;
+      if (t2) {
+        t = C.JSString_methods.$add("*[name=\"", product_open_view.parentElement.parentElement.id) + "\"]";
+        $.store_area_open_view = $.store_areas_open_view.querySelector(t);
+        $.store_product_open_view = product_open_view;
+        break;
+      } else {
+        $.store_area_open_view = null;
+        $.store_product_open_view = null;
+      }
+    }
   }, "call$1", "onDepotProductOpen$closure", 2, 0, 11],
   onStoreOpen: [function(e) {
     var t1, div, l;
@@ -8208,44 +8364,29 @@ var $$ = Object.create(null);
   }, "call$1", "onDepotOpen$closure", 2, 0, 11],
   onGotoDepot: [function(e) {
   }, "call$1", "onGotoDepot$closure", 2, 0, 11],
-  onNoenough: [function(e) {
-  }, "call$1", "onNoenough$closure", 2, 0, 11],
-  onRemain: [function(e) {
-    var num_text, spans, span1, span2, t, product_open_views, t1, product_open_view, t2, t3, t4;
-    num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
-    spans = W._FrozenElementList$_wrap($.depot_product_open_view.querySelectorAll("span"), null);
-    span1 = spans.elementAt$1(spans, 0);
-    span2 = spans.elementAt$1(spans, 1);
-    J.set$text$x(span1, num_text);
-    B.set_remain($.depot_product_open_view, num_text);
-    B.set_num(span2, 0);
-    t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
-    product_open_views = W._FrozenElementList$_wrap($.store_areas_view.querySelectorAll(t), null);
-    for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
-      product_open_view = t1._current;
-      t2 = J.getInterceptor$x(product_open_view);
-      if (t2.get$text(product_open_view) !== "") {
-        t3 = J.get$text$x(product_open_view.firstChild);
-        t4 = $.product_name;
-        t4 = t3 == null ? t4 == null : t3 === t4;
-        t3 = t4;
-      } else
-        t3 = false;
-      if (t3) {
-        spans = t2.querySelectorAll$1(product_open_view, "span");
-        span1 = spans.elementAt$1(spans, 0);
-        B.set_num(spans.elementAt$1(spans, 1), 0);
-        if (num_text === "0") {
-          t2.get$classes(product_open_view).remove$1(0, "remain");
-          t2.get$classes(product_open_view).add$1(0, "remain_not");
-        } else {
-          t2.get$classes(product_open_view).remove$1(0, "remain_not");
-          t2.get$classes(product_open_view).add$1(0, "remain");
-        }
-        J.set$text$x(span1, num_text);
-        break;
-      }
+  onGet: [function(e) {
+    var t1, t2, set;
+    t1 = H.Primitives_parseInt(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, null, null);
+    t2 = J.querySelectorAll$1$x($.store_product_open_view, "span");
+    set = H.Primitives_parseInt(J.get$text$x(t2.elementAt$1(t2, 1)), null, null);
+    t2 = J.getInterceptor$n(set);
+    if (J.$gt$n(t2.$sub(set, t1), 0)) {
+      B.product_set(t2.$sub(set, t1));
+      J.querySelector$1$x($.store_product_open_view, "span").textContent = "0";
+      B.set_remain($.store_product_open_view, "0");
+      J.querySelector$1$x($.depot_product_open_view, "span").textContent = "0";
+      B.set_remain($.depot_product_open_view, "0");
     }
+    if ($.divs.length > 1)
+      B.hide_last();
+  }, "call$1", "onGet$closure", 2, 0, 11],
+  onRemain: [function(e) {
+    var num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
+    B.product_set(0);
+    J.querySelector$1$x($.store_product_open_view, "span").textContent = num_text;
+    B.set_remain($.store_product_open_view, num_text);
+    J.querySelector$1$x($.depot_product_open_view, "span").textContent = num_text;
+    B.set_remain($.depot_product_open_view, num_text);
     if ($.divs.length > 1)
       B.hide_last();
   }, "call$1", "onRemain$closure", 2, 0, 11],
@@ -8264,7 +8405,7 @@ var $$ = Object.create(null);
     t1.pop();
   },
   onClear: [function(e) {
-    B.store_product_add(0);
+    B.product_set(0);
   }, "call$1", "onClear$closure", 2, 0, 11],
   ProductInfo: {
     "^": "Object;max*,set?,remain<,get,label"
@@ -8582,6 +8723,11 @@ J.$eq = function(receiver, a0) {
     return a0 != null && receiver === a0;
   return J.getInterceptor(receiver).$eq(receiver, a0);
 };
+J.$gt$n = function(receiver, a0) {
+  if (typeof receiver == "number" && typeof a0 == "number")
+    return receiver > a0;
+  return J.getInterceptor$n(receiver).$gt(receiver, a0);
+};
 J.$index$asx = function(receiver, a0) {
   if (receiver.constructor == Array || typeof receiver == "string" || H.isJsIndexable(receiver, receiver[init.dispatchPropertyName]))
     if (a0 >>> 0 === a0 && a0 < receiver.length)
@@ -8662,6 +8808,12 @@ J.get$text$x = function(receiver) {
 };
 J.get$value$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$value(receiver);
+};
+J.querySelector$1$x = function(receiver, a0) {
+  return J.getInterceptor$x(receiver).querySelector$1(receiver, a0);
+};
+J.querySelectorAll$1$x = function(receiver, a0) {
+  return J.getInterceptor$x(receiver).querySelectorAll$1(receiver, a0);
 };
 J.remove$1$ax = function(receiver, a0) {
   return J.getInterceptor$ax(receiver).remove$1(receiver, a0);
@@ -8916,9 +9068,11 @@ $.store_view = null;
 $.store_product_open_view = null;
 $.depot_product_open_view = null;
 $.store_areas_open_view = null;
-$.store_areas_view = null;
 $.depot_areas_open_view = null;
+$.store_areas_view = null;
 $.depot_areas_view = null;
+$.store_area_open_view = null;
+$.depot_area_open_view = null;
 $.store_product_view = null;
 $.depot_product_view = null;
 $.store_num1 = null;
