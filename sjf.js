@@ -2274,6 +2274,9 @@ var $$ = Object.create(null);
       return value;
     H.propertyTypeCastError(value, property);
   },
+  throwNoSuchMethod: function(obj, $name, $arguments, expectedArgumentNames) {
+    throw H.wrapException(P.NoSuchMethodError$(obj, new H.Symbol0($name), $arguments, P.LinkedHashMap_LinkedHashMap(null, null, null, P.Symbol, null), expectedArgumentNames));
+  },
   throwCyclicInit: function(staticName) {
     throw H.wrapException(P.CyclicInitializationError$("Cyclic initialization for static " + H.S(staticName)));
   },
@@ -3058,9 +3061,6 @@ var $$ = Object.create(null);
     }
     return -1;
   },
-  Symbol_getName: function(symbol) {
-    return symbol.get$_name();
-  },
   ListIterable: {
     "^": "IterableBase;",
     get$iterator: function(_) {
@@ -3186,6 +3186,25 @@ var $$ = Object.create(null);
   },
   FixedLengthListMixin: {
     "^": "Object;"
+  },
+  Symbol0: {
+    "^": "Object;_name<",
+    $eq: function(_, other) {
+      if (other == null)
+        return false;
+      return !!J.getInterceptor(other).$isSymbol0 && J.$eq(this._name, other._name);
+    },
+    get$hashCode: function(_) {
+      var t1 = J.get$hashCode$(this._name);
+      if (typeof t1 !== "number")
+        return H.iae(t1);
+      return 536870911 & 664597 * t1;
+    },
+    toString$0: function(_) {
+      return "Symbol(\"" + H.S(this._name) + "\")";
+    },
+    $isSymbol0: true,
+    static: {"^": "Symbol_reservedWordRE,Symbol_publicIdentifierRE,Symbol_identifierRE,Symbol_operatorRE,Symbol_publicSymbolPattern,Symbol_symbolPattern"}
   }
 }],
 ["dart._js_names", "dart:_js_names", , H, {
@@ -5749,9 +5768,6 @@ var $$ = Object.create(null);
 }],
 ["dart.core", "dart:core", , P, {
   "^": "",
-  _symbolToString: function(symbol) {
-    return H.Symbol_getName(symbol);
-  },
   Error_safeToString: function(object) {
     if (typeof object === "number" || typeof object === "boolean" || null == object)
       return J.toString$0(object);
@@ -5788,7 +5804,10 @@ var $$ = Object.create(null);
       var t1 = this.box_0;
       if (t1.i_1 > 0)
         t1.sb_0.write$1(", ");
-      t1.sb_0.write$1(P._symbolToString(key));
+      t1.sb_0.write$1(key.get$_name());
+      t1.sb_0.write$1(": ");
+      t1.sb_0.write$1(P.Error_safeToString(value));
+      ++t1.i_1;
     }
   },
   bool: {
@@ -5946,6 +5965,69 @@ var $$ = Object.create(null);
     static: {IndexError$: function(invalidValue, indexable, $name, message, $length) {
         var t1 = J.get$length$asx(indexable);
         return new P.IndexError(indexable, t1, true, invalidValue, $name, "Index out of range");
+      }}
+  },
+  NoSuchMethodError: {
+    "^": "Error;_core$_receiver,_memberName,_core$_arguments,_namedArguments,_existingArgumentNames",
+    toString$0: function(_) {
+      var t1, t2, t3, t4, t5, str, actualParameters, i, formalParameters;
+      t1 = {};
+      t1.sb_0 = P.StringBuffer$("");
+      t1.i_1 = 0;
+      t2 = this._core$_arguments;
+      if (t2 != null) {
+        t3 = J.getInterceptor$asx(t2);
+        t4 = 0;
+        while (true) {
+          t5 = t3.get$length(t2);
+          if (typeof t5 !== "number")
+            return H.iae(t5);
+          if (!(t4 < t5))
+            break;
+          t4 = t1.i_1;
+          if (t4 > 0) {
+            t5 = t1.sb_0;
+            t5._contents += ", ";
+          }
+          t5 = t1.sb_0;
+          str = P.Error_safeToString(t3.$index(t2, t4));
+          t5._contents += typeof str === "string" ? str : H.S(str);
+          t4 = ++t1.i_1;
+        }
+      }
+      this._namedArguments.forEach$1(0, new P.NoSuchMethodError_toString_closure(t1));
+      t2 = this._existingArgumentNames;
+      if (t2 == null)
+        return "NoSuchMethodError : method not found: '" + ("Symbol(\"" + H.S(this._memberName._name) + "\")") + "'\nReceiver: " + H.S(P.Error_safeToString(this._core$_receiver)) + "\nArguments: [" + H.S(t1.sb_0) + "]";
+      else {
+        t3 = t1.sb_0._contents;
+        actualParameters = t3.charCodeAt(0) == 0 ? t3 : t3;
+        t1.sb_0 = P.StringBuffer$("");
+        t3 = J.getInterceptor$asx(t2);
+        i = 0;
+        while (true) {
+          t4 = t3.get$length(t2);
+          if (typeof t4 !== "number")
+            return H.iae(t4);
+          if (!(i < t4))
+            break;
+          if (i > 0) {
+            t4 = t1.sb_0;
+            t4._contents += ", ";
+          }
+          t4 = t1.sb_0;
+          str = t3.$index(t2, i);
+          t4._contents += typeof str === "string" ? str : H.S(str);
+          ++i;
+        }
+        t1 = t1.sb_0._contents;
+        formalParameters = t1.charCodeAt(0) == 0 ? t1 : t1;
+        t1 = this._memberName._name;
+        return "NoSuchMethodError: incorrect number of arguments passed to method named '" + ("Symbol(\"" + H.S(t1) + "\")") + "'\nReceiver: " + H.S(P.Error_safeToString(this._core$_receiver)) + "\nTried calling: " + ("Symbol(\"" + H.S(t1) + "\")") + "(" + H.S(actualParameters) + ")\nFound: " + ("Symbol(\"" + H.S(t1) + "\")") + "(" + H.S(formalParameters) + ")";
+      }
+    },
+    static: {NoSuchMethodError$: function(receiver, memberName, positionalArguments, namedArguments, existingArgumentNames) {
+        return new P.NoSuchMethodError(receiver, memberName, positionalArguments, namedArguments, existingArgumentNames);
       }}
   },
   UnsupportedError: {
@@ -8224,7 +8306,7 @@ var $$ = Object.create(null);
     }
   }, "call$1", "onStoreAreaOpen$closure", 2, 0, 11],
   onStoreProductOpen: [function(e) {
-    var t1, result, t, product_open_views, product_open_view, t2, t3, l;
+    var t1, result, t, product_open_views, product_open_view, t2, t3, l, t4, spans, span1, remain;
     t1 = J.getInterceptor$x(e);
     if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
       $.store_product_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
@@ -8265,23 +8347,35 @@ var $$ = Object.create(null);
       B.divs_list_add(0, l);
       J.set$text$x($.store_product_view.firstChild, $.product_name);
     } else {
-      t1 = $.product_name;
-      if (t1 !== "") {
-        t2 = $.group_name;
-        t3 = $.old_group_name;
-        if (t2 == null ? t3 == null : t2 === t3) {
-          t2 = $.old_product_name;
-          t2 = t1 == null ? t2 != null : t1 !== t2;
-        } else
-          t2 = true;
+      t1 = $.group_name;
+      t2 = $.old_group_name;
+      if (t1 == null ? t2 == null : t1 === t2) {
+        t2 = $.product_name;
+        t3 = $.old_product_name;
+        t3 = t2 == null ? t3 != null : t2 !== t3;
+        t2 = t3;
       } else
-        t2 = false;
+        t2 = true;
       if (t2) {
-        if ($.old_product_name != null)
-          ;
-        J.set$text$x($.old_depot_product_open_view.firstChild, t1);
-        J.querySelectorAll$1$x($.old_depot_product_open_view, "span");
-        J.querySelectorAll$1$x($.store_product_open_view, "span");
+        t2 = $.old_depot_product_open_view;
+        t3 = $.product_name;
+        t4 = $.product_info;
+        if (t1 != null)
+          J.get$attributes$x(t2)._html$_element.setAttribute("group_name", t1);
+        J.set$text$x(t2.firstChild, t3);
+        spans = J.querySelectorAll$1$x(t2, "span");
+        span1 = spans.elementAt$1(spans, 0);
+        spans.elementAt$1(spans, 1);
+        remain = t4.get$remain();
+        t4.get$set();
+        J.set$text$x(span1, remain);
+        if ($.depot_product_open_view == null) {
+          t1 = $.depot_num1;
+          t2 = H.throwNoSuchMethod("", "set", [], null);
+          if (typeof t1 !== "number")
+            return t1.$add();
+          $.depot_num1 = C.JSNumber_methods.$add(t1, t2);
+        }
       }
       if ($.depot_product_open_view != null)
         ;
@@ -8654,14 +8748,14 @@ $$ = null;
   _ = W.MouseEvent;
   _.$isEvent = TRUE;
   _.$isObject = TRUE;
+  _ = P.Symbol;
+  _.$isSymbol = TRUE;
+  _.$isObject = TRUE;
   P.Map.$isObject = TRUE;
   B.ProductInfo.$isObject = TRUE;
   H.RawReceivePortImpl.$isObject = TRUE;
   H._IsolateEvent.$isObject = TRUE;
   H._IsolateContext.$isObject = TRUE;
-  _ = P.Symbol;
-  _.$isSymbol = TRUE;
-  _.$isObject = TRUE;
   _ = P.bool;
   _.$isbool = TRUE;
   _.$isObject = TRUE;
@@ -9147,6 +9241,7 @@ $.store_product_open_view = null;
 $.depot_product_open_view = null;
 $.group_name = null;
 $.product_name = null;
+$.product_info = null;
 $.store_product_view = null;
 $.depot_product_view = null;
 $.old_group_name = null;
@@ -9545,4 +9640,84 @@ function init() {
     function Isolate() {
       var hasOwnProperty = Object.prototype.hasOwnProperty;
       for (var staticName in isolateProperties)
-        if (hasOwnProperty.call(isolateProperti
+        if (hasOwnProperty.call(isolateProperties, staticName))
+          this[staticName] = isolateProperties[staticName];
+      var lazies = init.lazies;
+      for (var lazyInit in lazies) {
+        this[lazies[lazyInit]] = null;
+      }
+      function ForceEfficientMap() {
+      }
+      ForceEfficientMap.prototype = this;
+      new ForceEfficientMap();
+      for (var lazyInit in lazies) {
+        var lazyInitName = lazies[lazyInit];
+        this[lazyInitName] = isolateProperties[lazyInitName];
+      }
+    }
+    Isolate.prototype = oldIsolate.prototype;
+    Isolate.prototype.constructor = Isolate;
+    Isolate.$isolateProperties = isolateProperties;
+    Isolate.$finishClasses = oldIsolate.$finishClasses;
+    return Isolate;
+  };
+}
+!function() {
+  function intern(s) {
+    var o = {};
+    o[s] = 1;
+    return Object.keys(convertToFastObject(o))[0];
+  }
+  init.getIsolateTag = function(name) {
+    return intern("___dart_" + name + init.isolateTag);
+  };
+  var tableProperty = "___dart_isolate_tags_";
+  var usedProperties = Object[tableProperty] || (Object[tableProperty] = Object.create(null));
+  var rootProperty = "_ZxYxX";
+  for (var i = 0;; i++) {
+    var property = intern(rootProperty + "_" + i + "_");
+    if (!(property in usedProperties)) {
+      usedProperties[property] = 1;
+      init.isolateTag = property;
+      break;
+    }
+  }
+}();
+init.dispatchPropertyName = init.getIsolateTag("dispatch_record");
+// BEGIN invoke [main].
+;(function(callback) {
+  if (typeof document === "undefined") {
+    callback(null);
+    return;
+  }
+  if (document.currentScript) {
+    callback(document.currentScript);
+    return;
+  }
+  var scripts = document.scripts;
+  function onLoad(event) {
+    for (var i = 0; i < scripts.length; ++i) {
+      scripts[i].removeEventListener("load", onLoad, false);
+    }
+    callback(event.target);
+  }
+  for (var i = 0; i < scripts.length; ++i) {
+    scripts[i].addEventListener("load", onLoad, false);
+  }
+})(function(currentScript) {
+  init.currentScript = currentScript;
+  if (typeof dartMainRunner === "function") {
+    dartMainRunner(function(a) {
+      H.startRootIsolate(B.main$closure(), a);
+    }, []);
+  } else {
+    (function(a) {
+      H.startRootIsolate(B.main$closure(), a);
+    })([]);
+  }
+});
+;
+// END invoke [main].
+})()
+
+//# sourceMappingURL=sjf.dart.js.map
