@@ -2274,9 +2274,6 @@ var $$ = Object.create(null);
       return value;
     H.propertyTypeCastError(value, property);
   },
-  throwNoSuchMethod: function(obj, $name, $arguments, expectedArgumentNames) {
-    throw H.wrapException(P.NoSuchMethodError$(obj, new H.Symbol0($name), $arguments, P.LinkedHashMap_LinkedHashMap(null, null, null, P.Symbol, null), expectedArgumentNames));
-  },
   throwCyclicInit: function(staticName) {
     throw H.wrapException(P.CyclicInitializationError$("Cyclic initialization for static " + H.S(staticName)));
   },
@@ -3061,6 +3058,9 @@ var $$ = Object.create(null);
     }
     return -1;
   },
+  Symbol_getName: function(symbol) {
+    return symbol.get$_name();
+  },
   ListIterable: {
     "^": "IterableBase;",
     get$iterator: function(_) {
@@ -3186,25 +3186,6 @@ var $$ = Object.create(null);
   },
   FixedLengthListMixin: {
     "^": "Object;"
-  },
-  Symbol0: {
-    "^": "Object;_name<",
-    $eq: function(_, other) {
-      if (other == null)
-        return false;
-      return !!J.getInterceptor(other).$isSymbol0 && J.$eq(this._name, other._name);
-    },
-    get$hashCode: function(_) {
-      var t1 = J.get$hashCode$(this._name);
-      if (typeof t1 !== "number")
-        return H.iae(t1);
-      return 536870911 & 664597 * t1;
-    },
-    toString$0: function(_) {
-      return "Symbol(\"" + H.S(this._name) + "\")";
-    },
-    $isSymbol0: true,
-    static: {"^": "Symbol_reservedWordRE,Symbol_publicIdentifierRE,Symbol_identifierRE,Symbol_operatorRE,Symbol_publicSymbolPattern,Symbol_symbolPattern"}
   }
 }],
 ["dart._js_names", "dart:_js_names", , H, {
@@ -5768,6 +5749,9 @@ var $$ = Object.create(null);
 }],
 ["dart.core", "dart:core", , P, {
   "^": "",
+  _symbolToString: function(symbol) {
+    return H.Symbol_getName(symbol);
+  },
   Error_safeToString: function(object) {
     if (typeof object === "number" || typeof object === "boolean" || null == object)
       return J.toString$0(object);
@@ -5804,10 +5788,7 @@ var $$ = Object.create(null);
       var t1 = this.box_0;
       if (t1.i_1 > 0)
         t1.sb_0.write$1(", ");
-      t1.sb_0.write$1(key.get$_name());
-      t1.sb_0.write$1(": ");
-      t1.sb_0.write$1(P.Error_safeToString(value));
-      ++t1.i_1;
+      t1.sb_0.write$1(P._symbolToString(key));
     }
   },
   bool: {
@@ -5965,69 +5946,6 @@ var $$ = Object.create(null);
     static: {IndexError$: function(invalidValue, indexable, $name, message, $length) {
         var t1 = J.get$length$asx(indexable);
         return new P.IndexError(indexable, t1, true, invalidValue, $name, "Index out of range");
-      }}
-  },
-  NoSuchMethodError: {
-    "^": "Error;_core$_receiver,_memberName,_core$_arguments,_namedArguments,_existingArgumentNames",
-    toString$0: function(_) {
-      var t1, t2, t3, t4, t5, str, actualParameters, i, formalParameters;
-      t1 = {};
-      t1.sb_0 = P.StringBuffer$("");
-      t1.i_1 = 0;
-      t2 = this._core$_arguments;
-      if (t2 != null) {
-        t3 = J.getInterceptor$asx(t2);
-        t4 = 0;
-        while (true) {
-          t5 = t3.get$length(t2);
-          if (typeof t5 !== "number")
-            return H.iae(t5);
-          if (!(t4 < t5))
-            break;
-          t4 = t1.i_1;
-          if (t4 > 0) {
-            t5 = t1.sb_0;
-            t5._contents += ", ";
-          }
-          t5 = t1.sb_0;
-          str = P.Error_safeToString(t3.$index(t2, t4));
-          t5._contents += typeof str === "string" ? str : H.S(str);
-          t4 = ++t1.i_1;
-        }
-      }
-      this._namedArguments.forEach$1(0, new P.NoSuchMethodError_toString_closure(t1));
-      t2 = this._existingArgumentNames;
-      if (t2 == null)
-        return "NoSuchMethodError : method not found: '" + ("Symbol(\"" + H.S(this._memberName._name) + "\")") + "'\nReceiver: " + H.S(P.Error_safeToString(this._core$_receiver)) + "\nArguments: [" + H.S(t1.sb_0) + "]";
-      else {
-        t3 = t1.sb_0._contents;
-        actualParameters = t3.charCodeAt(0) == 0 ? t3 : t3;
-        t1.sb_0 = P.StringBuffer$("");
-        t3 = J.getInterceptor$asx(t2);
-        i = 0;
-        while (true) {
-          t4 = t3.get$length(t2);
-          if (typeof t4 !== "number")
-            return H.iae(t4);
-          if (!(i < t4))
-            break;
-          if (i > 0) {
-            t4 = t1.sb_0;
-            t4._contents += ", ";
-          }
-          t4 = t1.sb_0;
-          str = t3.$index(t2, i);
-          t4._contents += typeof str === "string" ? str : H.S(str);
-          ++i;
-        }
-        t1 = t1.sb_0._contents;
-        formalParameters = t1.charCodeAt(0) == 0 ? t1 : t1;
-        t1 = this._memberName._name;
-        return "NoSuchMethodError: incorrect number of arguments passed to method named '" + ("Symbol(\"" + H.S(t1) + "\")") + "'\nReceiver: " + H.S(P.Error_safeToString(this._core$_receiver)) + "\nTried calling: " + ("Symbol(\"" + H.S(t1) + "\")") + "(" + H.S(actualParameters) + ")\nFound: " + ("Symbol(\"" + H.S(t1) + "\")") + "(" + H.S(formalParameters) + ")";
-      }
-    },
-    static: {NoSuchMethodError$: function(receiver, memberName, positionalArguments, namedArguments, existingArgumentNames) {
-        return new P.NoSuchMethodError(receiver, memberName, positionalArguments, namedArguments, existingArgumentNames);
       }}
   },
   UnsupportedError: {
@@ -6238,7 +6156,7 @@ var $$ = Object.create(null);
   "^": "",
   HtmlElement: {
     "^": "Element;",
-    "%": "HTMLAppletElement|HTMLBRElement|HTMLCanvasElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLFontElement|HTMLFrameElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLImageElement|HTMLLabelElement|HTMLLegendElement|HTMLMarqueeElement|HTMLMenuElement|HTMLModElement|HTMLOListElement|HTMLParagraphElement|HTMLPictureElement|HTMLPreElement|HTMLQuoteElement|HTMLScriptElement|HTMLShadowElement|HTMLSourceElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTitleElement|HTMLTrackElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"
+    "%": "HTMLAppletElement|HTMLBRElement|HTMLCanvasElement|HTMLContentElement|HTMLDListElement|HTMLDataListElement|HTMLDetailsElement|HTMLDialogElement|HTMLDirectoryElement|HTMLFontElement|HTMLFrameElement|HTMLHRElement|HTMLHeadElement|HTMLHeadingElement|HTMLHtmlElement|HTMLImageElement|HTMLLabelElement|HTMLLegendElement|HTMLLinkElement|HTMLMarqueeElement|HTMLMenuElement|HTMLMenuItemElement|HTMLModElement|HTMLOListElement|HTMLOptGroupElement|HTMLParagraphElement|HTMLPictureElement|HTMLPreElement|HTMLQuoteElement|HTMLScriptElement|HTMLShadowElement|HTMLSourceElement|HTMLStyleElement|HTMLTableCaptionElement|HTMLTableCellElement|HTMLTableColElement|HTMLTableDataCellElement|HTMLTableElement|HTMLTableHeaderCellElement|HTMLTableRowElement|HTMLTableSectionElement|HTMLTemplateElement|HTMLTitleElement|HTMLTrackElement|HTMLUListElement|HTMLUnknownElement;HTMLElement"
   },
   AnchorElement: {
     "^": "HtmlElement;target=",
@@ -6268,7 +6186,7 @@ var $$ = Object.create(null);
     "%": "HTMLBodyElement"
   },
   ButtonElement: {
-    "^": "HtmlElement;disabled},name=,value=",
+    "^": "HtmlElement;name=,value=",
     $isButtonElement: true,
     "%": "HTMLButtonElement"
   },
@@ -6443,7 +6361,7 @@ var $$ = Object.create(null);
     "%": "MediaStream;EventTarget"
   },
   FieldSetElement: {
-    "^": "HtmlElement;disabled},name=",
+    "^": "HtmlElement;name=",
     "%": "HTMLFieldSetElement"
   },
   FormElement: {
@@ -6472,22 +6390,18 @@ var $$ = Object.create(null);
     "%": "HTMLIFrameElement"
   },
   InputElement: {
-    "^": "HtmlElement;disabled},max%,name=,value=",
+    "^": "HtmlElement;max%,name=,value=",
     $isElement: true,
     $isEventTarget: true,
     "%": "HTMLInputElement"
   },
   KeygenElement: {
-    "^": "HtmlElement;disabled},name=",
+    "^": "HtmlElement;name=",
     "%": "HTMLKeygenElement"
   },
   LIElement: {
     "^": "HtmlElement;value=",
     "%": "HTMLLIElement"
-  },
-  LinkElement: {
-    "^": "HtmlElement;disabled}",
-    "%": "HTMLLinkElement"
   },
   MapElement: {
     "^": "HtmlElement;name=",
@@ -6496,10 +6410,6 @@ var $$ = Object.create(null);
   MediaElement: {
     "^": "HtmlElement;error=",
     "%": "HTMLAudioElement|HTMLMediaElement|HTMLVideoElement"
-  },
-  MenuItemElement: {
-    "^": "HtmlElement;disabled}",
-    "%": "HTMLMenuItemElement"
   },
   MetaElement: {
     "^": "HtmlElement;name=",
@@ -6551,12 +6461,8 @@ var $$ = Object.create(null);
     "^": "HtmlElement;name=",
     "%": "HTMLObjectElement"
   },
-  OptGroupElement: {
-    "^": "HtmlElement;disabled}",
-    "%": "HTMLOptGroupElement"
-  },
   OptionElement: {
-    "^": "HtmlElement;disabled},value=",
+    "^": "HtmlElement;value=",
     "%": "HTMLOptionElement"
   },
   OutputElement: {
@@ -6580,7 +6486,7 @@ var $$ = Object.create(null);
     "%": "ProgressEvent|ResourceProgressEvent|XMLHttpRequestProgressEvent"
   },
   SelectElement: {
-    "^": "HtmlElement;disabled},length=,name=,value=",
+    "^": "HtmlElement;length=,name=,value=",
     "%": "HTMLSelectElement"
   },
   SpanElement: {
@@ -6628,12 +6534,8 @@ var $$ = Object.create(null);
     },
     "%": "Storage"
   },
-  StyleElement: {
-    "^": "HtmlElement;disabled}",
-    "%": "HTMLStyleElement"
-  },
   TextAreaElement: {
-    "^": "HtmlElement;disabled},name=,value=",
+    "^": "HtmlElement;name=,value=",
     "%": "HTMLTextAreaElement"
   },
   UIEvent: {
@@ -7164,10 +7066,6 @@ var $$ = Object.create(null);
     "^": "SvgElement;",
     "%": "SVGAltGlyphElement|SVGCircleElement|SVGClipPathElement|SVGDefsElement|SVGEllipseElement|SVGForeignObjectElement|SVGGElement|SVGGeometryElement|SVGImageElement|SVGLineElement|SVGPathElement|SVGPolygonElement|SVGPolylineElement|SVGRectElement|SVGSVGElement|SVGSwitchElement|SVGTSpanElement|SVGTextContentElement|SVGTextElement|SVGTextPathElement|SVGTextPositioningElement|SVGUseElement;SVGGraphicsElement"
   },
-  StyleElement0: {
-    "^": "SvgElement;disabled}",
-    "%": "SVGStyleElement"
-  },
   SvgElement: {
     "^": "Element;",
     get$classes: function(receiver) {
@@ -7179,7 +7077,7 @@ var $$ = Object.create(null);
       return C.EventStreamProvider_click.forElement$1(receiver);
     },
     $isEventTarget: true,
-    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEBlendElement|SVGFEColorMatrixElement|SVGFEComponentTransferElement|SVGFECompositeElement|SVGFEConvolveMatrixElement|SVGFEDiffuseLightingElement|SVGFEDisplacementMapElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFloodElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEGaussianBlurElement|SVGFEImageElement|SVGFEMergeElement|SVGFEMergeNodeElement|SVGFEMorphologyElement|SVGFEOffsetElement|SVGFEPointLightElement|SVGFESpecularLightingElement|SVGFESpotLightElement|SVGFETileElement|SVGFETurbulenceElement|SVGFilterElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMaskElement|SVGMetadataElement|SVGMissingGlyphElement|SVGPatternElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
+    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEBlendElement|SVGFEColorMatrixElement|SVGFEComponentTransferElement|SVGFECompositeElement|SVGFEConvolveMatrixElement|SVGFEDiffuseLightingElement|SVGFEDisplacementMapElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFloodElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEGaussianBlurElement|SVGFEImageElement|SVGFEMergeElement|SVGFEMergeNodeElement|SVGFEMorphologyElement|SVGFEOffsetElement|SVGFEPointLightElement|SVGFESpecularLightingElement|SVGFESpotLightElement|SVGFETileElement|SVGFETurbulenceElement|SVGFilterElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMaskElement|SVGMetadataElement|SVGMissingGlyphElement|SVGPatternElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
   },
   _AttributeClassSet: {
     "^": "CssClassSetImpl;_element",
@@ -7537,6 +7435,10 @@ var $$ = Object.create(null);
   "^": "",
   main: [function() {
     var t1, httpRequest, d, text, l;
+    t1 = new B.ProductInfo(null, null, null, null, null);
+    $.default_product_info = t1;
+    t1.remain = "N";
+    t1.set = 0;
     $.z_index = 0;
     $.local_storage = window.localStorage;
     $.store_num1_e = document.querySelector("#store_num1");
@@ -7628,7 +7530,6 @@ var $$ = Object.create(null);
     t1.className = "top";
     J.set$flexFlow$x(t1.style, "column");
     product_view = document.createElement("button", null);
-    J.set$disabled$x(product_view, true);
     J.set$height$x(product_view.style, "3em");
     absract_view = document.createElement("div", null);
     t1 = absract_view.style;
@@ -7761,7 +7662,7 @@ var $$ = Object.create(null);
     $.depot_product_view.appendChild(remain_view);
   },
   processStoreString: function(store_string) {
-    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
+    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
     t1 = document.createElement("div", null);
     $.store_areas_open_view = t1;
     t1.id = "store_areas_open";
@@ -7787,6 +7688,11 @@ var $$ = Object.create(null);
       for (j = 0; j < areas_columns_count; ++j) {
         cell = document.createElement("button", null);
         J.set$flex$x(cell.style, "1");
+        cell.appendChild(document.createTextNode(""));
+        cell.appendChild(document.createElement("br", null));
+        cell.appendChild(document.createElement("span", null));
+        cell.appendChild(document.createElement("br", null));
+        cell.appendChild(document.createElement("span", null));
         line_view.appendChild(cell);
       }
       $.store_areas_open_view.appendChild(line_view);
@@ -7805,14 +7711,11 @@ var $$ = Object.create(null);
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
       area_open_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
-      area_open_view.textContent = area_name;
+      J.set$text$x(area_open_view.firstChild, area_name);
       area_open_view.setAttribute("name", area_name);
-      area_open_view.appendChild(document.createElement("br", null));
-      span1 = document.createElement("span", null);
-      area_open_view.appendChild(span1);
-      area_open_view.appendChild(document.createElement("br", null));
-      span2 = document.createElement("span", null);
-      area_open_view.appendChild(span2);
+      spans = W._FrozenElementList$_wrap(area_open_view.querySelectorAll("span"), null);
+      span1 = spans.elementAt$1(spans, 0);
+      span2 = spans.elementAt$1(spans, 1);
       rows_string = C.JSString_methods.substring$1(area_string, pos + 1).split("\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
@@ -7853,6 +7756,7 @@ var $$ = Object.create(null);
           column_e.appendChild(span10);
           column_e.appendChild(document.createElement("br", null));
           span20 = document.createElement("span", null);
+          B.set_need(span20, 0);
           column_e.appendChild(span20);
           if (group_name !== "" && product_name !== "") {
             products = $.groups_products.$index(0, group_name);
@@ -7913,13 +7817,13 @@ var $$ = Object.create(null);
         }
         area_view.appendChild(row_e);
       }
-      span1.textContent = C.JSNumber_methods.toString$0(num1);
+      J.set$text$x(span1, C.JSNumber_methods.toString$0(num1));
       B.set_need(span2, num2);
       $.store_areas_view.appendChild(area_view);
     }
   },
   processDepotString: function(depot_string) {
-    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
+    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
     t1 = document.createElement("div", null);
     $.depot_areas_open_view = t1;
     t1.id = "depot_areas_open";
@@ -7945,6 +7849,11 @@ var $$ = Object.create(null);
       for (j = 0; j < areas_columns_count; ++j) {
         cell = document.createElement("button", null);
         J.set$flex$x(cell.style, "1");
+        cell.appendChild(document.createTextNode(""));
+        cell.appendChild(document.createElement("br", null));
+        cell.appendChild(document.createElement("span", null));
+        cell.appendChild(document.createElement("br", null));
+        cell.appendChild(document.createElement("span", null));
         line_view.appendChild(cell);
       }
       $.depot_areas_open_view.appendChild(line_view);
@@ -7963,14 +7872,11 @@ var $$ = Object.create(null);
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
       area_open_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
-      area_open_view.textContent = area_name;
+      J.set$text$x(area_open_view.firstChild, area_name);
       area_open_view.setAttribute("name", area_name);
-      area_open_view.appendChild(document.createElement("br", null));
-      span1 = document.createElement("span", null);
-      area_open_view.appendChild(span1);
-      area_open_view.appendChild(document.createElement("br", null));
-      span2 = document.createElement("span", null);
-      area_open_view.appendChild(span2);
+      spans = W._FrozenElementList$_wrap(area_open_view.querySelectorAll("span"), null);
+      span1 = spans.elementAt$1(spans, 0);
+      span2 = spans.elementAt$1(spans, 1);
       rows_string = C.JSString_methods.substring$1(area_string, pos + 1).split("\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
@@ -8011,6 +7917,7 @@ var $$ = Object.create(null);
           column_e.appendChild(span10);
           column_e.appendChild(document.createElement("br", null));
           span20 = document.createElement("span", null);
+          B.set_need(span20, 0);
           column_e.appendChild(span20);
           if (group_name !== "" && product_name !== "") {
             products = $.groups_products.$index(0, group_name);
@@ -8071,7 +7978,7 @@ var $$ = Object.create(null);
         }
         area_view.appendChild(row_e);
       }
-      span1.textContent = C.JSNumber_methods.toString$0(num1);
+      J.set$text$x(span1, C.JSNumber_methods.toString$0(num1));
       B.set_need(span2, num2);
       $.depot_areas_view.appendChild(area_view);
     }
@@ -8173,20 +8080,6 @@ var $$ = Object.create(null);
     return "\u9000\u51fa\uff1f";
   }, "call$1", "before_unload$closure", 2, 0, 10],
   unload: [function(e) {
-    var t1, areas_view, t2;
-    t1 = {};
-    t1.product_text_2 = "";
-    $.groups_products.forEach$1(0, new B.unload_closure(t1));
-    areas_view = $.store_areas_view;
-    t1.str_3 = "";
-    areas_view.toString;
-    t2 = new W._ChildNodeListLazy(areas_view);
-    t2.forEach$1(t2, new B.unload_closure0(t1));
-    areas_view = $.depot_areas_view;
-    t1.str_4 = "";
-    areas_view.toString;
-    t2 = new W._ChildNodeListLazy(areas_view);
-    t2.forEach$1(t2, new B.unload_closure1(t1));
   }, "call$1", "unload$closure", 2, 0, 11],
   product_set: function(num) {
     var area_spans, area_remain_set_span, area_set_span, t1, area_remain_set, area_set, product_spans, product_remain_span, product_set_span, product_remain, product_set, t2, t3, t4;
@@ -8270,19 +8163,22 @@ var $$ = Object.create(null);
     }
   },
   onPlus: [function(e) {
-    B.product_set(H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null));
+    if ($.product_name !== "")
+      B.product_set(H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null));
     B.back(0);
   }, "call$1", "onPlus$closure", 2, 0, 11],
   onAbsract: [function(e) {
     var num, p, n;
-    num = H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null);
-    p = $.groups_products.$index(0, $.group_name);
-    if (p != null) {
-      n = J.get$max$x(J.$index$asx(p, $.product_name));
-      if (n != null)
-        num = J.$sub$n(n, num);
+    if ($.product_name !== "") {
+      num = H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null);
+      p = $.groups_products.$index(0, $.group_name);
+      if (p != null) {
+        n = J.get$max$x(J.$index$asx(p, $.product_name));
+        if (n != null)
+          num = J.$sub$n(n, num);
+      }
+      B.product_set(num);
     }
-    B.product_set(num);
     B.back(0);
   }, "call$1", "onAbsract$closure", 2, 0, 11],
   onStoreAreaOpen: [function(e) {
@@ -8306,7 +8202,7 @@ var $$ = Object.create(null);
     }
   }, "call$1", "onStoreAreaOpen$closure", 2, 0, 11],
   onStoreProductOpen: [function(e) {
-    var t1, result, t, product_open_views, product_open_view, t2, t3, l, t4, spans, span1, remain;
+    var t1, result, t, product_open_views, product_open_view, t2, t3, l;
     t1 = J.getInterceptor$x(e);
     if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
       $.store_product_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
@@ -8318,26 +8214,34 @@ var $$ = Object.create(null);
     result = t1.firstChild;
     if (result == null)
       H.throwExpression(P.StateError$("No elements"));
-    $.product_name = J.get$text$x(result);
-    t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
-    product_open_views = W._FrozenElementList$_wrap($.depot_areas_view.querySelectorAll(t), null);
-    for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
-      product_open_view = t1._current;
-      if (J.get$text$x(product_open_view) !== "") {
-        t2 = J.get$text$x(product_open_view.firstChild);
-        t3 = $.product_name;
-        t3 = t2 == null ? t3 == null : t2 === t3;
-        t2 = t3;
-      } else
-        t2 = false;
-      if (t2) {
-        t = C.JSString_methods.$add("*[name=\"", product_open_view.parentElement.parentElement.id) + "\"]";
-        $.depot_area_open_view = $.depot_areas_open_view.querySelector(t);
-        $.depot_product_open_view = product_open_view;
-        break;
-      } else {
-        $.depot_area_open_view = null;
-        $.depot_product_open_view = null;
+    t1 = J.get$text$x(result);
+    $.product_name = t1;
+    J.set$text$x($.store_product_view.firstChild, t1);
+    if ($.product_name !== "")
+      $.product_info = J.$index$asx($.groups_products.$index(0, $.group_name), $.product_name);
+    else
+      $.product_info = $.default_product_info;
+    if ($.product_name !== "") {
+      t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
+      product_open_views = W._FrozenElementList$_wrap($.depot_areas_view.querySelectorAll(t), null);
+      for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
+        product_open_view = t1._current;
+        if (J.get$text$x(product_open_view) !== "") {
+          t2 = J.get$text$x(product_open_view.firstChild);
+          t3 = $.product_name;
+          t3 = t2 == null ? t3 == null : t2 === t3;
+          t2 = t3;
+        } else
+          t2 = false;
+        if (t2) {
+          t = C.JSString_methods.$add("*[name=\"", product_open_view.parentElement.parentElement.id) + "\"]";
+          $.depot_area_open_view = $.depot_areas_open_view.querySelector(t);
+          $.depot_product_open_view = product_open_view;
+          break;
+        } else {
+          $.depot_area_open_view = null;
+          $.depot_product_open_view = null;
+        }
       }
     }
     if ($.state !== 1) {
@@ -8348,41 +8252,66 @@ var $$ = Object.create(null);
       J.set$text$x($.store_product_view.firstChild, $.product_name);
     } else {
       t1 = $.group_name;
-      t2 = $.old_group_name;
+      t2 = $.delete_group_name;
       if (t1 == null ? t2 == null : t1 === t2) {
         t2 = $.product_name;
-        t3 = $.old_product_name;
+        t3 = $.delete_product_name;
         t3 = t2 == null ? t3 != null : t2 !== t3;
         t2 = t3;
       } else
         t2 = true;
       if (t2) {
-        t2 = $.old_depot_product_open_view;
-        t3 = $.product_name;
-        t4 = $.product_info;
+        B.change($.delete_depot_area_open_view, $.delete_depot_product_open_view, $.delete_product_info, t1, $.product_name, $.product_info);
+        t1 = $.depot_product_open_view;
         if (t1 != null)
-          J.get$attributes$x(t2)._html$_element.setAttribute("group_name", t1);
-        J.set$text$x(t2.firstChild, t3);
-        spans = J.querySelectorAll$1$x(t2, "span");
-        span1 = spans.elementAt$1(spans, 0);
-        spans.elementAt$1(spans, 1);
-        remain = t4.get$remain();
-        t4.get$set();
-        J.set$text$x(span1, remain);
-        if ($.depot_product_open_view == null) {
-          t1 = $.depot_num1;
-          t2 = H.throwNoSuchMethod("", "set", [], null);
-          if (typeof t1 !== "number")
-            return t1.$add();
-          $.depot_num1 = C.JSNumber_methods.$add(t1, t2);
-        }
+          B.change($.depot_area_open_view, t1, $.product_info, $.delete_group_name, $.delete_product_name, $.delete_product_info);
+        $.depot_area_open_view = $.delete_depot_area_open_view;
       }
-      if ($.depot_product_open_view != null)
-        ;
       B.back(1);
       $.state = 0;
     }
   }, "call$1", "onStoreProductOpen$closure", 2, 0, 11],
+  change: function(area_open, product_open, delete_product_info, insert_group_name, insert_product_name, insert_product_info) {
+    var spans, span1, span2, remain, insert_set, delete_set, t1, remain_set_update, set_update;
+    if (insert_group_name != null)
+      J.get$attributes$x(product_open)._html$_element.setAttribute("group_name", insert_group_name);
+    J.set$text$x(product_open.firstChild, insert_product_name);
+    spans = J.querySelectorAll$1$x(product_open, "span");
+    span1 = spans.elementAt$1(spans, 0);
+    span2 = spans.elementAt$1(spans, 1);
+    remain = insert_product_info.get$remain();
+    B.set_remain(product_open, remain);
+    J.set$text$x(span1, insert_product_name === "" ? "" : remain);
+    B.set_need(span2, insert_product_info.set);
+    insert_set = insert_product_info.set;
+    delete_set = delete_product_info.get$set();
+    t1 = !J.$eq(insert_product_info.remain, "0") ? insert_set : 0;
+    remain_set_update = J.$sub$n(t1, !J.$eq(delete_product_info.remain, "0") ? delete_set : 0);
+    set_update = J.$sub$n(insert_set, delete_set);
+    spans = W._FrozenElementList$_wrap(area_open.querySelectorAll("span"), null);
+    span1 = spans.elementAt$1(spans, 0);
+    span2 = spans.elementAt$1(spans, 1);
+    t1 = J.getInterceptor$x(span1);
+    t1.set$text(span1, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span1), null, null), remain_set_update)));
+    t1 = J.getInterceptor$x(span2);
+    t1.set$text(span2, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span2), null, null), set_update)));
+    t1 = $.depot_num1;
+    if (typeof t1 !== "number")
+      return t1.$add();
+    if (typeof remain_set_update !== "number")
+      return H.iae(remain_set_update);
+    t1 += remain_set_update;
+    $.depot_num1 = t1;
+    $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
+    t1 = $.depot_num2;
+    if (typeof t1 !== "number")
+      return t1.$add();
+    if (typeof set_update !== "number")
+      return H.iae(set_update);
+    t1 += set_update;
+    $.depot_num2 = t1;
+    $.depot_num2_e.textContent = C.JSNumber_methods.toString$0(t1);
+  },
   onDepotAreaOpen: [function(e) {
     var t1, str, n2, nn, l;
     t1 = J.getInterceptor$x(e);
@@ -8417,8 +8346,11 @@ var $$ = Object.create(null);
     $.group_name = J.get$attributes$x($.depot_product_open_view)._html$_element.getAttribute("group_name");
     t1 = J.get$text$x($.depot_product_open_view.firstChild);
     $.product_name = t1;
-    if (t1 != null)
-      J.set$text$x($.depot_product_view.firstChild, t1);
+    J.set$text$x($.depot_product_view.firstChild, t1);
+    if ($.product_name !== "")
+      $.product_info = J.$index$asx($.groups_products.$index(0, $.group_name), $.product_name);
+    else
+      $.product_info = $.default_product_info;
     t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
     product_open_views = W._FrozenElementList$_wrap($.store_areas_view.querySelectorAll(t), null);
     for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
@@ -8474,9 +8406,11 @@ var $$ = Object.create(null);
   onDepotProduct: [function(e) {
     var t1, t2, t3, l;
     $.state = 1;
-    $.old_group_name = $.group_name;
-    $.old_product_name = $.product_name;
-    $.old_depot_product_open_view = $.depot_product_open_view;
+    $.delete_group_name = $.group_name;
+    $.delete_product_name = $.product_name;
+    $.delete_depot_product_open_view = $.depot_product_open_view;
+    $.delete_depot_area_open_view = $.depot_area_open_view;
+    $.delete_product_info = $.product_info;
     t1 = $.divs_list;
     t2 = t1.length;
     t3 = t2 - 2;
@@ -8493,23 +8427,30 @@ var $$ = Object.create(null);
   onGet: [function(e) {
     var t1, t2, set;
     t1 = H.Primitives_parseInt(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, null, null);
-    t2 = J.querySelectorAll$1$x($.store_product_open_view, "span");
+    t2 = J.querySelectorAll$1$x($.depot_product_open_view, "span");
     set = H.Primitives_parseInt(J.get$text$x(t2.elementAt$1(t2, 1)), null, null);
     t2 = J.getInterceptor$n(set);
     if (J.$gt$n(t2.$sub(set, t1), 0)) {
       B.product_set(t2.$sub(set, t1));
-      J.querySelector$1$x($.store_product_open_view, "span").textContent = "0";
-      B.set_remain($.store_product_open_view, "0");
+      t1 = $.store_product_open_view;
+      if (t1 != null) {
+        J.querySelector$1$x(t1, "span").textContent = "0";
+        B.set_remain($.store_product_open_view, "0");
+      }
       J.querySelector$1$x($.depot_product_open_view, "span").textContent = "0";
       B.set_remain($.depot_product_open_view, "0");
     }
     B.back(0);
   }, "call$1", "onGet$closure", 2, 0, 11],
   onRemain: [function(e) {
-    var num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
+    var num_text, t1;
+    num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
     B.product_set(0);
-    J.querySelector$1$x($.store_product_open_view, "span").textContent = num_text;
-    B.set_remain($.store_product_open_view, num_text);
+    t1 = $.store_product_open_view;
+    if (t1 != null) {
+      J.querySelector$1$x(t1, "span").textContent = num_text;
+      B.set_remain($.store_product_open_view, num_text);
+    }
     J.querySelector$1$x($.depot_product_open_view, "span").textContent = num_text;
     B.set_remain($.depot_product_open_view, num_text);
     B.back(0);
@@ -8547,6 +8488,7 @@ var $$ = Object.create(null);
   },
   onClear: [function(e) {
     B.product_set(0);
+    B.back(0);
   }, "call$1", "onClear$closure", 2, 0, 11],
   divs_list_add: function(m, l) {
     var t1, t2;
@@ -8570,7 +8512,7 @@ var $$ = Object.create(null);
     }
   },
   ProductInfo: {
-    "^": "Object;max*,set?,remain<,get,label"
+    "^": "Object;max*,set@,remain<,get,label"
   },
   main_closure: {
     "^": "Closure:14;httpRequest_0",
@@ -8591,121 +8533,6 @@ var $$ = Object.create(null);
     call$1: function(e) {
       B.processDepotString(this.httpRequest_2.responseText);
       return;
-    }
-  },
-  unload_closure: {
-    "^": "Closure:13;box_2",
-    call$2: function(group_name, group_products) {
-      var t1, t2;
-      t1 = this.box_2;
-      t2 = t1.product_text_2 += "\n\n";
-      t1.product_text_2 = C.JSString_methods.$add(t2, group_name);
-      J.forEach$1$ax(group_products, new B.unload__closure1(t1));
-    }
-  },
-  unload__closure1: {
-    "^": "Closure:13;box_2",
-    call$2: function(k, v) {
-      var t1, t2, product_text;
-      t1 = this.box_2;
-      t2 = t1.product_text_2 += "\n";
-      product_text = C.JSString_methods.$add(t2, J.$add$ns(k, ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(J.get$max$x(v)), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.get$remain()), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.set), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.get), ","));
-      t1.product_text_2 = product_text;
-      t1.product_text_2 = C.JSString_methods.$add(product_text, J.toString$0(v.label));
-    }
-  },
-  unload_closure0: {
-    "^": "Closure:14;box_2",
-    call$1: function(area) {
-      var area_name, t1, t2;
-      H.interceptedTypeCast(area, "$isDivElement");
-      area_name = area.id;
-      t1 = this.box_2;
-      t1.str_3 = t1.str_3 + C.JSString_methods.$add("\n\n", area_name);
-      t2 = new W._ChildNodeListLazy(area);
-      t2.forEach$1(t2, new B.unload__closure0(t1));
-    }
-  },
-  unload__closure0: {
-    "^": "Closure:14;box_2",
-    call$1: function(line) {
-      var t1, t2, t3;
-      t1 = {};
-      H.interceptedTypeCast(line, "$isDivElement");
-      t2 = this.box_2;
-      t2.str_3 += "\n";
-      t1.line_text_0 = "";
-      t3 = new W._ChildNodeListLazy(line);
-      t3.forEach$1(t3, new B.unload___closure0(t1));
-      t2.str_3 = t2.str_3 + t1.line_text_0;
-    }
-  },
-  unload___closure0: {
-    "^": "Closure:14;box_0",
-    call$1: function(cell) {
-      var t1, t2, t3;
-      H.interceptedTypeCast(cell, "$isButtonElement");
-      t1 = this.box_0;
-      t2 = t1.line_text_0 += ",";
-      if (cell.textContent === "")
-        t1.line_text_0 = t2 + "-";
-      else {
-        t3 = cell.getAttribute("group_name");
-        if (t3 == null)
-          return t3.$add();
-        t1.line_text_0 = t2 + C.JSString_methods.$add(t3 + ".", J.get$text$x(cell.firstChild));
-      }
-    }
-  },
-  unload_closure1: {
-    "^": "Closure:14;box_2",
-    call$1: function(area) {
-      var area_name, t1, t2;
-      H.interceptedTypeCast(area, "$isDivElement");
-      area_name = area.id;
-      t1 = this.box_2;
-      t1.str_4 = t1.str_4 + C.JSString_methods.$add("\n\n", area_name);
-      t2 = new W._ChildNodeListLazy(area);
-      t2.forEach$1(t2, new B.unload__closure(t1));
-    }
-  },
-  unload__closure: {
-    "^": "Closure:14;box_2",
-    call$1: function(line) {
-      var t1, t2, t3;
-      t1 = {};
-      H.interceptedTypeCast(line, "$isDivElement");
-      t2 = this.box_2;
-      t2.str_4 += "\n";
-      t1.line_text_1 = "";
-      t3 = new W._ChildNodeListLazy(line);
-      t3.forEach$1(t3, new B.unload___closure(t1));
-      t2.str_4 = t2.str_4 + t1.line_text_1;
-    }
-  },
-  unload___closure: {
-    "^": "Closure:14;box_1",
-    call$1: function(cell) {
-      var t1, t2, t3;
-      H.interceptedTypeCast(cell, "$isButtonElement");
-      t1 = this.box_1;
-      t2 = t1.line_text_1 += ",";
-      if (cell.textContent === "")
-        t1.line_text_1 = t2 + "-";
-      else {
-        t3 = cell.getAttribute("group_name");
-        if (t3 == null)
-          return t3.$add();
-        t1.line_text_1 = t2 + C.JSString_methods.$add(t3 + ".", J.get$text$x(cell.firstChild));
-      }
     }
   }
 },
@@ -8748,14 +8575,14 @@ $$ = null;
   _ = W.MouseEvent;
   _.$isEvent = TRUE;
   _.$isObject = TRUE;
-  _ = P.Symbol;
-  _.$isSymbol = TRUE;
-  _.$isObject = TRUE;
   P.Map.$isObject = TRUE;
   B.ProductInfo.$isObject = TRUE;
   H.RawReceivePortImpl.$isObject = TRUE;
   H._IsolateEvent.$isObject = TRUE;
   H._IsolateContext.$isObject = TRUE;
+  _ = P.Symbol;
+  _.$isSymbol = TRUE;
+  _.$isObject = TRUE;
   _ = P.bool;
   _.$isbool = TRUE;
   _.$isObject = TRUE;
@@ -8994,9 +8821,6 @@ J.set$borderTopColor$x = function(receiver, value) {
 };
 J.set$className$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$className(receiver, value);
-};
-J.set$disabled$x = function(receiver, value) {
-  return J.getInterceptor$x(receiver).set$disabled(receiver, value);
 };
 J.set$display$x = function(receiver, value) {
   return J.getInterceptor$x(receiver).set$display(receiver, value);
@@ -9244,9 +9068,12 @@ $.product_name = null;
 $.product_info = null;
 $.store_product_view = null;
 $.depot_product_view = null;
-$.old_group_name = null;
-$.old_product_name = null;
-$.old_depot_product_open_view = null;
+$.default_product_info = null;
+$.delete_group_name = null;
+$.delete_product_name = null;
+$.delete_depot_area_open_view = null;
+$.delete_depot_product_open_view = null;
+$.delete_product_info = null;
 $.store_num1 = null;
 $.store_num2 = null;
 $.depot_num1 = null;
