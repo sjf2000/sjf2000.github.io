@@ -3101,6 +3101,9 @@ var $$ = Object.create(null);
   },
   MappedIterable: {
     "^": "IterableBase;_iterable,_f",
+    _f$1: function(arg0) {
+      return this._f.call$1(arg0);
+    },
     get$iterator: function(_) {
       var t1 = this._iterable;
       t1 = new H.MappedIterator(null, t1.get$iterator(t1), this._f);
@@ -3110,6 +3113,9 @@ var $$ = Object.create(null);
     get$length: function(_) {
       var t1 = this._iterable;
       return t1.get$length(t1);
+    },
+    elementAt$1: function(_, index) {
+      return this._f$1(this._iterable.elementAt$1(0, index));
     },
     $asIterableBase: function($S, $T) {
       return [$T];
@@ -5609,6 +5615,17 @@ var $$ = Object.create(null);
     get$length: function(_) {
       return (this._tail - this._head & this._table.length - 1) >>> 0;
     },
+    elementAt$1: function(_, index) {
+      var t1, t2, t3;
+      if (index >= this.get$length(this))
+        throw H.wrapException(P.IndexError$(index, this, null, null, null));
+      t1 = this._table;
+      t2 = t1.length;
+      t3 = (this._head + index & t2 - 1) >>> 0;
+      if (t3 >= t2)
+        return H.ioore(t1, t3);
+      return t1[t3];
+    },
     clear$0: function(_) {
       var i, t1, t2, t3, t4;
       i = this._head;
@@ -5741,6 +5758,16 @@ var $$ = Object.create(null);
       }
       t1 = buffer._contents;
       return t1.charCodeAt(0) == 0 ? t1 : t1;
+    },
+    elementAt$1: function(_, index) {
+      var t1, remaining, element;
+      for (t1 = this.get$iterator(this), remaining = index; t1.moveNext$0();) {
+        element = t1._collection$_current;
+        if (remaining === 0)
+          return element;
+        --remaining;
+      }
+      throw H.wrapException(P.RangeError$value(index, null, null));
     },
     $isEfficientLength: true
   },
@@ -7440,6 +7467,9 @@ var $$ = Object.create(null);
       this.writeClasses$1(s);
       return result;
     },
+    elementAt$1: function(_, index) {
+      return this.readClasses$0().elementAt$1(0, index);
+    },
     modify$1: function(f) {
       var s, ret;
       s = this.readClasses$0();
@@ -7479,6 +7509,8 @@ var $$ = Object.create(null);
     $.store_num2 = 0;
     $.depot_num1 = 0;
     $.depot_num2 = 0;
+    $.store_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
+    $.depot_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
     httpRequest = new XMLHttpRequest();
     C.HttpRequest_methods.open$3$async(httpRequest, "GET", "product.txt", false);
     d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure(httpRequest));
@@ -7487,22 +7519,20 @@ var $$ = Object.create(null);
     text = $.local_storage.getItem("product");
     if (text != null)
       B.processLocalProductString(text);
+    C.HttpRequest_methods.open$3$async(httpRequest, "GET", "store.txt", false);
+    d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure0(httpRequest));
+    httpRequest.send("");
+    d.cancel$0();
     text = $.local_storage.getItem("store");
-    if (text == null) {
-      C.HttpRequest_methods.open$3$async(httpRequest, "GET", "store.txt", false);
-      d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure0(httpRequest));
-      httpRequest.send("");
-      d.cancel$0();
-    } else
-      B.processStoreString(text);
+    if (text != null)
+      B.processLocalStoreString(text);
+    C.HttpRequest_methods.open$3$async(httpRequest, "GET", "depot.txt", false);
+    d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure1(httpRequest));
+    httpRequest.send("");
+    d.cancel$0();
     text = $.local_storage.getItem("depot");
-    if (text == null) {
-      C.HttpRequest_methods.open$3$async(httpRequest, "GET", "depot.txt", false);
-      d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure1(httpRequest));
-      httpRequest.send("");
-      d.cancel$0();
-    } else
-      B.processDepotString(text);
+    if (text != null)
+      B.processLocalDepotString(text);
     $.store_num1_e.textContent = J.toString$0($.store_num1);
     B.set_need($.store_num2_e, $.store_num2);
     $.depot_num1_e.textContent = J.toString$0($.depot_num1);
@@ -7709,7 +7739,34 @@ var $$ = Object.create(null);
     $.depot_product_view.appendChild(last_line_view);
   },
   processStoreString: function(store_string) {
-    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
+    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string;
+    area_products_strings = store_string.split("\n\n");
+    areas_count = area_products_strings.length;
+    for (i = 0; i < areas_count; ++i) {
+      if (i >= area_products_strings.length)
+        return H.ioore(area_products_strings, i);
+      area_products_string = area_products_strings[i];
+      t1 = J.getInterceptor$asx(area_products_string);
+      pos = t1.indexOf$1(area_products_string, "\n");
+      area_name = t1.substring$2(area_products_string, 0, pos);
+      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
+      $.store_areas_string.$indexSet(0, area_name, products_string);
+    }
+  },
+  processLocalStoreString: function(store_string) {
+    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
+    area_products_strings = store_string.split("\n\n");
+    areas_count = area_products_strings.length;
+    for (i = 0; i < areas_count; ++i) {
+      if (i >= area_products_strings.length)
+        return H.ioore(area_products_strings, i);
+      area_products_string = area_products_strings[i];
+      t1 = J.getInterceptor$asx(area_products_string);
+      pos = t1.indexOf$1(area_products_string, "\n");
+      area_name = t1.substring$2(area_products_string, 0, pos);
+      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
+      $.store_areas_string.$indexSet(0, area_name, products_string);
+    }
     t1 = document.createElement("div", null);
     $.store_areas_open_view = t1;
     t1.id = "store_areas_open";
@@ -7723,8 +7780,7 @@ var $$ = Object.create(null);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreAreaOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x($.store_areas_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreProductOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    areas_string = store_string.split("\n\n");
-    areas_count = areas_string.length;
+    areas_count = $.store_areas_string._collection$_length;
     areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count, 8) + 1;
     for (i = 0; i < 8; ++i) {
       line_view = document.createElement("div", null);
@@ -7745,12 +7801,11 @@ var $$ = Object.create(null);
       $.store_areas_open_view.appendChild(line_view);
     }
     for (area_no = 0; area_no < areas_count; ++area_no) {
-      if (area_no >= areas_string.length)
-        return H.ioore(areas_string, area_no);
-      area_string = areas_string[area_no];
-      t1 = J.getInterceptor$asx(area_string);
-      pos = t1.indexOf$1(area_string, "\n");
-      area_name = t1.substring$2(area_string, 0, pos);
+      t1 = $.store_areas_string;
+      t1.toString;
+      t2 = new P.LinkedHashMapKeyIterable(t1);
+      t2.$builtinTypeInfo = [H.getTypeArgumentByIndex(t1, 0)];
+      area_name = t2.elementAt$1(0, area_no);
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
       t1 = $.store_areas_open_view;
@@ -7763,7 +7818,9 @@ var $$ = Object.create(null);
       spans = W._FrozenElementList$_wrap(area_open_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
-      rows_string = C.JSString_methods.substring$1(area_string, pos + 1).split("\n");
+      t1 = $.store_areas_string;
+      t1 = t1.get$values(t1);
+      rows_string = J.split$1$s(t1._f$1(t1._iterable.elementAt$1(0, area_no)), "\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
       area_view.id = area_name;
@@ -7870,7 +7927,34 @@ var $$ = Object.create(null);
     }
   },
   processDepotString: function(depot_string) {
-    var t1, areas_string, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_string, pos, area_name, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
+    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string;
+    area_products_strings = depot_string.split("\n\n");
+    areas_count = area_products_strings.length;
+    for (i = 0; i < areas_count; ++i) {
+      if (i >= area_products_strings.length)
+        return H.ioore(area_products_strings, i);
+      area_products_string = area_products_strings[i];
+      t1 = J.getInterceptor$asx(area_products_string);
+      pos = t1.indexOf$1(area_products_string, "\n");
+      area_name = t1.substring$2(area_products_string, 0, pos);
+      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
+      $.depot_areas_string.$indexSet(0, area_name, products_string);
+    }
+  },
+  processLocalDepotString: function(depot_string) {
+    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
+    area_products_strings = depot_string.split("\n\n");
+    areas_count = area_products_strings.length;
+    for (i = 0; i < areas_count; ++i) {
+      if (i >= area_products_strings.length)
+        return H.ioore(area_products_strings, i);
+      area_products_string = area_products_strings[i];
+      t1 = J.getInterceptor$asx(area_products_string);
+      pos = t1.indexOf$1(area_products_string, "\n");
+      area_name = t1.substring$2(area_products_string, 0, pos);
+      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
+      $.depot_areas_string.$indexSet(0, area_name, products_string);
+    }
     t1 = document.createElement("div", null);
     $.depot_areas_open_view = t1;
     t1.id = "depot_areas_open";
@@ -7884,8 +7968,7 @@ var $$ = Object.create(null);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotAreaOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x($.depot_areas_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotProductOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    areas_string = depot_string.split("\n\n");
-    areas_count = areas_string.length;
+    areas_count = $.depot_areas_string._collection$_length;
     areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count, 8) + 1;
     for (i = 0; i < 8; ++i) {
       line_view = document.createElement("div", null);
@@ -7906,12 +7989,11 @@ var $$ = Object.create(null);
       $.depot_areas_open_view.appendChild(line_view);
     }
     for (area_no = 0; area_no < areas_count; ++area_no) {
-      if (area_no >= areas_string.length)
-        return H.ioore(areas_string, area_no);
-      area_string = areas_string[area_no];
-      t1 = J.getInterceptor$asx(area_string);
-      pos = t1.indexOf$1(area_string, "\n");
-      area_name = t1.substring$2(area_string, 0, pos);
+      t1 = $.depot_areas_string;
+      t1.toString;
+      t2 = new P.LinkedHashMapKeyIterable(t1);
+      t2.$builtinTypeInfo = [H.getTypeArgumentByIndex(t1, 0)];
+      area_name = t2.elementAt$1(0, area_no);
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
       t1 = $.depot_areas_open_view;
@@ -7924,7 +8006,9 @@ var $$ = Object.create(null);
       spans = W._FrozenElementList$_wrap(area_open_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
-      rows_string = C.JSString_methods.substring$1(area_string, pos + 1).split("\n");
+      t1 = $.depot_areas_string;
+      t1 = t1.get$values(t1);
+      rows_string = J.split$1$s(t1._f$1(t1._iterable.elementAt$1(0, area_no)), "\n");
       rows_count = rows_string.length;
       area_view = document.createElement("div", null);
       area_view.id = area_name;
@@ -8609,28 +8693,37 @@ var $$ = Object.create(null);
   change_depot_product: function() {
     var t1, t2, t3, l, t;
     $.state = 1;
-    $.delete_group_name = $.group_name;
+    t1 = $.group_name;
+    $.delete_group_name = t1;
     $.delete_product_name = $.product_name;
     $.delete_product_info = $.product_info;
     $.delete_depot_product_open_view = $.depot_product_open_view;
     $.delete_depot_area_open_view = $.depot_area_open_view;
     $.delete_depot_area_view = $.depot_area_view;
-    t1 = $.divs_list;
-    t2 = t1.length;
-    t3 = t2 - 2;
-    if (t3 < 0)
-      return H.ioore(t1, t3);
-    t1[t3].set$mark(1);
+    t2 = $.divs_list;
+    if (t1 === "") {
+      t1 = t2.length;
+      t3 = t1 - 1;
+      if (t3 < 0)
+        return H.ioore(t2, t3);
+      t2[t3].set$mark(1);
+    } else {
+      t1 = t2.length;
+      t3 = t1 - 2;
+      if (t3 < 0)
+        return H.ioore(t2, t3);
+      t2[t3].set$mark(1);
+    }
     J.set$display$x($.store_areas_open_view.style, "flex");
-    t3 = $.store_areas_open_view;
-    t1 = $.z_index;
-    if (typeof t1 !== "number")
-      return t1.$add();
-    ++t1;
-    $.z_index = t1;
-    J.set$zIndex$x(t3.style, C.JSInt_methods.toString$0(t1));
+    t1 = $.store_areas_open_view;
+    t2 = $.z_index;
+    if (typeof t2 !== "number")
+      return t2.$add();
+    ++t2;
+    $.z_index = t2;
+    J.set$zIndex$x(t1.style, C.JSInt_methods.toString$0(t2));
     l = H.setRuntimeTypeInfo([], [W.DivElement]);
-    l.push(t3);
+    l.push(t1);
     $.divs_list.push(B.Divs$(0, l));
     t1 = $.group_name;
     if (t1 !== "" && $.product_name === "") {
@@ -9491,6 +9584,8 @@ $.depot_num1_e = null;
 $.depot_num2_e = null;
 $.state = null;
 $.z_index = null;
+$.store_areas_string = null;
+$.depot_areas_string = null;
 $.divs_list = null;
 $.groups_products = null;
 $.is_store_loop = null;
