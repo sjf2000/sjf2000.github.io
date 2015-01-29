@@ -8693,9 +8693,9 @@ var $$ = Object.create(null);
   change_depot_product: function() {
     var t1, t2, t3, l, t;
     $.state = 1;
-    t1 = $.group_name;
-    $.delete_group_name = t1;
-    $.delete_product_name = $.product_name;
+    $.delete_group_name = $.group_name;
+    t1 = $.product_name;
+    $.delete_product_name = t1;
     $.delete_product_info = $.product_info;
     $.delete_depot_product_open_view = $.depot_product_open_view;
     $.delete_depot_area_open_view = $.depot_area_open_view;
