@@ -902,13 +902,13 @@ var $$ = Object.create(null);
     return x == null || typeof x === "string" || typeof x === "number" || typeof x === "boolean";
   },
   startRootIsolate_closure: {
-    "^": "Closure:12;box_0,entry_1",
+    "^": "Closure:8;box_0,entry_1",
     call$0: function() {
       this.entry_1.call$1(this.box_0.args_0);
     }
   },
   startRootIsolate_closure0: {
-    "^": "Closure:12;box_0,entry_2",
+    "^": "Closure:8;box_0,entry_2",
     call$0: function() {
       this.entry_2.call$2(this.box_0.args_0, null);
     }
@@ -968,7 +968,7 @@ var $$ = Object.create(null);
         return;
       t1 = this.pauseTokens;
       t1.remove$1(0, resume);
-      if (t1._collection$_length === 0) {
+      if (t1._length === 0) {
         for (t1 = this.delayedEvents; t2 = t1.length, t2 !== 0;) {
           if (0 >= t2)
             return H.ioore(t1, 0);
@@ -1063,7 +1063,7 @@ var $$ = Object.create(null);
     handleUncaughtError$2: function(error, stackTrace) {
       var t1, message, t2;
       t1 = this.errorPorts;
-      if (t1._collection$_length === 0) {
+      if (t1._length === 0) {
         if (this.errorsAreFatal === true && this === init.globalState.rootContext)
           return;
         if (self.console && self.console.error)
@@ -1123,7 +1123,7 @@ var $$ = Object.create(null);
       t1.$indexSet(0, portId, port);
     },
     _updateGlobalState$0: function() {
-      if (this.ports._collection$_length - this.weakPorts._collection$_length > 0 || this.isPaused || !this.initialized)
+      if (this.ports._length - this.weakPorts._length > 0 || this.isPaused || !this.initialized)
         init.globalState.isolates.$indexSet(0, this.id, this);
       else
         this.kill$0();
@@ -1165,10 +1165,10 @@ var $$ = Object.create(null);
       var $event, t1, t2;
       $event = this.dequeue$0();
       if ($event == null) {
-        if (init.globalState.rootContext != null && init.globalState.isolates.containsKey$1(0, init.globalState.rootContext.id) && init.globalState.fromCommandLine === true && init.globalState.rootContext.ports._collection$_length === 0)
+        if (init.globalState.rootContext != null && init.globalState.isolates.containsKey$1(0, init.globalState.rootContext.id) && init.globalState.fromCommandLine === true && init.globalState.rootContext.ports._length === 0)
           H.throwExpression(P.Exception_Exception("Program exited with open ReceivePorts."));
         t1 = init.globalState;
-        if (t1.isWorker === true && t1.isolates._collection$_length === 0 && t1.topEventLoop._activeJsAsyncCount === 0) {
+        if (t1.isWorker === true && t1.isolates._length === 0 && t1.topEventLoop._activeJsAsyncCount === 0) {
           t1 = t1.mainManager;
           t2 = H._serializeMessage(P.LinkedHashMap_LinkedHashMap$_literal(["command", "close"], null, null));
           t1.toString;
@@ -1228,7 +1228,7 @@ var $$ = Object.create(null);
     "^": "Object;"
   },
   IsolateNatives__processWorkerMessage_closure: {
-    "^": "Closure:12;entryPoint_0,args_1,message_2,isSpawnUri_3,startPaused_4,replyTo_5",
+    "^": "Closure:8;entryPoint_0,args_1,message_2,isSpawnUri_3,startPaused_4,replyTo_5",
     call$0: function() {
       H.IsolateNatives__startIsolate(this.entryPoint_0, this.args_1, this.message_2, this.isSpawnUri_3, this.startPaused_4, this.replyTo_5);
     }
@@ -1330,7 +1330,7 @@ var $$ = Object.create(null);
     $isCapability: true
   },
   _NativeJsSendPort_send_closure: {
-    "^": "Closure:12;box_0,this_1,shouldSerialize_2",
+    "^": "Closure:8;box_0,this_1,shouldSerialize_2",
     call$0: function() {
       var t1, t2;
       t1 = this.this_1._receivePort;
@@ -1577,7 +1577,7 @@ var $$ = Object.create(null);
     }
   },
   _Copier_visitMap_closure: {
-    "^": "Closure:13;box_0,this_1",
+    "^": "Closure:9;box_0,this_1",
     call$2: function(key, val) {
       var t1 = this.this_1;
       J.$indexSet$ax(this.box_0.copy_0, t1._dispatch$1(key), t1._dispatch$1(val));
@@ -2757,7 +2757,7 @@ var $$ = Object.create(null);
     }
   },
   unwrapException_saveStackTrace: {
-    "^": "Closure:14;ex_0",
+    "^": "Closure:10;ex_0",
     call$1: function(error) {
       if (!!J.getInterceptor(error).$isError)
         if (error.$thrownJsError == null)
@@ -2780,31 +2780,31 @@ var $$ = Object.create(null);
     }
   },
   invokeClosure_closure: {
-    "^": "Closure:12;closure_0",
+    "^": "Closure:8;closure_0",
     call$0: function() {
       return this.closure_0.call$0();
     }
   },
   invokeClosure_closure0: {
-    "^": "Closure:12;closure_1,arg1_2",
+    "^": "Closure:8;closure_1,arg1_2",
     call$0: function() {
       return this.closure_1.call$1(this.arg1_2);
     }
   },
   invokeClosure_closure1: {
-    "^": "Closure:12;closure_3,arg1_4,arg2_5",
+    "^": "Closure:8;closure_3,arg1_4,arg2_5",
     call$0: function() {
       return this.closure_3.call$2(this.arg1_4, this.arg2_5);
     }
   },
   invokeClosure_closure2: {
-    "^": "Closure:12;closure_6,arg1_7,arg2_8,arg3_9",
+    "^": "Closure:8;closure_6,arg1_7,arg2_8,arg3_9",
     call$0: function() {
       return this.closure_6.call$3(this.arg1_7, this.arg2_8, this.arg3_9);
     }
   },
   invokeClosure_closure3: {
-    "^": "Closure:12;closure_10,arg1_11,arg2_12,arg3_13,arg4_14",
+    "^": "Closure:8;closure_10,arg1_11,arg2_12,arg3_13,arg4_14",
     call$0: function() {
       return this.closure_10.call$4(this.arg1_11, this.arg2_12, this.arg3_13, this.arg4_14);
     }
@@ -2990,13 +2990,13 @@ var $$ = Object.create(null);
     $isDynamicRuntimeType: true
   },
   initHooks_closure: {
-    "^": "Closure:14;getTag_0",
+    "^": "Closure:10;getTag_0",
     call$1: function(o) {
       return this.getTag_0(o);
     }
   },
   initHooks_closure0: {
-    "^": "Closure:15;getUnknownTag_1",
+    "^": "Closure:11;getUnknownTag_1",
     call$2: function(o, tag) {
       return this.getUnknownTag_1(o, tag);
     }
@@ -3284,49 +3284,6 @@ var $$ = Object.create(null);
       $._lastCallback = newEntry;
     }
   },
-  scheduleMicrotask: function(callback) {
-    var t1 = $.Zone__current;
-    if (C.C__RootZone === t1) {
-      P._rootScheduleMicrotask(null, null, C.C__RootZone, callback);
-      return;
-    }
-    P._rootScheduleMicrotask(null, null, t1, t1.bindCallback$2$runGuarded(callback, true));
-  },
-  StreamController_StreamController: function(onCancel, onListen, onPause, onResume, sync, $T) {
-    if (onCancel == null)
-      return sync ? new P._NoCallbackSyncStreamController(null, 0, null) : new P._NoCallbackAsyncStreamController(null, 0, null);
-    return sync ? H.setRuntimeTypeInfo(new P._SyncStreamController(onListen, onPause, onResume, onCancel, null, 0, null), [$T]) : H.setRuntimeTypeInfo(new P._AsyncStreamController(onListen, onPause, onResume, onCancel, null, 0, null), [$T]);
-  },
-  _runGuarded: function(notificationHandler) {
-    var result, e, s, exception, t1;
-    if (notificationHandler == null)
-      return;
-    try {
-      result = notificationHandler.call$0();
-      if (!!J.getInterceptor(result).$isFuture)
-        return result;
-      return;
-    } catch (exception) {
-      t1 = H.unwrapException(exception);
-      e = t1;
-      s = new H._StackTrace(exception, null);
-      t1 = $.Zone__current;
-      t1.toString;
-      P._rootHandleUncaughtError(null, null, t1, e, s);
-    }
-
-  },
-  _nullDataHandler: [function(value) {
-  }, "call$1", "_nullDataHandler$closure", 2, 0, 3],
-  _nullErrorHandler: [function(error, stackTrace) {
-    var t1 = $.Zone__current;
-    t1.toString;
-    P._rootHandleUncaughtError(null, null, t1, error, stackTrace);
-  }, function(error) {
-    return P._nullErrorHandler(error, null);
-  }, null, "call$2", "call$1", "_nullErrorHandler$closure", 2, 2, 4, 5],
-  _nullDoneHandler: [function() {
-  }, "call$0", "_nullDoneHandler$closure", 0, 0, 2],
   _runUserCode: function(userCode, onSuccess, onError) {
     var e, s, replacement, error, stackTrace, exception, t1;
     try {
@@ -3441,7 +3398,7 @@ var $$ = Object.create(null);
     P._scheduleAsyncCallback(f);
   },
   _AsyncRun__initializeScheduleImmediate_internalCallback: {
-    "^": "Closure:14;box_0",
+    "^": "Closure:10;box_0",
     call$1: function(_) {
       var t1, f;
       H.leaveJsAsync();
@@ -3452,7 +3409,7 @@ var $$ = Object.create(null);
     }
   },
   _AsyncRun__initializeScheduleImmediate_closure: {
-    "^": "Closure:16;box_0,div_1,span_2",
+    "^": "Closure:12;box_0,div_1,span_2",
     call$1: function(callback) {
       var t1, t2;
       ++init.globalState.topEventLoop._activeJsAsyncCount;
@@ -3463,14 +3420,14 @@ var $$ = Object.create(null);
     }
   },
   _AsyncRun__scheduleImmediateJsOverride_internalCallback: {
-    "^": "Closure:12;callback_0",
+    "^": "Closure:8;callback_0",
     call$0: function() {
       H.leaveJsAsync();
       this.callback_0.call$0();
     }
   },
   _AsyncRun__scheduleImmediateWithSetImmediate_internalCallback: {
-    "^": "Closure:12;callback_0",
+    "^": "Closure:8;callback_0",
     call$0: function() {
       H.leaveJsAsync();
       this.callback_0.call$0();
@@ -3554,12 +3511,7 @@ var $$ = Object.create(null);
       this._addListener$1(new P._FutureListener(null, result, 8, action, null));
       return result;
     },
-    _markPendingCompletion$0: function() {
-      if (this._state !== 0)
-        throw H.wrapException(P.StateError$("Future already completed"));
-      this._state = 1;
-    },
-    get$_value: function() {
+    get$_async$_value: function() {
       return this._resultOrListeners;
     },
     get$_error: function() {
@@ -3622,40 +3574,7 @@ var $$ = Object.create(null);
       P._Future__propagateToListeners(this, listeners);
     }, function(error) {
       return this._completeError$2(error, null);
-    }, "_completeError$1", "call$2", "call$1", "get$_completeError", 2, 2, 4, 5],
-    _asyncComplete$1: function(value) {
-      var t1;
-      if (value == null)
-        ;
-      else {
-        t1 = J.getInterceptor(value);
-        if (!!t1.$isFuture) {
-          if (!!t1.$is_Future) {
-            t1 = value._state;
-            if (t1 >= 4 && t1 === 8) {
-              this._markPendingCompletion$0();
-              t1 = this._zone;
-              t1.toString;
-              P._rootScheduleMicrotask(null, null, t1, new P._Future__asyncComplete_closure(this, value));
-            } else
-              P._Future__chainCoreFuture(value, this);
-          } else
-            P._Future__chainForeignFuture(value, this);
-          return;
-        }
-      }
-      this._markPendingCompletion$0();
-      t1 = this._zone;
-      t1.toString;
-      P._rootScheduleMicrotask(null, null, t1, new P._Future__asyncComplete_closure0(this, value));
-    },
-    _asyncCompleteError$2: function(error, stackTrace) {
-      var t1;
-      this._markPendingCompletion$0();
-      t1 = this._zone;
-      t1.toString;
-      P._rootScheduleMicrotask(null, null, t1, new P._Future__asyncCompleteError_closure(this, error, stackTrace));
-    },
+    }, "_completeError$1", "call$2", "call$1", "get$_completeError", 2, 2, 13, 14],
     $is_Future: true,
     $isFuture: true,
     static: {"^": "_Future__INCOMPLETE,_Future__PENDING_COMPLETE,_Future__CHAINED,_Future__VALUE,_Future__ERROR", _Future__chainForeignFuture: function(source, target) {
@@ -3693,7 +3612,7 @@ var $$ = Object.create(null);
             P._Future__propagateToListeners(t1.source_4, listeners);
           }
           t3.listenerHasValue_1 = true;
-          sourceValue = hasError ? null : t1.source_4.get$_value();
+          sourceValue = hasError ? null : t1.source_4.get$_async$_value();
           t3.listenerValueOrError_2 = sourceValue;
           t3.isPropagationAborted_3 = false;
           t2 = !hasError;
@@ -3775,19 +3694,19 @@ var $$ = Object.create(null);
       }}
   },
   _Future__addListener_closure: {
-    "^": "Closure:12;this_0,listener_1",
+    "^": "Closure:8;this_0,listener_1",
     call$0: function() {
       P._Future__propagateToListeners(this.this_0, this.listener_1);
     }
   },
   _Future__chainForeignFuture_closure: {
-    "^": "Closure:14;target_0",
+    "^": "Closure:10;target_0",
     call$1: function(value) {
       this.target_0._completeWithValue$1(value);
     }
   },
   _Future__chainForeignFuture_closure0: {
-    "^": "Closure:17;target_1",
+    "^": "Closure:15;target_1",
     call$2: function(error, stackTrace) {
       this.target_1._completeError$2(error, stackTrace);
     },
@@ -3795,26 +3714,8 @@ var $$ = Object.create(null);
       return this.call$2(error, null);
     }
   },
-  _Future__asyncComplete_closure: {
-    "^": "Closure:12;this_0,coreFuture_1",
-    call$0: function() {
-      P._Future__chainCoreFuture(this.coreFuture_1, this.this_0);
-    }
-  },
-  _Future__asyncComplete_closure0: {
-    "^": "Closure:12;this_2,value_3",
-    call$0: function() {
-      this.this_2._completeWithValue$1(this.value_3);
-    }
-  },
-  _Future__asyncCompleteError_closure: {
-    "^": "Closure:12;this_0,error_1,stackTrace_2",
-    call$0: function() {
-      this.this_0._completeError$2(this.error_1, this.stackTrace_2);
-    }
-  },
   _Future__propagateToListeners_handleValueCallback: {
-    "^": "Closure:18;box_1,listener_3,sourceValue_4,zone_5",
+    "^": "Closure:16;box_1,listener_3,sourceValue_4,zone_5",
     call$0: function() {
       var e, s, exception, t1;
       try {
@@ -3928,13 +3829,13 @@ var $$ = Object.create(null);
     }
   },
   _Future__propagateToListeners_handleWhenCompleteCallback_closure: {
-    "^": "Closure:14;box_2,result_11",
+    "^": "Closure:10;box_2,result_11",
     call$1: function(ignored) {
       P._Future__propagateToListeners(this.box_2.source_4, new P._FutureListener(null, this.result_11, 0, null, null));
     }
   },
   _Future__propagateToListeners_handleWhenCompleteCallback_closure0: {
-    "^": "Closure:17;box_0,result_12",
+    "^": "Closure:15;box_0,result_12",
     call$2: function(error, stackTrace) {
       var t1, completeResult;
       t1 = this.box_0;
@@ -3986,30 +3887,30 @@ var $$ = Object.create(null);
     }
   },
   Stream_forEach__closure: {
-    "^": "Closure:12;action_4,element_5",
+    "^": "Closure:8;action_4,element_5",
     call$0: function() {
       return this.action_4.call$1(this.element_5);
     }
   },
   Stream_forEach__closure0: {
-    "^": "Closure:14;",
+    "^": "Closure:10;",
     call$1: function(_) {
     }
   },
   Stream_forEach_closure0: {
-    "^": "Closure:12;future_6",
+    "^": "Closure:8;future_6",
     call$0: function() {
       this.future_6._complete$1(null);
     }
   },
   Stream_length_closure: {
-    "^": "Closure:14;box_0",
+    "^": "Closure:10;box_0",
     call$1: function(_) {
       ++this.box_0.count_0;
     }
   },
   Stream_length_closure0: {
-    "^": "Closure:12;box_0,future_1",
+    "^": "Closure:8;box_0,future_1",
     call$0: function() {
       this.future_1._complete$1(this.box_0.count_0);
     }
@@ -4017,470 +3918,20 @@ var $$ = Object.create(null);
   StreamSubscription: {
     "^": "Object;"
   },
-  _StreamController: {
-    "^": "Object;",
-    get$_pendingEvents: function() {
-      if ((this._state & 8) === 0)
-        return this._varData;
-      return this._varData.get$varData();
-    },
-    _ensurePendingEvents$0: function() {
-      var t1, state;
-      if ((this._state & 8) === 0) {
-        t1 = this._varData;
-        if (t1 == null) {
-          t1 = new P._StreamImplEvents(null, null, 0);
-          this._varData = t1;
-        }
-        return t1;
-      }
-      state = this._varData;
-      state.get$varData();
-      return state.get$varData();
-    },
-    get$_subscription: function() {
-      if ((this._state & 8) !== 0)
-        return this._varData.get$varData();
-      return this._varData;
-    },
-    _badEventState$0: function() {
-      if ((this._state & 4) !== 0)
-        return new P.StateError("Cannot add event after closing");
-      return new P.StateError("Cannot add event while adding a stream");
-    },
-    _async$_add$1: function(value) {
-      var t1 = this._state;
-      if ((t1 & 1) !== 0)
-        this._sendData$1(value);
-      else if ((t1 & 3) === 0)
-        this._ensurePendingEvents$0().add$1(0, new P._DelayedData(value, null));
-    },
-    _subscribe$4: function(onData, onError, onDone, cancelOnError) {
-      var t1, t2, subscription, pendingEvents, addState;
-      if ((this._state & 3) !== 0)
-        throw H.wrapException(P.StateError$("Stream has already been listened to."));
-      t1 = $.Zone__current;
-      t2 = cancelOnError ? 1 : 0;
-      subscription = H.setRuntimeTypeInfo(new P._ControllerSubscription(this, null, null, null, t1, t2, null, null), [null]);
-      subscription._BufferingStreamSubscription$4(onData, onError, onDone, cancelOnError, null);
-      pendingEvents = this.get$_pendingEvents();
-      t2 = this._state |= 1;
-      if ((t2 & 8) !== 0) {
-        addState = this._varData;
-        addState.set$varData(subscription);
-        addState.resume$0();
-      } else
-        this._varData = subscription;
-      subscription._setPendingEvents$1(pendingEvents);
-      subscription._guardCallback$1(new P._StreamController__subscribe_closure(this));
-      return subscription;
-    },
-    _recordCancel$1: function(subscription) {
-      var result, e, s, exception, t1, result0;
-      result = null;
-      if ((this._state & 8) !== 0)
-        result = this._varData.cancel$0();
-      this._varData = null;
-      this._state = this._state & 4294967286 | 2;
-      if (this.get$_onCancel() != null)
-        if (result == null)
-          try {
-            result = this._onCancel$0();
-          } catch (exception) {
-            t1 = H.unwrapException(exception);
-            e = t1;
-            s = new H._StackTrace(exception, null);
-            result0 = H.setRuntimeTypeInfo(new P._Future(0, $.Zone__current, null), [null]);
-            result0._asyncCompleteError$2(e, s);
-            result = result0;
-          }
-
-        else
-          result = result.whenComplete$1(this.get$_onCancel());
-      t1 = new P._StreamController__recordCancel_complete(this);
-      if (result != null)
-        result = result.whenComplete$1(t1);
-      else
-        t1.call$0();
-      return result;
-    },
-    _recordPause$1: function(subscription) {
-      if ((this._state & 8) !== 0)
-        this._varData.pause$0(0);
-      P._runGuarded(this.get$_onPause());
-    },
-    _recordResume$1: function(subscription) {
-      if ((this._state & 8) !== 0)
-        this._varData.resume$0();
-      P._runGuarded(this.get$_onResume());
-    }
-  },
-  _StreamController__subscribe_closure: {
-    "^": "Closure:12;this_0",
-    call$0: function() {
-      P._runGuarded(this.this_0.get$_onListen());
-    }
-  },
-  _StreamController__recordCancel_complete: {
-    "^": "Closure:2;this_0",
-    call$0: function() {
-      var t1 = this.this_0._doneFuture;
-      if (t1 != null && t1._state === 0)
-        t1._asyncComplete$1(null);
-    }
-  },
-  _SyncStreamControllerDispatch: {
-    "^": "Object;",
-    _sendData$1: function(data) {
-      this.get$_subscription()._async$_add$1(data);
-    }
-  },
-  _AsyncStreamControllerDispatch: {
-    "^": "Object;",
-    _sendData$1: function(data) {
-      this.get$_subscription()._addPending$1(new P._DelayedData(data, null));
-    }
-  },
-  _AsyncStreamController: {
-    "^": "_StreamController__AsyncStreamControllerDispatch;_onListen<,_onPause<,_onResume<,_onCancel<,_varData,_state,_doneFuture",
-    _onCancel$0: function() {
-      return this._onCancel.call$0();
-    }
-  },
-  _StreamController__AsyncStreamControllerDispatch: {
-    "^": "_StreamController+_AsyncStreamControllerDispatch;"
-  },
-  _SyncStreamController: {
-    "^": "_StreamController__SyncStreamControllerDispatch;_onListen<,_onPause<,_onResume<,_onCancel<,_varData,_state,_doneFuture",
-    _onCancel$0: function() {
-      return this._onCancel.call$0();
-    }
-  },
-  _StreamController__SyncStreamControllerDispatch: {
-    "^": "_StreamController+_SyncStreamControllerDispatch;"
-  },
-  _NoCallbacks: {
-    "^": "Object;",
-    get$_onListen: function() {
-      return;
-    },
-    get$_onPause: function() {
-      return;
-    },
-    get$_onResume: function() {
-      return;
-    },
-    get$_onCancel: function() {
-      return;
-    },
-    _onCancel$0: function() {
-      return this.get$_onCancel().call$0();
-    }
-  },
-  _NoCallbackAsyncStreamController: {
-    "^": "_StreamController__AsyncStreamControllerDispatch0+_NoCallbacks;_varData,_state,_doneFuture"
-  },
-  _StreamController__AsyncStreamControllerDispatch0: {
-    "^": "_StreamController+_AsyncStreamControllerDispatch;",
-    $as_StreamController: function() {
-      return [null];
-    }
-  },
-  _NoCallbackSyncStreamController: {
-    "^": "_StreamController__SyncStreamControllerDispatch0+_NoCallbacks;_varData,_state,_doneFuture"
-  },
-  _StreamController__SyncStreamControllerDispatch0: {
-    "^": "_StreamController+_SyncStreamControllerDispatch;",
-    $as_StreamController: function() {
-      return [null];
-    }
-  },
-  _ControllerStream: {
-    "^": "_StreamImpl;_controller",
-    _createSubscription$4: function(onData, onError, onDone, cancelOnError) {
-      return this._controller._subscribe$4(onData, onError, onDone, cancelOnError);
-    },
-    get$hashCode: function(_) {
-      return (H.Primitives_objectHashCode(this._controller) ^ 892482866) >>> 0;
-    },
-    $eq: function(_, other) {
-      if (other == null)
-        return false;
-      if (this === other)
-        return true;
-      if (!J.getInterceptor(other).$is_ControllerStream)
-        return false;
-      return other._controller === this._controller;
-    },
-    $is_ControllerStream: true
-  },
-  _ControllerSubscription: {
-    "^": "_BufferingStreamSubscription;_controller<,_async$_onData,_onError,_onDone,_zone,_state,_cancelFuture,_pending",
-    _onCancel$0: function() {
-      return this.get$_controller()._recordCancel$1(this);
-    },
-    _onPause$0: [function() {
-      this.get$_controller()._recordPause$1(this);
-    }, "call$0", "get$_onPause", 0, 0, 2],
-    _onResume$0: [function() {
-      this.get$_controller()._recordResume$1(this);
-    }, "call$0", "get$_onResume", 0, 0, 2]
-  },
   _EventSink: {
     "^": "Object;"
   },
-  _BufferingStreamSubscription: {
-    "^": "Object;_async$_onData,_onError,_onDone,_zone<,_state,_cancelFuture,_pending",
-    _setPendingEvents$1: function(pendingEvents) {
-      if (pendingEvents == null)
-        return;
-      this._pending = pendingEvents;
-      if (!pendingEvents.get$isEmpty(pendingEvents)) {
-        this._state = (this._state | 64) >>> 0;
-        this._pending.schedule$1(this);
-      }
-    },
-    pause$1: function(_, resumeSignal) {
-      var t1 = this._state;
-      if ((t1 & 8) !== 0)
-        return;
-      this._state = (t1 + 128 | 4) >>> 0;
-      if (t1 < 128 && this._pending != null)
-        this._pending.cancelSchedule$0();
-      if ((t1 & 4) === 0 && (this._state & 32) === 0)
-        this._guardCallback$1(this.get$_onPause());
-    },
-    pause$0: function($receiver) {
-      return this.pause$1($receiver, null);
-    },
-    resume$0: function() {
-      var t1 = this._state;
-      if ((t1 & 8) !== 0)
-        return;
-      if (t1 >= 128) {
-        t1 -= 128;
-        this._state = t1;
-        if (t1 < 128) {
-          if ((t1 & 64) !== 0) {
-            t1 = this._pending;
-            t1 = !t1.get$isEmpty(t1);
-          } else
-            t1 = false;
-          if (t1)
-            this._pending.schedule$1(this);
-          else {
-            t1 = (this._state & 4294967291) >>> 0;
-            this._state = t1;
-            if ((t1 & 32) === 0)
-              this._guardCallback$1(this.get$_onResume());
-          }
-        }
-      }
-    },
-    cancel$0: function() {
-      var t1 = (this._state & 4294967279) >>> 0;
-      this._state = t1;
-      if ((t1 & 8) !== 0)
-        return this._cancelFuture;
-      this._cancel$0();
-      return this._cancelFuture;
-    },
-    _cancel$0: function() {
-      var t1 = (this._state | 8) >>> 0;
-      this._state = t1;
-      if ((t1 & 64) !== 0)
-        this._pending.cancelSchedule$0();
-      if ((this._state & 32) === 0)
-        this._pending = null;
-      this._cancelFuture = this._onCancel$0();
-    },
-    _async$_add$1: function(data) {
-      var t1 = this._state;
-      if ((t1 & 8) !== 0)
-        return;
-      if (t1 < 32)
-        this._sendData$1(data);
-      else
-        this._addPending$1(new P._DelayedData(data, null));
-    },
-    _onPause$0: [function() {
-    }, "call$0", "get$_onPause", 0, 0, 2],
-    _onResume$0: [function() {
-    }, "call$0", "get$_onResume", 0, 0, 2],
-    _onCancel$0: function() {
-      return;
-    },
-    _addPending$1: function($event) {
-      var pending, t1;
-      pending = this._pending;
-      if (pending == null) {
-        pending = new P._StreamImplEvents(null, null, 0);
-        this._pending = pending;
-      }
-      pending.add$1(0, $event);
-      t1 = this._state;
-      if ((t1 & 64) === 0) {
-        t1 = (t1 | 64) >>> 0;
-        this._state = t1;
-        if (t1 < 128)
-          this._pending.schedule$1(this);
-      }
-    },
-    _sendData$1: function(data) {
-      var t1 = this._state;
-      this._state = (t1 | 32) >>> 0;
-      this._zone.runUnaryGuarded$2(this._async$_onData, data);
-      this._state = (this._state & 4294967263) >>> 0;
-      this._checkState$1((t1 & 4) !== 0);
-    },
-    _guardCallback$1: function(callback) {
-      var t1 = this._state;
-      this._state = (t1 | 32) >>> 0;
-      callback.call$0();
-      this._state = (this._state & 4294967263) >>> 0;
-      this._checkState$1((t1 & 4) !== 0);
-    },
-    _checkState$1: function(wasInputPaused) {
-      var t1, isInputPaused;
-      if ((this._state & 64) !== 0) {
-        t1 = this._pending;
-        t1 = t1.get$isEmpty(t1);
-      } else
-        t1 = false;
-      if (t1) {
-        t1 = (this._state & 4294967231) >>> 0;
-        this._state = t1;
-        if ((t1 & 4) !== 0)
-          if (t1 < 128) {
-            t1 = this._pending;
-            t1 = t1 == null || t1.get$isEmpty(t1);
-          } else
-            t1 = false;
-        else
-          t1 = false;
-        if (t1)
-          this._state = (this._state & 4294967291) >>> 0;
-      }
-      for (; true; wasInputPaused = isInputPaused) {
-        t1 = this._state;
-        if ((t1 & 8) !== 0) {
-          this._pending = null;
-          return;
-        }
-        isInputPaused = (t1 & 4) !== 0;
-        if (wasInputPaused === isInputPaused)
-          break;
-        this._state = (t1 ^ 32) >>> 0;
-        if (isInputPaused)
-          this._onPause$0();
-        else
-          this._onResume$0();
-        this._state = (this._state & 4294967263) >>> 0;
-      }
-      t1 = this._state;
-      if ((t1 & 64) !== 0 && t1 < 128)
-        this._pending.schedule$1(this);
-    },
-    _BufferingStreamSubscription$4: function(onData, onError, onDone, cancelOnError, $T) {
-      var t1 = this._zone;
-      t1.toString;
-      this._async$_onData = onData;
-      this._onError = P._registerErrorHandler(onError == null ? P._nullErrorHandler$closure() : onError, t1);
-      this._onDone = onDone == null ? P._nullDoneHandler$closure() : onDone;
-    },
-    static: {"^": "_BufferingStreamSubscription__STATE_CANCEL_ON_ERROR,_BufferingStreamSubscription__STATE_CLOSED,_BufferingStreamSubscription__STATE_INPUT_PAUSED,_BufferingStreamSubscription__STATE_CANCELED,_BufferingStreamSubscription__STATE_WAIT_FOR_CANCEL,_BufferingStreamSubscription__STATE_IN_CALLBACK,_BufferingStreamSubscription__STATE_HAS_PENDING,_BufferingStreamSubscription__STATE_PAUSE_COUNT,_BufferingStreamSubscription__STATE_PAUSE_COUNT_SHIFT", _BufferingStreamSubscription$: function(onData, onError, onDone, cancelOnError, $T) {
-        var t1, t2;
-        t1 = $.Zone__current;
-        t2 = cancelOnError ? 1 : 0;
-        t2 = H.setRuntimeTypeInfo(new P._BufferingStreamSubscription(null, null, null, t1, t2, null, null), [$T]);
-        t2._BufferingStreamSubscription$4(onData, onError, onDone, cancelOnError, $T);
-        return t2;
-      }}
-  },
-  _StreamImpl: {
-    "^": "Stream;",
-    listen$4$cancelOnError$onDone$onError: function(onData, cancelOnError, onDone, onError) {
-      return this._createSubscription$4(onData, onError, onDone, true === cancelOnError);
-    },
-    listen$1: function(onData) {
-      return this.listen$4$cancelOnError$onDone$onError(onData, null, null, null);
-    },
-    _createSubscription$4: function(onData, onError, onDone, cancelOnError) {
-      return P._BufferingStreamSubscription$(onData, onError, onDone, cancelOnError, H.getTypeArgumentByIndex(this, 0));
-    }
-  },
   _DelayedEvent: {
-    "^": "Object;next@"
-  },
-  _DelayedData: {
-    "^": "_DelayedEvent;value,next",
-    perform$1: function(dispatch) {
-      dispatch._sendData$1(this.value);
-    }
-  },
-  _PendingEvents: {
-    "^": "Object;",
-    schedule$1: function(dispatch) {
-      var t1 = this._state;
-      if (t1 === 1)
-        return;
-      if (t1 >= 1) {
-        this._state = 1;
-        return;
-      }
-      P.scheduleMicrotask(new P._PendingEvents_schedule_closure(this, dispatch));
-      this._state = 1;
-    },
-    cancelSchedule$0: function() {
-      if (this._state === 1)
-        this._state = 3;
-    }
-  },
-  _PendingEvents_schedule_closure: {
-    "^": "Closure:12;this_0,dispatch_1",
-    call$0: function() {
-      var t1, oldState;
-      t1 = this.this_0;
-      oldState = t1._state;
-      t1._state = 0;
-      if (oldState === 3)
-        return;
-      t1.handleNext$1(this.dispatch_1);
-    }
-  },
-  _StreamImplEvents: {
-    "^": "_PendingEvents;firstPendingEvent,lastPendingEvent,_state",
-    get$isEmpty: function(_) {
-      return this.lastPendingEvent == null;
-    },
-    add$1: function(_, $event) {
-      var t1 = this.lastPendingEvent;
-      if (t1 == null) {
-        this.lastPendingEvent = $event;
-        this.firstPendingEvent = $event;
-      } else {
-        t1.set$next($event);
-        this.lastPendingEvent = $event;
-      }
-    },
-    handleNext$1: function(dispatch) {
-      var $event, t1;
-      $event = this.firstPendingEvent;
-      t1 = $event.get$next();
-      this.firstPendingEvent = t1;
-      if (t1 == null)
-        this.lastPendingEvent = null;
-      $event.perform$1(dispatch);
-    }
+    "^": "Object;"
   },
   _cancelAndError_closure: {
-    "^": "Closure:12;future_0,error_1,stackTrace_2",
+    "^": "Closure:8;future_0,error_1,stackTrace_2",
     call$0: function() {
       return this.future_0._completeError$2(this.error_1, this.stackTrace_2);
     }
   },
   _cancelAndErrorClosure_closure: {
-    "^": "Closure:19;subscription_0,future_1",
+    "^": "Closure:17;subscription_0,future_1",
     call$2: function(error, stackTrace) {
       return P._cancelAndError(this.subscription_0, this.future_1, error, stackTrace);
     }
@@ -4496,7 +3947,7 @@ var $$ = Object.create(null);
     "^": "Object;"
   },
   _rootHandleUncaughtError_closure: {
-    "^": "Closure:12;error_0,stackTrace_1",
+    "^": "Closure:8;error_0,stackTrace_1",
     call$0: function() {
       throw H.wrapException(P._UncaughtAsyncError$(this.error_0, this.stackTrace_1));
     }
@@ -4573,25 +4024,25 @@ var $$ = Object.create(null);
     static: {"^": "_RootZone__rootMap,_RootZone__rootDelegate"}
   },
   _RootZone_bindCallback_closure: {
-    "^": "Closure:12;this_0,f_1",
+    "^": "Closure:8;this_0,f_1",
     call$0: function() {
       return this.this_0.runGuarded$1(this.f_1);
     }
   },
   _RootZone_bindCallback_closure0: {
-    "^": "Closure:12;this_2,f_3",
+    "^": "Closure:8;this_2,f_3",
     call$0: function() {
       return this.this_2.run$1(this.f_3);
     }
   },
   _RootZone_bindUnaryCallback_closure: {
-    "^": "Closure:14;this_0,f_1",
+    "^": "Closure:10;this_0,f_1",
     call$1: function(arg) {
       return this.this_0.runUnaryGuarded$2(this.f_1, arg);
     }
   },
   _RootZone_bindUnaryCallback_closure0: {
-    "^": "Closure:14;this_2,f_3",
+    "^": "Closure:10;this_2,f_3",
     call$1: function(arg) {
       return this.this_2.runUnary$2(this.f_3, arg);
     }
@@ -4604,10 +4055,10 @@ var $$ = Object.create(null);
   },
   _defaultEquals: [function(a, b) {
     return J.$eq(a, b);
-  }, "call$2", "_defaultEquals$closure", 4, 0, 6],
+  }, "call$2", "_defaultEquals$closure", 4, 0, 3],
   _defaultHashCode: [function(a) {
     return J.get$hashCode$(a);
-  }, "call$1", "_defaultHashCode$closure", 2, 0, 7],
+  }, "call$1", "_defaultHashCode$closure", 2, 0, 4],
   HashMap_HashMap: function(equals, hashCode, isValidKey, $K, $V) {
     return H.setRuntimeTypeInfo(new P._HashMap(0, null, null, null, null), [$K, $V]);
   },
@@ -4773,9 +4224,9 @@ var $$ = Object.create(null);
     return t1.charCodeAt(0) == 0 ? t1 : t1;
   },
   _HashMap: {
-    "^": "Object;_collection$_length,_strings,_nums,_rest,_keys",
+    "^": "Object;_length,_strings,_nums,_rest,_keys",
     get$length: function(_) {
-      return this._collection$_length;
+      return this._length;
     },
     get$keys: function(_) {
       return H.setRuntimeTypeInfo(new P.HashMapKeyIterable(this), [H.getTypeArgumentByIndex(this, 0)]);
@@ -4845,7 +4296,7 @@ var $$ = Object.create(null);
       bucket = rest[hash];
       if (bucket == null) {
         P._HashMap__setTableEntry(rest, hash, [key, value]);
-        ++this._collection$_length;
+        ++this._length;
         this._keys = null;
       } else {
         index = this._findBucketIndex$2(bucket, key);
@@ -4853,7 +4304,7 @@ var $$ = Object.create(null);
           bucket[index + 1] = value;
         else {
           bucket.push(key, value);
-          ++this._collection$_length;
+          ++this._length;
           this._keys = null;
         }
       }
@@ -4873,7 +4324,7 @@ var $$ = Object.create(null);
       t1 = this._keys;
       if (t1 != null)
         return t1;
-      result = Array(this._collection$_length);
+      result = Array(this._length);
       result.fixed$length = init;
       strings = this._strings;
       if (strings != null) {
@@ -4912,7 +4363,7 @@ var $$ = Object.create(null);
     },
     _addHashTableEntry$3: function(table, key, value) {
       if (table[key] == null) {
-        ++this._collection$_length;
+        ++this._length;
         this._keys = null;
       }
       P._HashMap__setTableEntry(table, key, value);
@@ -4945,7 +4396,7 @@ var $$ = Object.create(null);
       }}
   },
   _HashMap_values_closure: {
-    "^": "Closure:14;this_0",
+    "^": "Closure:10;this_0",
     call$1: function(each) {
       return this.this_0.$index(0, each);
     }
@@ -4953,7 +4404,7 @@ var $$ = Object.create(null);
   HashMapKeyIterable: {
     "^": "IterableBase;_map",
     get$length: function(_) {
-      return this._map._collection$_length;
+      return this._map._length;
     },
     get$iterator: function(_) {
       var t1 = this._map;
@@ -4994,9 +4445,9 @@ var $$ = Object.create(null);
     }
   },
   _LinkedHashMap: {
-    "^": "Object;_collection$_length,_strings,_nums,_rest,_first,_last,_modifications",
+    "^": "Object;_length,_strings,_nums,_rest,_first,_last,_modifications",
     get$length: function(_) {
-      return this._collection$_length;
+      return this._length;
     },
     get$keys: function(_) {
       return H.setRuntimeTypeInfo(new P.LinkedHashMapKeyIterable(this), [H.getTypeArgumentByIndex(this, 0)]);
@@ -5027,13 +4478,13 @@ var $$ = Object.create(null);
         if (strings == null)
           return;
         cell = strings[key];
-        return cell == null ? null : cell.get$_collection$_value();
+        return cell == null ? null : cell.get$_value();
       } else if (typeof key === "number" && (key & 0x3ffffff) === key) {
         nums = this._nums;
         if (nums == null)
           return;
         cell = nums[key];
-        return cell == null ? null : cell.get$_collection$_value();
+        return cell == null ? null : cell.get$_value();
       } else
         return this._get$1(key);
     },
@@ -5046,7 +4497,7 @@ var $$ = Object.create(null);
       index = this._findBucketIndex$2(bucket, key);
       if (index < 0)
         return;
-      return bucket[index].get$_collection$_value();
+      return bucket[index].get$_value();
     },
     $indexSet: function(_, key, value) {
       var strings, nums;
@@ -5081,7 +4532,7 @@ var $$ = Object.create(null);
       else {
         index = this._findBucketIndex$2(bucket, key);
         if (index >= 0)
-          bucket[index].set$_collection$_value(value);
+          bucket[index].set$_value(value);
         else
           bucket.push(this._newLinkedCell$2(key, value));
       }
@@ -5105,16 +4556,16 @@ var $$ = Object.create(null);
         return;
       cell = bucket.splice(index, 1)[0];
       this._unlinkCell$1(cell);
-      return cell.get$_collection$_value();
+      return cell.get$_value();
     },
     clear$0: function(_) {
-      if (this._collection$_length > 0) {
+      if (this._length > 0) {
         this._last = null;
         this._first = null;
         this._rest = null;
         this._nums = null;
         this._strings = null;
-        this._collection$_length = 0;
+        this._length = 0;
         this._modifications = this._modifications + 1 & 67108863;
       }
     },
@@ -5123,7 +4574,7 @@ var $$ = Object.create(null);
       cell = this._first;
       modifications = this._modifications;
       for (; cell != null;) {
-        action.call$2(cell.get$_key(cell), cell._collection$_value);
+        action.call$2(cell.get$_key(cell), cell._value);
         if (modifications !== this._modifications)
           throw H.wrapException(P.ConcurrentModificationError$(this));
         cell = cell._next;
@@ -5134,7 +4585,7 @@ var $$ = Object.create(null);
       if (cell == null)
         table[key] = this._newLinkedCell$2(key, value);
       else
-        cell.set$_collection$_value(value);
+        cell.set$_value(value);
     },
     _removeHashTableEntry$2: function(table, key) {
       var cell;
@@ -5145,7 +4596,7 @@ var $$ = Object.create(null);
         return;
       this._unlinkCell$1(cell);
       delete table[key];
-      return cell.get$_collection$_value();
+      return cell.get$_value();
     },
     _newLinkedCell$2: function(key, value) {
       var cell, last;
@@ -5159,7 +4610,7 @@ var $$ = Object.create(null);
         last.set$_next(cell);
         this._last = cell;
       }
-      ++this._collection$_length;
+      ++this._length;
       this._modifications = this._modifications + 1 & 67108863;
       return cell;
     },
@@ -5175,7 +4626,7 @@ var $$ = Object.create(null);
         this._last = previous;
       else
         next.set$_previous(previous);
-      --this._collection$_length;
+      --this._length;
       this._modifications = this._modifications + 1 & 67108863;
     },
     _computeHashCode$1: function(key) {
@@ -5204,18 +4655,18 @@ var $$ = Object.create(null);
       }}
   },
   _LinkedHashMap_values_closure: {
-    "^": "Closure:14;this_0",
+    "^": "Closure:10;this_0",
     call$1: function(each) {
       return this.this_0.$index(0, each);
     }
   },
   LinkedHashMapCell: {
-    "^": "Object;_key>,_collection$_value@,_next@,_previous@"
+    "^": "Object;_key>,_value@,_next@,_previous@"
   },
   LinkedHashMapKeyIterable: {
     "^": "IterableBase;_map",
     get$length: function(_) {
-      return this._map._collection$_length;
+      return this._map._length;
     },
     get$iterator: function(_) {
       var t1, t2;
@@ -5261,14 +4712,14 @@ var $$ = Object.create(null);
     }
   },
   _LinkedHashSet: {
-    "^": "_HashSetBase;_collection$_length,_strings,_nums,_rest,_first,_last,_modifications",
+    "^": "_HashSetBase;_length,_strings,_nums,_rest,_first,_last,_modifications",
     get$iterator: function(_) {
       var t1 = new P.LinkedHashSetIterator(this, this._modifications, null, null);
       t1._cell = this._first;
       return t1;
     },
     get$length: function(_) {
-      return this._collection$_length;
+      return this._length;
     },
     contains$1: function(_, object) {
       var strings, nums;
@@ -5388,13 +4839,13 @@ var $$ = Object.create(null);
       return true;
     },
     clear$0: function(_) {
-      if (this._collection$_length > 0) {
+      if (this._length > 0) {
         this._last = null;
         this._first = null;
         this._rest = null;
         this._nums = null;
         this._strings = null;
-        this._collection$_length = 0;
+        this._length = 0;
         this._modifications = this._modifications + 1 & 67108863;
       }
     },
@@ -5427,7 +4878,7 @@ var $$ = Object.create(null);
         last.set$_next(cell);
         this._last = cell;
       }
-      ++this._collection$_length;
+      ++this._length;
       this._modifications = this._modifications + 1 & 67108863;
       return cell;
     },
@@ -5443,7 +4894,7 @@ var $$ = Object.create(null);
         this._last = previous;
       else
         next.set$_previous(previous);
-      --this._collection$_length;
+      --this._length;
       this._modifications = this._modifications + 1 & 67108863;
     },
     _computeHashCode$1: function(element) {
@@ -5580,7 +5031,7 @@ var $$ = Object.create(null);
     $isEfficientLength: true
   },
   Maps_mapToString_closure: {
-    "^": "Closure:13;box_0,result_1",
+    "^": "Closure:9;box_0,result_1",
     call$2: function(k, v) {
       var t1 = this.box_0;
       if (!t1.first_0)
@@ -5792,10 +5243,10 @@ var $$ = Object.create(null);
   },
   identical: [function(a, b) {
     return a == null ? b == null : a === b;
-  }, "call$2", "identical$closure", 4, 0, 8],
+  }, "call$2", "identical$closure", 4, 0, 5],
   identityHashCode: [function(object) {
     return H.objectHashCode(object);
-  }, "call$1", "identityHashCode$closure", 2, 0, 9],
+  }, "call$1", "identityHashCode$closure", 2, 0, 6],
   List_List$from: function(other, growable, $E) {
     var list, t1;
     list = H.setRuntimeTypeInfo([], [$E]);
@@ -5811,7 +5262,7 @@ var $$ = Object.create(null);
     H.printString(line);
   },
   NoSuchMethodError_toString_closure: {
-    "^": "Closure:20;box_0",
+    "^": "Closure:18;box_0",
     call$2: function(key, value) {
       var t1 = this.box_0;
       if (t1.i_1 > 0)
@@ -5875,7 +5326,7 @@ var $$ = Object.create(null);
       }}
   },
   Duration_toString_sixDigits: {
-    "^": "Closure:21;",
+    "^": "Closure:19;",
     call$1: function(n) {
       if (n >= 100000)
         return "" + n;
@@ -5891,7 +5342,7 @@ var $$ = Object.create(null);
     }
   },
   Duration_toString_twoDigits: {
-    "^": "Closure:21;",
+    "^": "Closure:19;",
     call$1: function(n) {
       if (n >= 10)
         return "" + n;
@@ -6204,10 +5655,6 @@ var $$ = Object.create(null);
     "^": "HtmlElement;target=",
     "%": "HTMLBaseElement"
   },
-  BeforeUnloadEvent: {
-    "^": "Event;",
-    "%": "BeforeUnloadEvent"
-  },
   BodyElement: {
     "^": "HtmlElement;",
     $isEventTarget: true,
@@ -6219,7 +5666,7 @@ var $$ = Object.create(null);
     "%": "HTMLButtonElement"
   },
   CharacterData: {
-    "^": "Node;length=,nextElementSibling=",
+    "^": "Node;length=,nextElementSibling=,previousElementSibling=",
     "%": "CDATASection|Comment|Text;CharacterData"
   },
   CssStyleDeclaration: {
@@ -6331,7 +5778,7 @@ var $$ = Object.create(null);
     "%": ";DOMRectReadOnly"
   },
   Element: {
-    "^": "Node;className%,style=,nextElementSibling=",
+    "^": "Node;className%,style=,nextElementSibling=,previousElementSibling=",
     get$attributes: function(receiver) {
       return new W._ElementAttributeMap(receiver);
     },
@@ -6358,7 +5805,7 @@ var $$ = Object.create(null);
       return receiver.querySelector(selectors);
     },
     get$onClick: function(receiver) {
-      return C.EventStreamProvider_click.forElement$1(receiver);
+      return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, "click", false), [null]);
     },
     $isElement: true,
     $isEventTarget: true,
@@ -6377,7 +5824,7 @@ var $$ = Object.create(null);
     get$target: function(receiver) {
       return W._convertNativeToDart_EventTarget(receiver.target);
     },
-    "%": "AnimationPlayerEvent|ApplicationCacheErrorEvent|AudioProcessingEvent|AutocompleteErrorEvent|CloseEvent|CustomEvent|DeviceLightEvent|DeviceMotionEvent|DeviceOrientationEvent|FetchEvent|FontFaceSetLoadEvent|GamepadEvent|HashChangeEvent|IDBVersionChangeEvent|InstallEvent|InstallPhaseEvent|MIDIConnectionEvent|MIDIMessageEvent|MediaKeyEvent|MediaKeyMessageEvent|MediaKeyNeededEvent|MediaStreamEvent|MediaStreamTrackEvent|MessageEvent|MutationEvent|OfflineAudioCompletionEvent|OverflowEvent|PageTransitionEvent|PopStateEvent|PushEvent|RTCDTMFToneChangeEvent|RTCDataChannelEvent|RTCIceCandidateEvent|RelatedEvent|SecurityPolicyViolationEvent|SpeechRecognitionEvent|SpeechSynthesisEvent|StorageEvent|TrackEvent|TransitionEvent|WebGLContextEvent|WebKitAnimationEvent|WebKitTransitionEvent;ClipboardEvent|Event|InputEvent"
+    "%": "AnimationPlayerEvent|ApplicationCacheErrorEvent|AudioProcessingEvent|AutocompleteErrorEvent|BeforeUnloadEvent|CloseEvent|CompositionEvent|CustomEvent|DeviceLightEvent|DeviceMotionEvent|DeviceOrientationEvent|DragEvent|FetchEvent|FocusEvent|FontFaceSetLoadEvent|GamepadEvent|HashChangeEvent|IDBVersionChangeEvent|InstallEvent|InstallPhaseEvent|KeyboardEvent|MIDIConnectionEvent|MIDIMessageEvent|MSPointerEvent|MediaKeyEvent|MediaKeyMessageEvent|MediaKeyNeededEvent|MediaStreamEvent|MediaStreamTrackEvent|MessageEvent|MouseEvent|MouseScrollEvent|MouseWheelEvent|MutationEvent|OfflineAudioCompletionEvent|OverflowEvent|PageTransitionEvent|PointerEvent|PopStateEvent|ProgressEvent|PushEvent|RTCDTMFToneChangeEvent|RTCDataChannelEvent|RTCIceCandidateEvent|RelatedEvent|ResourceProgressEvent|SVGZoomEvent|SecurityPolicyViolationEvent|SpeechRecognitionEvent|SpeechSynthesisEvent|StorageEvent|TextEvent|TouchEvent|TrackEvent|TransitionEvent|UIEvent|WebGLContextEvent|WebKitAnimationEvent|WebKitTransitionEvent|WheelEvent|XMLHttpRequestProgressEvent;ClipboardEvent|Event|InputEvent"
   },
   EventTarget: {
     "^": "Interceptor;",
@@ -6457,10 +5904,6 @@ var $$ = Object.create(null);
     "^": "HtmlElement;max=,value=",
     "%": "HTMLMeterElement"
   },
-  MouseEvent: {
-    "^": "UIEvent;",
-    "%": "DragEvent|MSPointerEvent|MouseEvent|MouseScrollEvent|MouseWheelEvent|PointerEvent|WheelEvent"
-  },
   Node: {
     "^": "EventTarget;firstChild=,text:textContent%",
     toString$0: function(receiver) {
@@ -6519,10 +5962,6 @@ var $$ = Object.create(null);
     "^": "HtmlElement;max=,value=",
     "%": "HTMLProgressElement"
   },
-  ProgressEvent: {
-    "^": "Event;",
-    "%": "ProgressEvent|ResourceProgressEvent|XMLHttpRequestProgressEvent"
-  },
   SelectElement: {
     "^": "HtmlElement;length=,name=,value=",
     "%": "HTMLSelectElement"
@@ -6575,10 +6014,6 @@ var $$ = Object.create(null);
   TextAreaElement: {
     "^": "HtmlElement;name=,value=",
     "%": "HTMLTextAreaElement"
-  },
-  UIEvent: {
-    "^": "Event;",
-    "%": "CompositionEvent|FocusEvent|KeyboardEvent|SVGZoomEvent|TextEvent|TouchEvent;UIEvent"
   },
   Window: {
     "^": "EventTarget;",
@@ -6734,13 +6169,13 @@ var $$ = Object.create(null);
     "^": "Object+CssStyleDeclarationBase;"
   },
   _CssStyleDeclarationSet_closure: {
-    "^": "Closure:14;",
+    "^": "Closure:10;",
     call$1: function(e) {
       return J.get$style$x(e);
     }
   },
   _CssStyleDeclarationSet_setProperty_closure: {
-    "^": "Closure:14;propertyName_0,value_1,priority_2",
+    "^": "Closure:10;propertyName_0,value_1,priority_2",
     call$1: function(e) {
       return J.setProperty$3$x(e, this.propertyName_0, this.value_1, this.priority_2);
     }
@@ -6818,7 +6253,7 @@ var $$ = Object.create(null);
       }}
   },
   _FrozenElementList$_wrap_closure: {
-    "^": "Closure:14;",
+    "^": "Closure:10;",
     call$1: function(e) {
       return !!J.getInterceptor(e).$isElement;
     }
@@ -6869,41 +6304,15 @@ var $$ = Object.create(null);
     $isEfficientLength: true
   },
   Storage_keys_closure: {
-    "^": "Closure:13;keys_0",
+    "^": "Closure:9;keys_0",
     call$2: function(k, v) {
       return this.keys_0.push(k);
     }
   },
   Storage_values_closure: {
-    "^": "Closure:13;values_0",
+    "^": "Closure:9;values_0",
     call$2: function(k, v) {
       return this.values_0.push(v);
-    }
-  },
-  _BeforeUnloadEvent: {
-    "^": "_WrappedEvent;_returnValue,wrapped,_selector"
-  },
-  _BeforeUnloadEventStreamProvider: {
-    "^": "Object;_eventType",
-    forTarget$2$useCapture: function(e, useCapture) {
-      var stream, controller;
-      stream = H.setRuntimeTypeInfo(new W._EventStream(e, this._eventType, useCapture), [null]);
-      controller = P.StreamController_StreamController(null, null, null, null, true, null);
-      H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, stream._target, stream._eventType, W._wrapZone(new W._BeforeUnloadEventStreamProvider_forTarget_closure(controller)), stream._useCapture), [H.getTypeArgumentByIndex(stream, 0)])._tryResume$0();
-      return H.setRuntimeTypeInfo(new P._ControllerStream(controller), [null]);
-    },
-    forTarget$1: function(e) {
-      return this.forTarget$2$useCapture(e, false);
-    }
-  },
-  _BeforeUnloadEventStreamProvider_forTarget_closure: {
-    "^": "Closure:14;controller_0",
-    call$1: function($event) {
-      var t1 = this.controller_0;
-      if (t1._state >= 4)
-        H.throwExpression(t1._badEventState$0());
-      t1._async$_add$1(new W._BeforeUnloadEvent(null, $event, null));
-      return;
     }
   },
   Interceptor_ListMixin0: {
@@ -6998,21 +6407,6 @@ var $$ = Object.create(null);
       J.set$className$x(this._element, s.join$1(0, " "));
     }
   },
-  EventStreamProvider: {
-    "^": "Object;_eventType",
-    forTarget$2$useCapture: function(e, useCapture) {
-      return H.setRuntimeTypeInfo(new W._EventStream(e, this._eventType, useCapture), [null]);
-    },
-    forTarget$1: function(e) {
-      return this.forTarget$2$useCapture(e, false);
-    },
-    forElement$2$useCapture: function(e, useCapture) {
-      return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(e, this._eventType, useCapture), [null]);
-    },
-    forElement$1: function(e) {
-      return this.forElement$2$useCapture(e, false);
-    }
-  },
   _EventStream: {
     "^": "Stream;_target,_eventType,_useCapture",
     listen$4$cancelOnError$onDone$onError: function(onData, cancelOnError, onDone, onError) {
@@ -7020,9 +6414,6 @@ var $$ = Object.create(null);
       t1.$builtinTypeInfo = this.$builtinTypeInfo;
       t1._tryResume$0();
       return t1;
-    },
-    listen$1: function(onData) {
-      return this.listen$4$cancelOnError$onDone$onError(onData, null, null, null);
     }
   },
   _ElementEventStreamImpl: {
@@ -7059,11 +6450,11 @@ var $$ = Object.create(null);
     $isEfficientLength: true
   },
   FixedSizeListIterator: {
-    "^": "Object;_array,_length,_position,_html$_current",
+    "^": "Object;_array,_html$_length,_position,_html$_current",
     moveNext$0: function() {
       var nextPosition, t1;
       nextPosition = this._position + 1;
-      t1 = this._length;
+      t1 = this._html$_length;
       if (nextPosition < t1) {
         this._html$_current = J.$index$asx(this._array, nextPosition);
         this._position = nextPosition;
@@ -7092,12 +6483,6 @@ var $$ = Object.create(null);
         else
           return new W._DOMWindowCrossFrame(w);
       }}
-  },
-  _WrappedEvent: {
-    "^": "Object;",
-    get$target: function(_) {
-      return J.get$target$x(this.wrapped);
-    }
   }
 }],
 ["dart.dom.svg", "dart:svg", , P, {
@@ -7126,7 +6511,7 @@ var $$ = Object.create(null);
       return receiver._cssClassSet;
     },
     get$onClick: function(receiver) {
-      return C.EventStreamProvider_click.forElement$1(receiver);
+      return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, "click", false), [null]);
     },
     $isEventTarget: true,
     "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEBlendElement|SVGFEColorMatrixElement|SVGFEComponentTransferElement|SVGFECompositeElement|SVGFEConvolveMatrixElement|SVGFEDiffuseLightingElement|SVGFEDisplacementMapElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFloodElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEGaussianBlurElement|SVGFEImageElement|SVGFEMergeElement|SVGFEMergeNodeElement|SVGFEMorphologyElement|SVGFEOffsetElement|SVGFESpecularLightingElement|SVGFETileElement|SVGFETurbulenceElement|SVGFilterElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMaskElement|SVGMetadataElement|SVGMissingGlyphElement|SVGPatternElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
@@ -7452,7 +6837,7 @@ var $$ = Object.create(null);
       this.readClasses$0().forEach$1(0, f);
     },
     get$length: function(_) {
-      return this.readClasses$0()._collection$_length;
+      return this.readClasses$0()._length;
     },
     lookup$1: function(value) {
       return this.readClasses$0().contains$1(0, value) ? value : null;
@@ -7480,7 +6865,7 @@ var $$ = Object.create(null);
     $isEfficientLength: true
   },
   CssClassSetImpl_add_closure: {
-    "^": "Closure:14;value_0",
+    "^": "Closure:10;value_0",
     call$1: function(s) {
       return s.add$1(0, this.value_0);
     }
@@ -7489,8 +6874,8 @@ var $$ = Object.create(null);
 ["", "sjf.dart", , B, {
   "^": "",
   main: [function() {
-    var t1, httpRequest, d, text, l;
-    t1 = new B.ProductInfo(null, null, null, null, null, null, null);
+    var t1, httpRequest, d, text;
+    t1 = new B.ProductInfo(null, null, null, null, null, null);
     $.default_product_info = t1;
     t1.remain = "N";
     t1.set = 0;
@@ -7502,7 +6887,7 @@ var $$ = Object.create(null);
     $.depot_num2_e = document.querySelector("#depot_num2");
     $.divs_list = H.setRuntimeTypeInfo([], [B.Divs]);
     t1 = document.querySelector("#top");
-    $.top = t1;
+    $.top_view = t1;
     t1.className = "top";
     J.set$display$x(t1.style, "inline");
     $.store_num1 = 0;
@@ -7513,82 +6898,112 @@ var $$ = Object.create(null);
     $.depot_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
     httpRequest = new XMLHttpRequest();
     C.HttpRequest_methods.open$3$async(httpRequest, "GET", "product.txt", false);
-    d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure(httpRequest));
+    t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
+    d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.main_closure(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
+    d._tryResume$0();
     httpRequest.send("");
     d.cancel$0();
     text = $.local_storage.getItem("product");
     if (text != null)
       B.processLocalProductString(text);
     C.HttpRequest_methods.open$3$async(httpRequest, "GET", "store.txt", false);
-    d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure0(httpRequest));
+    t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
+    d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.main_closure0(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
+    d._tryResume$0();
     httpRequest.send("");
     d.cancel$0();
     text = $.local_storage.getItem("store");
-    if (text != null)
-      B.processLocalStoreString(text);
+    B.processLocalStoreString(text == null ? "" : text);
     C.HttpRequest_methods.open$3$async(httpRequest, "GET", "depot.txt", false);
-    d = C.EventStreamProvider_loadend.forTarget$1(httpRequest).listen$1(new B.main_closure1(httpRequest));
+    t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
+    d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.main_closure1(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
+    d._tryResume$0();
     httpRequest.send("");
     d.cancel$0();
     text = $.local_storage.getItem("depot");
-    if (text != null)
-      B.processLocalDepotString(text);
+    B.processLocalDepotString(text == null ? "" : text);
     $.store_num1_e.textContent = J.toString$0($.store_num1);
-    B.set_need($.store_num2_e, $.store_num2);
+    B.set_view_set($.store_num2_e, $.store_num2);
     $.depot_num1_e.textContent = J.toString$0($.depot_num1);
-    B.set_need($.depot_num2_e, $.depot_num2);
+    B.set_view_set($.depot_num2_e, $.depot_num2);
+    B.gen_groups_products_view();
     B.gen_store_product_view();
     B.gen_depot_product_view();
-    $.top.appendChild($.depot_product_view);
-    $.top.appendChild($.store_product_view);
-    $.top.appendChild($.depot_areas_view);
-    $.top.appendChild($.depot_areas_open_view);
-    $.top.appendChild($.store_areas_view);
-    $.top.appendChild($.store_areas_open_view);
-    J.set$display$x($.store_areas_open_view.style, "flex");
-    l = H.setRuntimeTypeInfo([], [W.DivElement]);
-    l.push($.store_areas_open_view);
-    B.divs_list_add(0, l);
-    C._BeforeUnloadEventStreamProvider_beforeunload.forTarget$1(window).listen$1(B.before_unload$closure());
-    C.EventStreamProvider_unload.forTarget$1(window).listen$1(B.unload$closure());
-    t1 = J.get$onClick$x(document.querySelector("#store_open"));
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    t1 = J.get$onClick$x(document.querySelector("#depot_open"));
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    $.top_view.appendChild($.depot_area_product_view);
+    $.top_view.appendChild($.store_area_product_view);
+    $.top_view.appendChild($.store_areas_view);
+    $.top_view.appendChild($.store_areas_products_view);
+    $.top_view.appendChild($.depot_areas_view);
+    $.top_view.appendChild($.depot_areas_products_view);
+    $.top_view.appendChild($.groups_view);
+    $.top_view.appendChild($.groups_products_view);
+    J.set$display$x($.store_areas_view.style, "flex");
+    B.divs_list_add1(0, $.store_areas_view);
+    t1 = H.setRuntimeTypeInfo(new W._EventStream(window, "unload", false), [null]);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.unload$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$onClick$x(document.querySelector("#store"));
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStore$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$onClick$x(document.querySelector("#depot"));
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepot$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$onClick$x(document.querySelector("#product"));
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onProduct$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$onClick$x(document.querySelector("#recently"));
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onRecently$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$onClick$x(document.querySelector("#label"));
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onLabel$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x(document.querySelector("#back"));
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onBack$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
   }, "call$0", "main$closure", 0, 0, 2],
-  set_need: function(e, n) {
-    var t1, t2;
-    t1 = J.getInterceptor(n);
-    t2 = J.getInterceptor$x(e);
-    t2.set$text(e, t1.toString$0(n));
-    if (t1.$eq(n, 0)) {
-      t2.get$classes(e).remove$1(0, "need");
-      t2.get$classes(e).add$1(0, "need_not");
-    } else {
-      t2.get$classes(e).remove$1(0, "need_not");
-      t2.get$classes(e).add$1(0, "need");
+  gen_groups_products_view: function() {
+    var t1, l, count, columns_count, cur, i, row_e, j, cell;
+    t1 = document.createElement("div", null);
+    $.groups_view = t1;
+    t1 = J.get$onClick$x(t1);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onGroup$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = $.groups_view;
+    t1.className = "top";
+    J.set$overflow$x(t1.style, "scroll");
+    t1 = $.groups_products;
+    t1.toString;
+    l = H.setRuntimeTypeInfo(new P.LinkedHashMapKeyIterable(t1), [H.getTypeArgumentByIndex(t1, 0)]);
+    count = l._map._length;
+    columns_count = C.JSInt_methods._tdivFast$1(count - 1, 8) + 1;
+    for (cur = 0, i = 0; i < 8; ++i) {
+      row_e = document.createElement("div", null);
+      J.set$whiteSpace$x(row_e.style, "nowrap");
+      for (j = 0; j < columns_count; ++j) {
+        cell = document.createElement("button", null);
+        t1 = cell.style;
+        J.getInterceptor$x(t1).set$width(t1, "2.4em");
+        C.CssStyleDeclaration_methods.set$height(t1, "5.2em");
+        C.CssStyleDeclaration_methods.set$whiteSpace(t1, "normal");
+        C.CssStyleDeclaration_methods.set$verticalAlign(t1, "middle");
+        if (cur < count) {
+          cell.textContent = l.elementAt$1(0, cur);
+          cell.setAttribute("name", l.elementAt$1(0, cur));
+        } else
+          cell.textContent = "";
+        ++cur;
+        row_e.appendChild(cell);
+      }
+      $.groups_view.appendChild(row_e);
     }
-  },
-  set_remain: function(e, n) {
-    var t1 = J.getInterceptor$x(e);
-    if (J.$eq(n, "0")) {
-      t1.get$classes(e).remove$1(0, "remain");
-      t1.get$classes(e).add$1(0, "remain_not");
-    } else {
-      t1.get$classes(e).remove$1(0, "remain_not");
-      t1.get$classes(e).add$1(0, "remain");
-    }
+    t1 = document.createElement("div", null);
+    $.groups_products_view = t1;
+    t1 = J.get$onClick$x(t1);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onProductInto$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    $.groups_products.forEach$1(0, new B.gen_groups_products_view_closure());
   },
   gen_store_product_view: function() {
-    var t1, product_view, absract_view, count, i, line, j, e, plus_view, last_line_view, goto_depot_e, loop_e, clear_e;
+    var t1, store_product_change_view, absract_view, count, i, line, j, e, plus_view, last_line_view, goto_depot_e, loop_e, clear_e;
     t1 = document.createElement("div", null);
-    $.store_product_view = t1;
+    $.store_area_product_view = t1;
     t1.className = "top";
     J.set$flexFlow$x(t1.style, "column");
-    product_view = document.createElement("button", null);
-    J.set$height$x(product_view.style, "3em");
+    store_product_change_view = document.createElement("button", null);
+    J.set$height$x(store_product_change_view.style, "3em");
+    t1 = J.get$onClick$x(store_product_change_view);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreAreaProductChange$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     absract_view = document.createElement("div", null);
     t1 = absract_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
@@ -7657,21 +7072,21 @@ var $$ = Object.create(null);
     last_line_view.appendChild(goto_depot_e);
     last_line_view.appendChild(loop_e);
     last_line_view.appendChild(clear_e);
-    $.store_product_view.appendChild(product_view);
-    $.store_product_view.appendChild(absract_view);
-    $.store_product_view.appendChild(plus_view);
-    $.store_product_view.appendChild(last_line_view);
+    $.store_area_product_view.appendChild(store_product_change_view);
+    $.store_area_product_view.appendChild(absract_view);
+    $.store_area_product_view.appendChild(plus_view);
+    $.store_area_product_view.appendChild(last_line_view);
   },
   gen_depot_product_view: function() {
-    var t1, product_view, noenough_view, count, i, line, j, e, remain_view, text, last_line_view, clear_all_e;
+    var t1, depot_product_change_view, noenough_view, count, i, line, j, e, remain_view, text, last_line_view, clear_all_e;
     t1 = document.createElement("div", null);
-    $.depot_product_view = t1;
+    $.depot_area_product_view = t1;
     t1.className = "top";
     J.set$flexFlow$x(t1.style, "column");
-    product_view = document.createElement("button", null);
-    t1 = J.get$onClick$x(product_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotProduct$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    J.set$height$x(product_view.style, "3em");
+    depot_product_change_view = document.createElement("button", null);
+    t1 = J.get$onClick$x(depot_product_change_view);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotAreaProductChange$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    J.set$height$x(depot_product_change_view.style, "3em");
     noenough_view = document.createElement("div", null);
     t1 = noenough_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
@@ -7686,9 +7101,6 @@ var $$ = Object.create(null);
       C.CssStyleDeclaration_methods.set$flexFlow(t1, "row");
       C.CssStyleDeclaration_methods.set$flex(t1, "1");
       for (j = 0; j < 5; ++j) {
-        C.JSInt_methods.toString$0(count);
-        if (count === 14)
-          ;
         e = document.createElement("button", null);
         e.textContent = "+" + C.JSInt_methods.toString$0(count);
         J.set$flex$x(e.style, "1");
@@ -7702,6 +7114,8 @@ var $$ = Object.create(null);
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
     C.CssStyleDeclaration_methods.set$flex(t1, "3");
+    t1 = J.get$onClick$x(remain_view);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onRemain$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     for (count = 0, i = 0; i < 3; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
@@ -7720,8 +7134,6 @@ var $$ = Object.create(null);
       }
       remain_view.appendChild(line);
     }
-    t1 = J.get$onClick$x(remain_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onRemain$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     last_line_view = document.createElement("div", null);
     t1 = last_line_view.style;
     J.getInterceptor$x(t1).set$height(t1, "3em");
@@ -7733,10 +7145,10 @@ var $$ = Object.create(null);
     t1 = J.get$onClick$x(clear_all_e);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onClearAll$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     last_line_view.appendChild(clear_all_e);
-    $.depot_product_view.appendChild(product_view);
-    $.depot_product_view.appendChild(noenough_view);
-    $.depot_product_view.appendChild(remain_view);
-    $.depot_product_view.appendChild(last_line_view);
+    $.depot_area_product_view.appendChild(depot_product_change_view);
+    $.depot_area_product_view.appendChild(noenough_view);
+    $.depot_area_product_view.appendChild(remain_view);
+    $.depot_area_product_view.appendChild(last_line_view);
   },
   processStoreString: function(store_string) {
     var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string;
@@ -7754,34 +7166,29 @@ var $$ = Object.create(null);
     }
   },
   processLocalStoreString: function(store_string) {
-    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
-    area_products_strings = store_string.split("\n\n");
-    areas_count = area_products_strings.length;
-    for (i = 0; i < areas_count; ++i) {
-      if (i >= area_products_strings.length)
-        return H.ioore(area_products_strings, i);
-      area_products_string = area_products_strings[i];
-      t1 = J.getInterceptor$asx(area_products_string);
-      pos = t1.indexOf$1(area_products_string, "\n");
-      area_name = t1.substring$2(area_products_string, 0, pos);
-      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
-      $.store_areas_string.$indexSet(0, area_name, products_string);
+    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_view, spans, span1, span2, rows_string, rows_count, area_products_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, span10, span20, product_info, products, info, remain, set, t10, result;
+    if (store_string !== "") {
+      area_products_strings = store_string.split("\n\n");
+      areas_count = area_products_strings.length;
+      for (i = 0; i < areas_count; ++i) {
+        if (i >= area_products_strings.length)
+          return H.ioore(area_products_strings, i);
+        area_products_string = area_products_strings[i];
+        t1 = J.getInterceptor$asx(area_products_string);
+        pos = t1.indexOf$1(area_products_string, "\n");
+        area_name = t1.substring$2(area_products_string, 0, pos);
+        products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
+        $.store_areas_string.$indexSet(0, area_name, products_string);
+      }
     }
     t1 = document.createElement("div", null);
-    $.store_areas_open_view = t1;
-    t1.id = "store_areas_open";
+    $.store_areas_view = t1;
     t1.className = "top";
     J.set$flexFlow$x(t1.style, "column");
-    t1 = document.createElement("div", null);
-    $.store_areas_view = t1;
-    t1.id = "store_areas";
-    t1.className = "top";
-    t1 = J.get$onClick$x($.store_areas_open_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreAreaOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x($.store_areas_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreProductOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    areas_count = $.store_areas_string._collection$_length;
-    areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count, 8) + 1;
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreArea$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    areas_count = $.store_areas_string._length;
+    areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count - 1, 8) + 1;
     for (i = 0; i < 8; ++i) {
       line_view = document.createElement("div", null);
       t1 = line_view.style;
@@ -7798,8 +7205,13 @@ var $$ = Object.create(null);
         cell.appendChild(document.createElement("span", null));
         line_view.appendChild(cell);
       }
-      $.store_areas_open_view.appendChild(line_view);
+      $.store_areas_view.appendChild(line_view);
     }
+    t1 = document.createElement("div", null);
+    $.store_areas_products_view = t1;
+    t1.className = "top";
+    t1 = J.get$onClick$x(t1);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreAreaProductDisplay$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     for (area_no = 0; area_no < areas_count; ++area_no) {
       t1 = $.store_areas_string;
       t1.toString;
@@ -7808,24 +7220,24 @@ var $$ = Object.create(null);
       area_name = t2.elementAt$1(0, area_no);
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
-      t1 = $.store_areas_open_view;
+      t1 = $.store_areas_view;
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
-      area_open_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
-      J.set$text$x(area_open_view.firstChild, area_name);
-      area_open_view.setAttribute("name", area_name);
-      spans = W._FrozenElementList$_wrap(area_open_view.querySelectorAll("span"), null);
+      area_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
+      J.set$text$x(area_view.firstChild, area_name);
+      area_view.setAttribute("name", area_name);
+      spans = W._FrozenElementList$_wrap(area_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
       t1 = $.store_areas_string;
       t1 = t1.get$values(t1);
       rows_string = J.split$1$s(t1._f$1(t1._iterable.elementAt$1(0, area_no)), "\n");
       rows_count = rows_string.length;
-      area_view = document.createElement("div", null);
-      area_view.id = area_name;
-      area_view.className = "top";
-      J.set$overflow$x(area_view.style, "scroll");
+      area_products_view = document.createElement("div", null);
+      area_products_view.id = area_name;
+      area_products_view.className = "top";
+      J.set$overflow$x(area_products_view.style, "scroll");
       for (num1 = 0, num2 = 0, row = 0; row < rows_count; ++row) {
         if (row >= rows_string.length)
           return H.ioore(rows_string, row);
@@ -7860,43 +7272,34 @@ var $$ = Object.create(null);
           column_e.appendChild(span10);
           column_e.appendChild(document.createElement("br", null));
           span20 = document.createElement("span", null);
-          B.set_need(span20, 0);
           column_e.appendChild(span20);
-          if (product_name !== "") {
-            products = $.groups_products.$index(0, group_name);
-            if (products != null) {
-              product_info = J.$index$asx(products, product_name);
-              if (product_info != null) {
-                remain = product_info.get$remain();
-                span10.textContent = remain;
-                t2 = J.getInterceptor(remain);
-                t3 = J.getInterceptor$x(column_e);
-                if (t2.$eq(remain, "0")) {
-                  t3.get$classes(column_e).remove$1(0, "remain");
-                  t3.get$classes(column_e).add$1(0, "remain_not");
-                } else {
-                  t3.get$classes(column_e).remove$1(0, "remain_not");
-                  t3.get$classes(column_e).add$1(0, "remain");
-                }
-                set = product_info.set;
-                t3 = $.store_num1;
-                if (typeof t3 !== "number")
-                  return t3.$add();
-                if (typeof set !== "number")
-                  return H.iae(set);
-                $.store_num1 = t3 + set;
-                num1 += set;
-                if (!t2.$eq(remain, "0")) {
-                  t2 = $.store_num2;
-                  if (typeof t2 !== "number")
-                    return t2.$add();
-                  $.store_num2 = t2 + set;
-                  num2 += set;
-                }
-                B.set_need(span20, set);
-              } else
-                window.alert(column_str);
-            }
+          product_info = $.default_product_info;
+          products = $.groups_products.$index(0, group_name);
+          if (products != null) {
+            info = J.$index$asx(products, product_name);
+            if (info == null)
+              window.alert(column_str);
+            else
+              product_info = info;
+          }
+          remain = product_info.get$remain();
+          if (product_name !== "")
+            B.set_view_remain(column_e, span10, remain);
+          set = product_info.set;
+          B.set_view_set(span20, set);
+          t2 = $.store_num1;
+          if (typeof t2 !== "number")
+            return t2.$add();
+          if (typeof set !== "number")
+            return H.iae(set);
+          $.store_num1 = t2 + set;
+          num1 += set;
+          if (!J.$eq(remain, "0")) {
+            t2 = $.store_num2;
+            if (typeof t2 !== "number")
+              return t2.$add();
+            $.store_num2 = t2 + set;
+            num2 += set;
           }
           if (column > 0) {
             t10 = column_e.getAttribute("group_name");
@@ -7909,7 +7312,7 @@ var $$ = Object.create(null);
           }
           if (t1) {
             t10 = column_e.getAttribute("group_name");
-            result = area_view.lastChild;
+            result = area_products_view.lastChild;
             if (result == null)
               H.throwExpression(P.StateError$("No elements"));
             t2 = new W._ChildNodeListLazy(result);
@@ -7919,11 +7322,11 @@ var $$ = Object.create(null);
           }
           row_e.appendChild(column_e);
         }
-        area_view.appendChild(row_e);
+        area_products_view.appendChild(row_e);
       }
       J.set$text$x(span1, C.JSNumber_methods.toString$0(num1));
-      B.set_need(span2, num2);
-      $.store_areas_view.appendChild(area_view);
+      B.set_view_set(span2, num2);
+      $.store_areas_products_view.appendChild(area_products_view);
     }
   },
   processDepotString: function(depot_string) {
@@ -7942,34 +7345,29 @@ var $$ = Object.create(null);
     }
   },
   processLocalDepotString: function(depot_string) {
-    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_open_view, spans, span1, span2, rows_string, rows_count, area_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, span10, span20, products, product_info, remain, t3, set, t10, result;
-    area_products_strings = depot_string.split("\n\n");
-    areas_count = area_products_strings.length;
-    for (i = 0; i < areas_count; ++i) {
-      if (i >= area_products_strings.length)
-        return H.ioore(area_products_strings, i);
-      area_products_string = area_products_strings[i];
-      t1 = J.getInterceptor$asx(area_products_string);
-      pos = t1.indexOf$1(area_products_string, "\n");
-      area_name = t1.substring$2(area_products_string, 0, pos);
-      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
-      $.depot_areas_string.$indexSet(0, area_name, products_string);
+    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_display_view, spans, span1, span2, rows_string, rows_count, area_products_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, span10, span20, product_info, products, info, remain, set, t10, result;
+    if (depot_string !== "") {
+      area_products_strings = depot_string.split("\n\n");
+      areas_count = area_products_strings.length;
+      for (i = 0; i < areas_count; ++i) {
+        if (i >= area_products_strings.length)
+          return H.ioore(area_products_strings, i);
+        area_products_string = area_products_strings[i];
+        t1 = J.getInterceptor$asx(area_products_string);
+        pos = t1.indexOf$1(area_products_string, "\n");
+        area_name = t1.substring$2(area_products_string, 0, pos);
+        products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
+        $.depot_areas_string.$indexSet(0, area_name, products_string);
+      }
     }
     t1 = document.createElement("div", null);
-    $.depot_areas_open_view = t1;
-    t1.id = "depot_areas_open";
+    $.depot_areas_view = t1;
     t1.className = "top";
     J.set$flexFlow$x(t1.style, "column");
-    t1 = document.createElement("div", null);
-    $.depot_areas_view = t1;
-    t1.id = "depot_areas";
-    t1.className = "top";
-    t1 = J.get$onClick$x($.depot_areas_open_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotAreaOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x($.depot_areas_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotProductOpen$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    areas_count = $.depot_areas_string._collection$_length;
-    areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count, 8) + 1;
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotArea$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    areas_count = $.depot_areas_string._length;
+    areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count - 1, 8) + 1;
     for (i = 0; i < 8; ++i) {
       line_view = document.createElement("div", null);
       t1 = line_view.style;
@@ -7986,8 +7384,13 @@ var $$ = Object.create(null);
         cell.appendChild(document.createElement("span", null));
         line_view.appendChild(cell);
       }
-      $.depot_areas_open_view.appendChild(line_view);
+      $.depot_areas_view.appendChild(line_view);
     }
+    t1 = document.createElement("div", null);
+    $.depot_areas_products_view = t1;
+    t1.className = "top";
+    t1 = J.get$onClick$x(t1);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotAreaProductDisplay$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     for (area_no = 0; area_no < areas_count; ++area_no) {
       t1 = $.depot_areas_string;
       t1.toString;
@@ -7996,24 +7399,24 @@ var $$ = Object.create(null);
       area_name = t2.elementAt$1(0, area_no);
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
-      t1 = $.depot_areas_open_view;
+      t1 = $.depot_areas_view;
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
-      area_open_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
-      J.set$text$x(area_open_view.firstChild, area_name);
-      area_open_view.setAttribute("name", area_name);
-      spans = W._FrozenElementList$_wrap(area_open_view.querySelectorAll("span"), null);
+      area_display_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
+      J.set$text$x(area_display_view.firstChild, area_name);
+      area_display_view.setAttribute("name", area_name);
+      spans = W._FrozenElementList$_wrap(area_display_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
       t1 = $.depot_areas_string;
       t1 = t1.get$values(t1);
       rows_string = J.split$1$s(t1._f$1(t1._iterable.elementAt$1(0, area_no)), "\n");
       rows_count = rows_string.length;
-      area_view = document.createElement("div", null);
-      area_view.id = area_name;
-      area_view.className = "top";
-      J.set$overflow$x(area_view.style, "scroll");
+      area_products_view = document.createElement("div", null);
+      area_products_view.id = area_name;
+      area_products_view.className = "top";
+      J.set$overflow$x(area_products_view.style, "scroll");
       for (num1 = 0, num2 = 0, row = 0; row < rows_count; ++row) {
         if (row >= rows_string.length)
           return H.ioore(rows_string, row);
@@ -8048,43 +7451,34 @@ var $$ = Object.create(null);
           column_e.appendChild(span10);
           column_e.appendChild(document.createElement("br", null));
           span20 = document.createElement("span", null);
-          B.set_need(span20, 0);
           column_e.appendChild(span20);
-          if (product_name !== "") {
-            products = $.groups_products.$index(0, group_name);
-            if (products != null) {
-              product_info = J.$index$asx(products, product_name);
-              if (product_info != null) {
-                remain = product_info.get$remain();
-                span10.textContent = remain;
-                t2 = J.getInterceptor(remain);
-                t3 = J.getInterceptor$x(column_e);
-                if (t2.$eq(remain, "0")) {
-                  t3.get$classes(column_e).remove$1(0, "remain");
-                  t3.get$classes(column_e).add$1(0, "remain_not");
-                } else {
-                  t3.get$classes(column_e).remove$1(0, "remain_not");
-                  t3.get$classes(column_e).add$1(0, "remain");
-                }
-                set = product_info.set;
-                t3 = $.depot_num1;
-                if (typeof t3 !== "number")
-                  return t3.$add();
-                if (typeof set !== "number")
-                  return H.iae(set);
-                $.depot_num1 = t3 + set;
-                num1 += set;
-                if (!t2.$eq(remain, "0")) {
-                  t2 = $.depot_num2;
-                  if (typeof t2 !== "number")
-                    return t2.$add();
-                  $.depot_num2 = t2 + set;
-                  num2 += set;
-                }
-                B.set_need(span20, set);
-              } else
-                window.alert(column_str);
-            }
+          product_info = $.default_product_info;
+          products = $.groups_products.$index(0, group_name);
+          if (products != null) {
+            info = J.$index$asx(products, product_name);
+            if (info != null)
+              product_info = info;
+            else
+              window.alert(column_str);
+          }
+          remain = product_info.get$remain();
+          if (product_name !== "")
+            B.set_view_remain(column_e, span10, remain);
+          set = product_info.set;
+          B.set_view_set(span20, set);
+          t2 = $.depot_num1;
+          if (typeof t2 !== "number")
+            return t2.$add();
+          if (typeof set !== "number")
+            return H.iae(set);
+          $.depot_num1 = t2 + set;
+          num1 += set;
+          if (!J.$eq(remain, "0")) {
+            t2 = $.depot_num2;
+            if (typeof t2 !== "number")
+              return t2.$add();
+            $.depot_num2 = t2 + set;
+            num2 += set;
           }
           if (column > 0) {
             t10 = column_e.getAttribute("group_name");
@@ -8097,7 +7491,7 @@ var $$ = Object.create(null);
           }
           if (t1) {
             t10 = column_e.getAttribute("group_name");
-            result = area_view.lastChild;
+            result = area_products_view.lastChild;
             if (result == null)
               H.throwExpression(P.StateError$("No elements"));
             t2 = new W._ChildNodeListLazy(result);
@@ -8107,11 +7501,11 @@ var $$ = Object.create(null);
           }
           row_e.appendChild(column_e);
         }
-        area_view.appendChild(row_e);
+        area_products_view.appendChild(row_e);
       }
       J.set$text$x(span1, C.JSNumber_methods.toString$0(num1));
-      B.set_need(span2, num2);
-      $.depot_areas_view.appendChild(area_view);
+      B.set_view_set(span2, num2);
+      $.depot_areas_products_view.appendChild(area_products_view);
     }
   },
   processLocalProductString: function(product_string) {
@@ -8127,6 +7521,11 @@ var $$ = Object.create(null);
       if (pos !== -1) {
         group_name = t1.substring$2(group_string, 0, pos);
         products = $.groups_products.$index(0, group_name);
+        if (products == null) {
+          products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, B.ProductInfo);
+          products.$indexSet(0, "", $.default_product_info);
+          $.groups_products.$indexSet(0, group_name, products);
+        }
         products_string = C.JSString_methods.substring$1(group_string, pos + 1).split("\n");
         products_count = products_string.length;
         for (t1 = J.getInterceptor$asx(products), product = 0; product < products_count; ++product) {
@@ -8138,7 +7537,7 @@ var $$ = Object.create(null);
           product_name = strs[0];
           product_info = t1.$index(products, product_name);
           if (product_info == null)
-            product_info = new B.ProductInfo(null, null, null, null, null, null, null);
+            product_info = new B.ProductInfo(null, null, null, null, null, null);
           if (1 >= strs.length)
             return H.ioore(strs, 1);
           product_info.set$remain(strs[1]);
@@ -8158,17 +7557,17 @@ var $$ = Object.create(null);
           if (6 >= t2)
             return H.ioore(strs, 6);
           product_info.name = strs[6];
-          if (7 >= t2)
-            return H.ioore(strs, 7);
-          product_info.vender = strs[7];
           t1.$indexSet(products, product_name, product_info);
         }
       }
     }
   },
   processProductString: function(product_string) {
-    var groups_string, groups_count, group, group_string, t1, pos, group_name, products_string, products_count, products, product, strs, product_name, product_info;
+    var group_products, groups_string, groups_count, group, group_string, t1, pos, group_name, products_string, products_count, products, product, strs, product_name, product_info;
     $.groups_products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, [P.Map, P.String, B.ProductInfo]);
+    group_products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, B.ProductInfo);
+    group_products.$indexSet(0, "", $.default_product_info);
+    $.groups_products.$indexSet(0, "", group_products);
     groups_string = product_string.split("\n\n");
     groups_count = groups_string.length;
     for (group = 0; group < groups_count; ++group) {
@@ -8182,6 +7581,7 @@ var $$ = Object.create(null);
         products_string = C.JSString_methods.substring$1(group_string, pos + 1).split("\n");
         products_count = products_string.length;
         products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, B.ProductInfo);
+        products.$indexSet(0, "", $.default_product_info);
         for (product = 0; product < products_count; ++product) {
           if (product >= products_string.length)
             return H.ioore(products_string, product);
@@ -8190,7 +7590,7 @@ var $$ = Object.create(null);
           if (0 >= t1)
             return H.ioore(strs, 0);
           product_name = strs[0];
-          product_info = new B.ProductInfo(null, null, null, null, null, null, null);
+          product_info = new B.ProductInfo(null, null, null, null, null, null);
           if (1 >= t1)
             return H.ioore(strs, 1);
           product_info.remain = strs[1];
@@ -8210,496 +7610,367 @@ var $$ = Object.create(null);
           if (6 >= t1)
             return H.ioore(strs, 6);
           product_info.name = strs[6];
-          if (7 >= t1)
-            return H.ioore(strs, 7);
-          product_info.vender = strs[7];
           products.$indexSet(0, product_name, product_info);
         }
         $.groups_products.$indexSet(0, group_name, products);
       }
     }
   },
-  before_unload: [function(e) {
-    return "\u9000\u51fa\uff1f";
-  }, "call$1", "before_unload$closure", 2, 0, 10],
   unload: [function(e) {
-    var t1, areas_view, t2;
+    var t1, areas_products_view, t2;
     t1 = {};
     t1.product_text_2 = "";
     $.groups_products.forEach$1(0, new B.unload_closure(t1));
     $.local_storage.setItem("product", C.JSString_methods.substring$1(t1.product_text_2, 2));
-    areas_view = $.store_areas_view;
+    areas_products_view = $.store_areas_products_view;
     t1.str_3 = "";
-    areas_view.toString;
-    t2 = new W._ChildNodeListLazy(areas_view);
+    areas_products_view.toString;
+    t2 = new W._ChildNodeListLazy(areas_products_view);
     t2.forEach$1(t2, new B.unload_closure0(t1));
     $.local_storage.setItem("store", C.JSString_methods.substring$1(t1.str_3, 2));
-    areas_view = $.depot_areas_view;
+    areas_products_view = $.depot_areas_products_view;
     t1.str_4 = "";
-    areas_view.toString;
-    t2 = new W._ChildNodeListLazy(areas_view);
+    areas_products_view.toString;
+    t2 = new W._ChildNodeListLazy(areas_products_view);
     t2.forEach$1(t2, new B.unload_closure1(t1));
     $.local_storage.setItem("depot", C.JSString_methods.substring$1(t1.str_4, 2));
-  }, "call$1", "unload$closure", 2, 0, 11],
-  product_set: function(remain, set) {
-    var old_set, new_set, t1, area_spans, area_remain_set_span, area_set_span, area_remain_set, area_set, product_spans, product_remain_span, product_set_span, product_set, t2;
-    if (remain === "")
-      remain = $.product_info.get$remain();
-    old_set = J.$eq($.product_info.get$remain(), "0") ? 0 : $.product_info.get$set();
-    new_set = J.$eq(remain, "0") ? 0 : set;
-    t1 = $.store_area_open_view;
-    if (t1 != null) {
-      area_spans = W._FrozenElementList$_wrap(t1.querySelectorAll("span"), null);
-      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
-      area_set_span = area_spans.elementAt$1(area_spans, 1);
-      t1 = J.getInterceptor$x(area_remain_set_span);
-      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
-      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
-      product_spans = J.querySelectorAll$1$x($.store_product_open_view, "span");
-      product_remain_span = product_spans.elementAt$1(product_spans, 0);
-      product_set_span = product_spans.elementAt$1(product_spans, 1);
-      J.get$text$x(product_remain_span);
-      product_set = H.Primitives_parseInt(J.get$text$x(product_set_span), null, null);
-      $.product_info.set$set(set);
-      t1.set$text(area_remain_set_span, J.toString$0(J.$sub$n(J.$add$ns(area_remain_set, set), product_set)));
-      B.set_need(area_set_span, J.$sub$n(J.$add$ns(area_set, new_set), old_set));
-      t1 = $.store_num1;
-      t2 = J.$sub$n(set, product_set);
-      if (typeof t1 !== "number")
-        return t1.$add();
-      if (typeof t2 !== "number")
-        return H.iae(t2);
-      t2 = t1 + t2;
-      $.store_num1 = t2;
-      $.store_num1_e.textContent = C.JSNumber_methods.toString$0(t2);
-      t2 = $.store_num2;
-      t1 = J.$sub$n(new_set, old_set);
-      if (typeof t2 !== "number")
-        return t2.$add();
-      if (typeof t1 !== "number")
-        return H.iae(t1);
-      t1 = t2 + t1;
-      $.store_num2 = t1;
-      B.set_need($.store_num2_e, t1);
-      B.set_need(product_set_span, set);
-    }
-    if ($.depot_product_open_view != null) {
-      area_spans = W._FrozenElementList$_wrap($.depot_area_open_view.querySelectorAll("span"), null);
-      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
-      area_set_span = area_spans.elementAt$1(area_spans, 1);
-      t1 = J.getInterceptor$x(area_remain_set_span);
-      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
-      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
-      product_spans = J.querySelectorAll$1$x($.depot_product_open_view, "span");
-      product_remain_span = product_spans.elementAt$1(product_spans, 0);
-      product_set_span = product_spans.elementAt$1(product_spans, 1);
-      J.get$text$x(product_remain_span);
-      product_set = H.Primitives_parseInt(J.get$text$x(product_set_span), null, null);
-      t1.set$text(area_remain_set_span, J.toString$0(J.$sub$n(J.$add$ns(area_remain_set, set), product_set)));
-      B.set_need(area_set_span, J.$sub$n(J.$add$ns(area_set, new_set), old_set));
-      t1 = $.depot_num1;
-      t2 = J.$sub$n(set, product_set);
-      if (typeof t1 !== "number")
-        return t1.$add();
-      if (typeof t2 !== "number")
-        return H.iae(t2);
-      t2 = t1 + t2;
-      $.depot_num1 = t2;
-      $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t2);
-      t2 = $.depot_num2;
-      t1 = J.$sub$n(new_set, old_set);
-      if (typeof t2 !== "number")
-        return t2.$add();
-      if (typeof t1 !== "number")
-        return H.iae(t1);
-      t1 = t2 + t1;
-      $.depot_num2 = t1;
-      B.set_need($.depot_num2_e, t1);
-      B.set_need(product_set_span, set);
-    }
-  },
-  onClearAll: [function(e) {
-    var spans, span1, span2, cur, next, t1, t2, next0;
-    if (J.get$text$x($.depot_product_open_view.firstChild) !== "") {
-      spans = J.querySelectorAll$1$x($.depot_product_open_view, "span");
-      span1 = spans.elementAt$1(spans, 0);
-      span2 = spans.elementAt$1(spans, 1);
-      if (J.get$text$x(span1) === "N" && J.get$text$x(span2) !== "0")
-        B.product_remain("N");
-    }
-    cur = $.depot_product_open_view;
-    $.depot_product_open_view = null;
-    next = J.get$nextElementSibling$x(cur);
-    for (; next != null; cur = next, next = next0) {
-      t1 = next.getAttribute("group_name");
-      t2 = J.get$attributes$x(cur)._element.getAttribute("group_name");
-      if (t1 == null ? t2 != null : t1 !== t2)
-        break;
-      if (J.get$text$x(next.firstChild) !== "") {
-        spans = W._FrozenElementList$_wrap(next.querySelectorAll("span"), null);
-        span1 = spans.elementAt$1(spans, 0);
-        span2 = spans.elementAt$1(spans, 1);
-        if (J.get$text$x(span1) === "N" && J.get$text$x(span2) !== "0") {
-          $.depot_product_open_view = next;
-          B.create_depot_product();
-          B.product_remain("N");
-        }
+  }, "call$1", "unload$closure", 2, 0, 7],
+  onStore: [function(e) {
+    var t1 = $.divs_list;
+    if (t1.length === 1)
+      if (C.JSArray_methods.get$first(J.get$last$ax(t1).get$div_list()) !== $.store_areas_view) {
+        B.hide_last();
+        J.set$display$x($.store_areas_view.style, "flex");
+        B.divs_list_add1(0, $.store_areas_view);
       }
-      next0 = next.nextElementSibling;
-    }
-    B.back(0);
-  }, "call$1", "onClearAll$closure", 2, 0, 11],
-  store_loop: function() {
-    var cur, next, t1, t2, next0;
-    if ($.is_store_loop !== true)
-      return;
-    cur = $.store_product_open_view;
-    $.store_product_open_view = null;
-    next = J.get$nextElementSibling$x(cur);
-    for (; next != null; cur = next, next = next0) {
-      t1 = next.getAttribute("group_name");
-      t2 = J.get$attributes$x(cur)._element.getAttribute("group_name");
-      if (t1 == null ? t2 != null : t1 !== t2)
-        break;
-      if (J.get$text$x(next.firstChild) !== "") {
-        $.store_product_open_view = next;
-        break;
-      } else
-        next0 = next.nextElementSibling;
-    }
-    if ($.store_product_open_view != null) {
-      B.create_store_product();
-      B.display_store_product();
-    }
-  },
-  onPlus: [function(e) {
-    if ($.product_name !== "")
-      B.product_set("", H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null));
-    B.back(0);
-    B.store_loop();
-  }, "call$1", "onPlus$closure", 2, 0, 11],
-  onAbsract: [function(e) {
-    var num, p, n;
-    if ($.product_name !== "") {
-      num = H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null);
-      p = $.groups_products.$index(0, $.group_name);
-      if (p != null) {
-        n = J.get$max$x(J.$index$asx(p, $.product_name));
-        if (n != null)
-          num = J.$sub$n(n, num);
+  }, "call$1", "onStore$closure", 2, 0, 7],
+  onDepot: [function(e) {
+    var t1 = $.divs_list;
+    if (t1.length === 1)
+      if (C.JSArray_methods.get$first(J.get$last$ax(t1).get$div_list()) !== $.depot_areas_view) {
+        B.hide_last();
+        J.set$display$x($.depot_areas_view.style, "flex");
+        B.divs_list_add1(0, $.depot_areas_view);
       }
-      B.product_set("", num);
-    }
+  }, "call$1", "onDepot$closure", 2, 0, 7],
+  onProduct: [function(e) {
+    var t1 = $.divs_list;
+    if (t1.length === 1)
+      if (C.JSArray_methods.get$first(J.get$last$ax(t1).get$div_list()) !== $.groups_view) {
+        B.hide_last();
+        J.set$display$x($.groups_view.style, "inline");
+        B.divs_list_add1(0, $.groups_view);
+      }
+  }, "call$1", "onProduct$closure", 2, 0, 7],
+  onRecently: [function(e) {
+  }, "call$1", "onRecently$closure", 2, 0, 7],
+  onLabel: [function(e) {
+  }, "call$1", "onLabel$closure", 2, 0, 7],
+  onBack: [function(e) {
     B.back(0);
-    B.store_loop();
-  }, "call$1", "onAbsract$closure", 2, 0, 11],
-  onStoreAreaOpen: [function(e) {
-    var t1, str, l;
+  }, "call$1", "onBack$closure", 2, 0, 7],
+  onStoreArea: [function(e) {
+    var t1, str;
     t1 = J.getInterceptor$x(e);
     if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
-      $.store_area_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+      $.store_area_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
     else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
-      $.store_area_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
-    str = J.get$text$x($.store_area_open_view.firstChild);
+      $.store_area_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+    str = J.get$text$x($.store_area_view.firstChild);
     if (str !== "") {
-      J.set$display$x($.store_areas_view.style, "inline");
+      J.set$display$x($.store_areas_products_view.style, "inline");
       t1 = C.JSString_methods.$add("#", str);
       t1 = H.interceptedTypeCast(document.querySelector(t1), "$isDivElement");
-      $.store_area_view = t1;
+      $.store_area_products_view = t1;
       J.set$display$x(t1.style, "inline");
-      l = H.setRuntimeTypeInfo([], [W.DivElement]);
-      l.push($.store_areas_view);
-      l.push($.store_area_view);
-      B.divs_list_add(0, l);
+      B.divs_list_add2(0, $.store_areas_products_view, $.store_area_products_view);
     }
-  }, "call$1", "onStoreAreaOpen$closure", 2, 0, 11],
-  create_store_product: function() {
-    var t1, products, info, t, product_open_views, product_open_view, t2, t3;
-    $.group_name = J.get$attributes$x($.store_product_open_view)._element.getAttribute("group_name");
-    t1 = J.get$text$x($.store_product_open_view.firstChild);
-    $.product_name = t1;
-    J.set$text$x($.store_product_view.firstChild, t1);
+  }, "call$1", "onStoreArea$closure", 2, 0, 7],
+  onDepotArea: [function(e) {
+    var t1, str;
+    t1 = J.getInterceptor$x(e);
+    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+      $.depot_area_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
+      $.depot_area_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+    str = J.get$text$x($.depot_area_view.firstChild);
+    if (str !== "") {
+      J.set$display$x($.depot_areas_products_view.style, "inline");
+      t1 = C.JSString_methods.$add("#", str);
+      t1 = H.interceptedTypeCast(document.querySelector(t1), "$isDivElement");
+      $.depot_area_products_view = t1;
+      J.set$display$x(t1.style, "inline");
+      B.divs_list_add2(0, $.depot_areas_products_view, $.depot_area_products_view);
+    }
+  }, "call$1", "onDepotArea$closure", 2, 0, 7],
+  onGroup: [function(e) {
+    var t1, str;
+    t1 = J.getInterceptor$x(e);
+    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+      $.group_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
+      $.group_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+    str = J.get$text$x($.group_view.firstChild);
+    if (str !== "") {
+      J.set$display$x($.groups_products_view.style, "inline");
+      t1 = C.JSString_methods.$add("#", str);
+      t1 = H.interceptedTypeCast(document.querySelector(t1), "$isDivElement");
+      $.group_products_view = t1;
+      J.set$display$x(t1.style, "inline");
+      B.divs_list_add2(0, $.groups_products_view, $.group_products_view);
+    }
+  }, "call$1", "onGroup$closure", 2, 0, 7],
+  find_product_info: function(e) {
+    var products, info;
+    $.group_name = J.get$attributes$x(e)._element.getAttribute("group_name");
+    $.product_name = J.get$text$x(e.firstChild);
     $.product_info = $.default_product_info;
-    if ($.product_name !== "") {
-      products = $.groups_products.$index(0, $.group_name);
-      if (products != null) {
-        info = J.$index$asx(products, $.product_name);
-        if (info != null)
-          $.product_info = info;
-      }
-    }
-    $.depot_area_open_view = null;
-    $.depot_area_view = null;
-    $.depot_product_open_view = null;
-    if ($.product_name !== "") {
-      t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
-      product_open_views = W._FrozenElementList$_wrap($.depot_areas_view.querySelectorAll(t), null);
-      for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
-        product_open_view = t1._current;
-        t2 = J.get$text$x(J.get$firstChild$x(product_open_view));
-        t3 = $.product_name;
-        if (t2 == null ? t3 == null : t2 === t3) {
-          $.depot_product_open_view = product_open_view;
-          t1 = product_open_view.parentElement.parentElement;
-          $.depot_area_view = t1;
-          t = C.JSString_methods.$add("*[name=\"", t1.id) + "\"]";
-          $.depot_area_open_view = $.depot_areas_open_view.querySelector(t);
-          break;
-        }
-      }
+    products = $.groups_products.$index(0, $.group_name);
+    if (products != null) {
+      info = J.$index$asx(products, $.product_name);
+      if (info != null)
+        $.product_info = info;
     }
   },
-  display_store_product: function() {
-    J.set$display$x($.store_product_view.style, "flex");
-    var l = H.setRuntimeTypeInfo([], [W.DivElement]);
-    l.push($.store_product_view);
-    B.divs_list_add(0, l);
-    J.set$text$x($.store_product_view.firstChild, $.product_name);
-  },
-  onStoreProductOpen: [function(e) {
-    var t1, t2, t3;
-    t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
-      $.store_product_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
-    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
-      $.store_product_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
-    B.create_store_product();
-    if ($.state !== 1) {
-      if ($.product_name !== "")
-        B.display_store_product();
-    } else {
-      t1 = $.group_name;
-      t2 = $.delete_group_name;
-      if (t1 == null ? t2 == null : t1 === t2) {
-        t2 = $.product_name;
-        t3 = $.delete_product_name;
-        t3 = t2 == null ? t3 != null : t2 !== t3;
-        t2 = t3;
-      } else
-        t2 = true;
-      if (t2) {
-        B.change($.delete_depot_area_open_view, $.delete_depot_product_open_view, $.delete_product_info, t1, $.product_name, $.product_info);
-        t1 = $.depot_product_open_view;
-        if (t1 != null)
-          B.change($.depot_area_open_view, t1, $.product_info, $.delete_group_name, $.delete_product_name, $.delete_product_info);
-        $.depot_area_open_view = $.delete_depot_area_open_view;
-        $.depot_area_view = $.delete_depot_area_view;
-      }
-      B.back(1);
-      $.state = 0;
-    }
-  }, "call$1", "onStoreProductOpen$closure", 2, 0, 11],
-  change: function(area_open, product_open, delete_product_info, insert_group_name, insert_product_name, insert_product_info) {
-    var row_prev_e, t1, t2, t3, row_next_e, i, column_prev_e, column_next_e, spans, span1, span2, remain, insert_set, delete_set, remain_set_update, set_update;
-    J.get$attributes$x(product_open)._element.setAttribute("group_name", insert_group_name);
-    row_prev_e = product_open.previousElementSibling;
-    if (row_prev_e != null) {
-      t1 = product_open.getAttribute("group_name");
-      t2 = row_prev_e.getAttribute("group_name");
-      t3 = product_open.style;
-      if (t1 == null ? t2 != null : t1 !== t2)
-        J.set$borderLeftColor$x(t3, "rgb(255,0,0)");
-      else
-        J.set$borderLeftColor$x(t3, "");
-    }
-    row_next_e = product_open.nextElementSibling;
-    if (row_next_e != null) {
-      t1 = product_open.getAttribute("group_name");
-      t2 = row_next_e.getAttribute("group_name");
-      t3 = product_open.style;
-      if (t1 == null ? t2 != null : t1 !== t2)
-        J.set$borderRightColor$x(t3, "rgb(255,0,0)");
-      else
-        J.set$borderRightColor$x(t3, "");
-    }
-    t1 = product_open.parentElement;
-    if (t1.previousElementSibling != null) {
-      t1.toString;
-      t1 = new W._ChildNodeListLazy(t1);
-      i = t1.indexOf$1(t1, product_open);
-      t1 = product_open.parentElement.previousElementSibling;
-      t1.toString;
-      t1 = new W._ChildNodeListLazy(t1);
-      column_prev_e = t1.elementAt$1(t1, i);
-      t1 = product_open.getAttribute("group_name");
-      t2 = J.get$attributes$x(column_prev_e)._element.getAttribute("group_name");
-      t3 = product_open.style;
-      if (t1 == null ? t2 != null : t1 !== t2)
-        J.set$borderTopColor$x(t3, "rgb(255,0,0)");
-      else
-        J.set$borderTopColor$x(t3, "");
-    }
-    t1 = product_open.parentElement;
-    if (t1.nextElementSibling != null) {
-      t1.toString;
-      t1 = new W._ChildNodeListLazy(t1);
-      i = t1.indexOf$1(t1, product_open);
-      t1 = product_open.parentElement.nextElementSibling;
-      t1.toString;
-      t1 = new W._ChildNodeListLazy(t1);
-      column_next_e = t1.elementAt$1(t1, i);
-      t1 = product_open.getAttribute("group_name");
-      t2 = J.get$attributes$x(column_next_e)._element.getAttribute("group_name");
-      t3 = product_open.style;
-      if (t1 == null ? t2 != null : t1 !== t2)
-        J.set$borderBottomColor$x(t3, "rgb(255,0,0)");
-      else
-        J.set$borderBottomColor$x(t3, "");
-    }
-    J.set$text$x(product_open.firstChild, insert_product_name);
-    spans = W._FrozenElementList$_wrap(product_open.querySelectorAll("span"), null);
-    span1 = spans.elementAt$1(spans, 0);
-    span2 = spans.elementAt$1(spans, 1);
-    remain = insert_product_info.get$remain();
-    B.set_remain(product_open, remain);
-    J.set$text$x(span1, insert_product_name === "" ? "" : remain);
-    B.set_need(span2, insert_product_info.set);
-    insert_set = insert_product_info.set;
-    delete_set = delete_product_info.get$set();
-    t1 = !J.$eq(insert_product_info.remain, "0") ? insert_set : 0;
-    remain_set_update = J.$sub$n(t1, !J.$eq(delete_product_info.remain, "0") ? delete_set : 0);
-    set_update = J.$sub$n(insert_set, delete_set);
-    spans = W._FrozenElementList$_wrap(area_open.querySelectorAll("span"), null);
-    span1 = spans.elementAt$1(spans, 0);
-    span2 = spans.elementAt$1(spans, 1);
-    t1 = J.getInterceptor$x(span1);
-    t1.set$text(span1, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span1), null, null), remain_set_update)));
-    t1 = J.getInterceptor$x(span2);
-    t1.set$text(span2, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span2), null, null), set_update)));
-    t1 = $.depot_num1;
-    if (typeof t1 !== "number")
-      return t1.$add();
-    if (typeof remain_set_update !== "number")
-      return H.iae(remain_set_update);
-    t1 += remain_set_update;
-    $.depot_num1 = t1;
-    $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
-    t1 = $.depot_num2;
-    if (typeof t1 !== "number")
-      return t1.$add();
-    if (typeof set_update !== "number")
-      return H.iae(set_update);
-    t1 += set_update;
-    $.depot_num2 = t1;
-    $.depot_num2_e.textContent = C.JSNumber_methods.toString$0(t1);
-  },
-  onDepotAreaOpen: [function(e) {
-    var t1, str, l;
-    t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
-      $.depot_area_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
-    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
-      $.depot_area_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
-    str = J.get$text$x($.depot_area_open_view.firstChild);
-    if (str !== "") {
-      J.set$display$x($.depot_areas_view.style, "inline");
-      t1 = C.JSString_methods.$add("#", str);
-      t1 = H.interceptedTypeCast(document.querySelector(t1), "$isDivElement");
-      $.depot_area_view = t1;
-      J.set$display$x(t1.style, "inline");
-      l = H.setRuntimeTypeInfo([], [W.DivElement]);
-      l.push($.depot_areas_view);
-      l.push($.depot_area_view);
-      B.divs_list_add(0, l);
-    }
-  }, "call$1", "onDepotAreaOpen$closure", 2, 0, 11],
   find_store_area: function() {
     var t1, t;
-    t1 = $.store_product_open_view.parentElement.parentElement;
-    $.store_area_view = t1;
+    t1 = $.store_area_product_display_view.parentElement.parentElement;
+    $.store_area_products_view = t1;
     t = C.JSString_methods.$add("*[name=\"", t1.id) + "\"]";
-    $.store_area_open_view = $.store_areas_open_view.querySelector(t);
+    $.store_area_view = $.store_areas_view.querySelector(t);
   },
-  create_depot_product: function() {
-    var t1, products, t, product_open_views, product_open_view, t2, t3;
-    $.group_name = J.get$attributes$x($.depot_product_open_view)._element.getAttribute("group_name");
-    t1 = J.get$text$x($.depot_product_open_view.firstChild);
-    $.product_name = t1;
-    J.set$text$x($.depot_product_view.firstChild, t1);
-    $.product_info = $.default_product_info;
-    if ($.product_name !== "") {
-      products = $.groups_products.$index(0, $.group_name);
-      if (products != null) {
-        t1 = J.$index$asx(products, $.product_name);
-        $.product_info = t1;
-        if (t1 == null)
-          $.product_info = $.default_product_info;
-      }
-    }
-    $.store_area_open_view = null;
+  find_store_area_product_display: function() {
+    var t, product_display_views, t1, product_display_view, t2, t3;
     $.store_area_view = null;
-    $.store_product_open_view = null;
+    $.store_area_products_view = null;
+    $.store_area_product_display_view = null;
     if ($.product_name !== "") {
       t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
-      product_open_views = W._FrozenElementList$_wrap($.store_areas_view.querySelectorAll(t), null);
-      for (t1 = product_open_views.get$iterator(product_open_views); t1.moveNext$0();) {
-        product_open_view = t1._current;
-        t2 = J.get$text$x(J.get$firstChild$x(product_open_view));
+      product_display_views = W._FrozenElementList$_wrap($.store_areas_products_view.querySelectorAll(t), null);
+      for (t1 = product_display_views.get$iterator(product_display_views); t1.moveNext$0();) {
+        product_display_view = t1._current;
+        t2 = J.get$text$x(J.get$firstChild$x(product_display_view));
         t3 = $.product_name;
         if (t2 == null ? t3 == null : t2 === t3) {
-          $.store_product_open_view = product_open_view;
+          $.store_area_product_display_view = product_display_view;
           B.find_store_area();
           break;
         }
       }
     }
   },
-  onDepotProductOpen: [function(e) {
-    var t1, l;
-    t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
-      $.depot_product_open_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
-    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
-      $.depot_product_open_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
-    B.create_depot_product();
+  find_depot_area_product_display: function() {
+    var t, product_display_views, t1, product_display_view, t2, t3;
+    $.depot_area_view = null;
+    $.depot_area_products_view = null;
+    $.depot_area_product_display_view = null;
     if ($.product_name !== "") {
-      J.set$display$x($.depot_product_view.style, "flex");
-      l = H.setRuntimeTypeInfo([], [W.DivElement]);
-      l.push($.depot_product_view);
-      B.divs_list_add(0, l);
-    } else
-      B.change_depot_product();
-  }, "call$1", "onDepotProductOpen$closure", 2, 0, 11],
-  onStoreOpen: [function(e) {
-    var t1, div, l;
-    t1 = $.divs_list;
-    if (t1.length === 1) {
-      div = C.JSArray_methods.get$first(J.get$last$ax(t1).get$div_list());
-      t1 = $.store_areas_open_view;
-      if (div == null ? t1 != null : div !== t1) {
-        B.hide_last();
-        J.set$display$x($.store_areas_open_view.style, "flex");
-        l = H.setRuntimeTypeInfo([], [W.DivElement]);
-        l.push($.store_areas_open_view);
-        B.divs_list_add(0, l);
+      t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
+      product_display_views = W._FrozenElementList$_wrap($.depot_areas_products_view.querySelectorAll(t), null);
+      for (t1 = product_display_views.get$iterator(product_display_views); t1.moveNext$0();) {
+        product_display_view = t1._current;
+        t2 = J.get$text$x(J.get$firstChild$x(product_display_view));
+        t3 = $.product_name;
+        if (t2 == null ? t3 == null : t2 === t3) {
+          $.depot_area_product_display_view = product_display_view;
+          t1 = product_display_view.parentElement.parentElement;
+          $.depot_area_products_view = t1;
+          t = C.JSString_methods.$add("*[name=\"", t1.id) + "\"]";
+          $.depot_area_view = $.depot_areas_view.querySelector(t);
+          break;
+        }
       }
     }
-  }, "call$1", "onStoreOpen$closure", 2, 0, 11],
-  onDepotOpen: [function(e) {
-    var t1, div, l;
-    t1 = $.divs_list;
-    if (t1.length === 1) {
-      div = C.JSArray_methods.get$first(J.get$last$ax(t1).get$div_list());
-      t1 = $.depot_areas_open_view;
-      if (div == null ? t1 != null : div !== t1) {
-        B.hide_last();
-        J.set$display$x($.depot_areas_open_view.style, "flex");
-        l = H.setRuntimeTypeInfo([], [W.DivElement]);
-        l.push($.depot_areas_open_view);
-        B.divs_list_add(0, l);
+  },
+  find_group_product_display: function() {
+    var t, product_display_views, t1, product_display_view, t2, t3;
+    $.group_view = null;
+    $.group_products_view = null;
+    $.group_product_display_view = null;
+    if ($.product_name !== "") {
+      t = C.JSString_methods.$add("*[group_name=\"", $.group_name) + "\"]";
+      product_display_views = W._FrozenElementList$_wrap($.groups_products_view.querySelectorAll(t), null);
+      for (t1 = product_display_views.get$iterator(product_display_views); t1.moveNext$0();) {
+        product_display_view = t1._current;
+        t2 = J.get$text$x(J.get$firstChild$x(product_display_view));
+        t3 = $.product_name;
+        if (t2 == null ? t3 == null : t2 === t3) {
+          $.group_product_display_view = product_display_view;
+          $.group_products_view = product_display_view.parentElement.parentElement;
+          break;
+        }
       }
     }
-  }, "call$1", "onDepotOpen$closure", 2, 0, 11],
-  change_depot_product: function() {
-    var t1, t2, t3, l, t;
-    $.state = 1;
-    $.delete_group_name = $.group_name;
+  },
+  store_area_product_display: function() {
+    J.set$text$x($.store_area_product_view.firstChild, $.product_name);
+    J.set$display$x($.store_area_product_view.style, "flex");
+    B.divs_list_add1(0, $.store_area_product_view);
+  },
+  onStoreAreaProductDisplay: [function(e) {
+    var t1 = J.getInterceptor$x(e);
+    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+      $.store_area_product_display_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
+      $.store_area_product_display_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+    B.find_product_info($.store_area_product_display_view);
+    B.find_depot_area_product_display();
+    B.find_group_product_display();
+    if ($.product_name !== "")
+      B.store_area_product_display();
+    else
+      B.store_area_product_change();
+  }, "call$1", "onStoreAreaProductDisplay$closure", 2, 0, 7],
+  onDepotAreaProductDisplay: [function(e) {
+    var t1 = J.getInterceptor$x(e);
+    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+      $.depot_area_product_display_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+    else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
+      $.depot_area_product_display_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+    B.find_product_info($.depot_area_product_display_view);
+    B.find_store_area_product_display();
+    B.find_group_product_display();
     t1 = $.product_name;
-    $.delete_product_name = t1;
-    $.delete_product_info = $.product_info;
-    $.delete_depot_product_open_view = $.depot_product_open_view;
-    $.delete_depot_area_open_view = $.depot_area_open_view;
-    $.delete_depot_area_view = $.depot_area_view;
+    if (t1 !== "") {
+      J.set$text$x($.depot_area_product_view.firstChild, t1);
+      J.set$display$x($.depot_area_product_view.style, "flex");
+      B.divs_list_add1(0, $.depot_area_product_view);
+    } else
+      B.depot_area_product_change();
+  }, "call$1", "onDepotAreaProductDisplay$closure", 2, 0, 7],
+  onProductInto: [function(e) {
+    var t1, row_prev_e, t10, t2, t3, row_next_e, i, column_prev_e, column_next_e, remain, set, remain_set_update, set_update, spans, span1, span2;
+    if ($.state === 1) {
+      t1 = J.getInterceptor$x(e);
+      if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+        $.group_product_display_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+      else if (!!J.getInterceptor(t1.get$target(e)).$isSpanElement)
+        $.group_product_display_view = H.interceptedTypeCast(H.interceptedTypeCast(t1.get$target(e), "$isSpanElement").parentElement, "$isButtonElement");
+      B.find_product_info($.group_product_display_view);
+      t1 = $.change_area_product_display_view;
+      J.get$attributes$x(t1)._element.setAttribute("group_name", $.group_name);
+      J.set$text$x(t1.firstChild, $.product_name);
+      B.set_product_display_view(t1);
+      row_prev_e = t1.previousElementSibling;
+      if (row_prev_e != null) {
+        t10 = t1.getAttribute("group_name");
+        t2 = row_prev_e.getAttribute("group_name");
+        t3 = t1.style;
+        if (t10 == null ? t2 != null : t10 !== t2)
+          J.set$borderLeftColor$x(t3, "rgb(255,0,0)");
+        else
+          J.set$borderLeftColor$x(t3, "");
+      }
+      row_next_e = t1.nextElementSibling;
+      if (row_next_e != null) {
+        t10 = t1.getAttribute("group_name");
+        t2 = row_next_e.getAttribute("group_name");
+        t3 = t1.style;
+        if (t10 == null ? t2 != null : t10 !== t2)
+          J.set$borderRightColor$x(t3, "rgb(255,0,0)");
+        else
+          J.set$borderRightColor$x(t3, "");
+      }
+      t2 = t1.parentElement;
+      if (t2.previousElementSibling != null) {
+        t2.toString;
+        t2 = new W._ChildNodeListLazy(t2);
+        i = t2.indexOf$1(t2, t1);
+        t2 = t1.parentElement.previousElementSibling;
+        t2.toString;
+        t2 = new W._ChildNodeListLazy(t2);
+        column_prev_e = t2.elementAt$1(t2, i);
+        t10 = t1.getAttribute("group_name");
+        t2 = J.get$attributes$x(column_prev_e)._element.getAttribute("group_name");
+        t3 = t1.style;
+        if (t10 == null ? t2 != null : t10 !== t2)
+          J.set$borderTopColor$x(t3, "rgb(255,0,0)");
+        else
+          J.set$borderTopColor$x(t3, "");
+      }
+      t2 = t1.parentElement;
+      if (t2.nextElementSibling != null) {
+        t2.toString;
+        t2 = new W._ChildNodeListLazy(t2);
+        i = t2.indexOf$1(t2, t1);
+        t2 = t1.parentElement.nextElementSibling;
+        t2.toString;
+        t2 = new W._ChildNodeListLazy(t2);
+        column_next_e = t2.elementAt$1(t2, i);
+        t10 = t1.getAttribute("group_name");
+        t2 = J.get$attributes$x(column_next_e)._element.getAttribute("group_name");
+        t1 = t1.style;
+        if (t10 == null ? t2 != null : t10 !== t2)
+          J.set$borderBottomColor$x(t1, "rgb(255,0,0)");
+        else
+          J.set$borderBottomColor$x(t1, "");
+      }
+      remain = $.product_info.get$remain();
+      set = $.product_info.get$set();
+      t1 = !J.$eq(remain, "0") ? set : 0;
+      remain_set_update = J.$sub$n(t1, !J.$eq($.old_remain, "0") ? $.old_set : 0);
+      set_update = J.$sub$n(set, $.old_set);
+      spans = W._FrozenElementList$_wrap($.change_area_view.querySelectorAll("span"), null);
+      span1 = spans.elementAt$1(spans, 0);
+      span2 = spans.elementAt$1(spans, 1);
+      t1 = J.getInterceptor$x(span1);
+      t1.set$text(span1, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span1), null, null), remain_set_update)));
+      t1 = J.getInterceptor$x(span2);
+      t1.set$text(span2, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span2), null, null), set_update)));
+      if ($.change_kind === "store") {
+        t1 = $.store_num1;
+        if (typeof t1 !== "number")
+          return t1.$add();
+        if (typeof remain_set_update !== "number")
+          return H.iae(remain_set_update);
+        t1 += remain_set_update;
+        $.store_num1 = t1;
+        $.store_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
+        t1 = $.store_num2;
+        if (typeof t1 !== "number")
+          return t1.$add();
+        if (typeof set_update !== "number")
+          return H.iae(set_update);
+        t1 += set_update;
+        $.store_num2 = t1;
+        $.store_num2_e.textContent = C.JSNumber_methods.toString$0(t1);
+      } else {
+        t1 = $.depot_num1;
+        if (typeof t1 !== "number")
+          return t1.$add();
+        if (typeof remain_set_update !== "number")
+          return H.iae(remain_set_update);
+        t1 += remain_set_update;
+        $.depot_num1 = t1;
+        $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
+        t1 = $.depot_num2;
+        if (typeof t1 !== "number")
+          return t1.$add();
+        if (typeof set_update !== "number")
+          return H.iae(set_update);
+        t1 += set_update;
+        $.depot_num2 = t1;
+        $.depot_num2_e.textContent = C.JSNumber_methods.toString$0(t1);
+      }
+      B.back(1);
+      t1 = $.change_kind;
+      t2 = $.change_area_view;
+      if (t1 === "store") {
+        $.store_area_view = t2;
+        $.store_area_products_view = $.change_area_products_view;
+      } else {
+        $.depot_area_view = t2;
+        $.depot_area_products_view = $.change_area_products_view;
+      }
+      $.state = 0;
+    }
+  }, "call$1", "onProductInto$closure", 2, 0, 7],
+  area_product_change: function() {
+    var t1, t2, t3, prev_e;
+    $.state = 1;
+    $.old_remain = $.product_info.get$remain();
+    $.old_set = $.product_info.get$set();
+    t1 = $.product_name;
     t2 = $.divs_list;
     if (t1 === "") {
       t1 = t2.length;
@@ -8714,102 +7985,274 @@ var $$ = Object.create(null);
         return H.ioore(t2, t3);
       t2[t3].set$mark(1);
     }
-    J.set$display$x($.store_areas_open_view.style, "flex");
-    t1 = $.store_areas_open_view;
-    t2 = $.z_index;
-    if (typeof t2 !== "number")
-      return t2.$add();
-    ++t2;
-    $.z_index = t2;
-    J.set$zIndex$x(t1.style, C.JSInt_methods.toString$0(t2));
-    l = H.setRuntimeTypeInfo([], [W.DivElement]);
-    l.push(t1);
-    $.divs_list.push(B.Divs$(0, l));
-    t1 = $.group_name;
-    if (t1 !== "" && $.product_name === "") {
-      t = C.JSString_methods.$add("*[group_name=\"", t1) + "\"]";
-      $.store_product_open_view = $.store_areas_view.querySelector(t);
-      B.create_store_product();
-      B.find_store_area();
-    }
-    if ($.store_product_open_view != null) {
-      J.set$display$x($.store_areas_view.style, "inline");
-      J.set$display$x($.store_area_view.style, "inline");
-      J.scrollIntoView$0$x($.store_product_open_view);
-      t1 = $.store_areas_view;
-      t2 = $.store_area_view;
-      t3 = $.z_index;
-      if (typeof t3 !== "number")
-        return t3.$add();
-      ++t3;
-      $.z_index = t3;
-      J.set$zIndex$x(t1.style, C.JSInt_methods.toString$0(t3));
-      J.set$zIndex$x(t2.style, J.toString$0($.z_index));
-      l = H.setRuntimeTypeInfo([], [W.DivElement]);
-      l.push(t1);
-      l.push(t2);
-      $.divs_list.push(B.Divs$(0, l));
-    }
-  },
-  onDepotProduct: [function(e) {
-    B.change_depot_product();
-  }, "call$1", "onDepotProduct$closure", 2, 0, 11],
-  onGotoDepot: [function(e) {
-  }, "call$1", "onGotoDepot$closure", 2, 0, 11],
-  product_remain: function(remain) {
-    var t1, t2;
-    B.product_set(remain, 0);
-    $.product_info.set$remain(remain);
-    t1 = $.store_product_open_view;
-    if (t1 != null) {
-      J.querySelector$1$x(t1, "span").textContent = remain;
-      t1 = $.store_product_open_view;
-      t2 = J.getInterceptor$x(t1);
-      if (remain === "0") {
-        t2.get$classes(t1).remove$1(0, "remain");
-        t2.get$classes(t1).add$1(0, "remain_not");
-      } else {
-        t2.get$classes(t1).remove$1(0, "remain_not");
-        t2.get$classes(t1).add$1(0, "remain");
+    J.set$display$x($.groups_view.style, "inline");
+    B.divs_list_add1(0, $.groups_view);
+    prev_e = J.get$previousElementSibling$x($.change_area_product_display_view);
+    if (prev_e != null) {
+      B.find_product_info(prev_e);
+      B.find_group_product_display();
+      if ($.group_product_display_view != null) {
+        J.set$display$x($.groups_products_view.style, "inline");
+        J.set$display$x($.group_products_view.style, "inline");
+        J.scrollIntoView$0$x($.group_product_display_view);
+        B.divs_list_add2(0, $.groups_products_view, $.group_products_view);
       }
     }
-    J.querySelector$1$x($.depot_product_open_view, "span").textContent = remain;
-    t1 = $.depot_product_open_view;
-    t2 = J.getInterceptor$x(t1);
-    if (remain === "0") {
-      t2.get$classes(t1).remove$1(0, "remain");
-      t2.get$classes(t1).add$1(0, "remain_not");
+  },
+  store_area_product_change: function() {
+    $.change_kind = "store";
+    $.change_area_product_display_view = $.store_area_product_display_view;
+    $.change_area_products_view = $.store_area_products_view;
+    $.change_area_view = $.store_area_view;
+    B.area_product_change();
+  },
+  depot_area_product_change: function() {
+    $.change_kind = "depot";
+    $.change_area_product_display_view = $.depot_area_product_display_view;
+    $.change_area_products_view = $.depot_area_products_view;
+    $.change_area_view = $.depot_area_view;
+    B.area_product_change();
+  },
+  onStoreAreaProductChange: [function(e) {
+    B.store_area_product_change();
+  }, "call$1", "onStoreAreaProductChange$closure", 2, 0, 7],
+  onDepotAreaProductChange: [function(e) {
+    B.depot_area_product_change();
+  }, "call$1", "onDepotAreaProductChange$closure", 2, 0, 7],
+  set_view_remain: function(e1, e2, n) {
+    var t1;
+    if ($.product_name === "")
+      n = "";
+    J.set$text$x(e2, n);
+    t1 = J.getInterceptor$x(e1);
+    if (J.$eq(n, "0")) {
+      t1.get$classes(e1).remove$1(0, "remain");
+      t1.get$classes(e1).add$1(0, "remain_not");
     } else {
-      t2.get$classes(t1).remove$1(0, "remain_not");
-      t2.get$classes(t1).add$1(0, "remain");
+      t1.get$classes(e1).remove$1(0, "remain_not");
+      t1.get$classes(e1).add$1(0, "remain");
     }
+  },
+  set_view_set: function(e, n) {
+    var t1, t2;
+    t1 = J.getInterceptor(n);
+    t2 = J.getInterceptor$x(e);
+    t2.set$text(e, t1.toString$0(n));
+    if (t1.$eq(n, 0)) {
+      t2.get$classes(e).remove$1(0, "set");
+      t2.get$classes(e).add$1(0, "set_not");
+    } else {
+      t2.get$classes(e).remove$1(0, "set_not");
+      t2.get$classes(e).add$1(0, "set");
+    }
+  },
+  set_product_display_view: function(e) {
+    var spans, span1, span2;
+    spans = J.querySelectorAll$1$x(e, "span");
+    span1 = spans.elementAt$1(spans, 0);
+    span2 = spans.elementAt$1(spans, 1);
+    B.set_view_remain(e, span1, $.product_info.get$remain());
+    B.set_view_set(span2, $.product_info.get$set());
+  },
+  set_product_set: function(remain, set) {
+    var remain_set, remain_set_update, set_update, t1, area_spans, area_remain_set_span, area_set_span, area_remain_set, area_set;
+    if (remain === "")
+      remain = $.product_info.get$remain();
+    $.old_set = $.product_info.get$set();
+    $.old_remain_set = J.$eq($.product_info.get$remain(), "0") ? 0 : $.product_info.get$set();
+    $.old_remain = $.product_info.get$remain();
+    $.product_info.set$set(set);
+    $.product_info.set$remain(remain);
+    remain_set = J.$eq(remain, "0") ? 0 : set;
+    remain_set_update = J.$sub$n(remain_set, $.old_remain_set);
+    set_update = J.$sub$n(set, $.old_set);
+    t1 = $.store_area_product_display_view;
+    if (t1 != null)
+      B.set_product_display_view(t1);
+    t1 = $.depot_area_product_display_view;
+    if (t1 != null)
+      B.set_product_display_view(t1);
+    t1 = $.group_product_display_view;
+    if (t1 != null)
+      B.set_product_display_view(t1);
+    if ($.store_area_product_display_view != null) {
+      area_spans = W._FrozenElementList$_wrap($.store_area_view.querySelectorAll("span"), null);
+      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
+      area_set_span = area_spans.elementAt$1(area_spans, 1);
+      t1 = J.getInterceptor$x(area_remain_set_span);
+      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
+      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
+      t1.set$text(area_remain_set_span, J.toString$0(J.$add$ns(area_remain_set, remain_set_update)));
+      B.set_view_set(area_set_span, J.$add$ns(area_set, set_update));
+      t1 = $.store_num1;
+      if (typeof t1 !== "number")
+        return t1.$add();
+      if (typeof remain_set_update !== "number")
+        return H.iae(remain_set_update);
+      t1 += remain_set_update;
+      $.store_num1 = t1;
+      $.store_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
+      t1 = $.store_num2;
+      if (typeof t1 !== "number")
+        return t1.$add();
+      if (typeof set_update !== "number")
+        return H.iae(set_update);
+      t1 += set_update;
+      $.store_num2 = t1;
+      B.set_view_set($.store_num2_e, t1);
+    }
+    if ($.depot_area_product_display_view != null) {
+      area_spans = W._FrozenElementList$_wrap($.depot_area_view.querySelectorAll("span"), null);
+      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
+      area_set_span = area_spans.elementAt$1(area_spans, 1);
+      t1 = J.getInterceptor$x(area_remain_set_span);
+      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
+      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
+      t1.set$text(area_remain_set_span, J.toString$0(J.$add$ns(area_remain_set, remain_set_update)));
+      B.set_view_set(area_set_span, J.$add$ns(area_set, set_update));
+      t1 = $.depot_num1;
+      if (typeof t1 !== "number")
+        return t1.$add();
+      if (typeof remain_set_update !== "number")
+        return H.iae(remain_set_update);
+      t1 += remain_set_update;
+      $.depot_num1 = t1;
+      $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
+      t1 = $.depot_num2;
+      if (typeof t1 !== "number")
+        return t1.$add();
+      if (typeof set_update !== "number")
+        return H.iae(set_update);
+      t1 += set_update;
+      $.depot_num2 = t1;
+      B.set_view_set($.depot_num2_e, t1);
+    }
+  },
+  store_loop: function() {
+    var cur, next, t1, t2, next0;
+    if ($.is_store_loop !== true)
+      return;
+    cur = $.store_area_product_display_view;
+    $.store_area_product_display_view = null;
+    next = J.get$nextElementSibling$x(cur);
+    for (; next != null; cur = next, next = next0) {
+      t1 = next.getAttribute("group_name");
+      t2 = J.get$attributes$x(cur)._element.getAttribute("group_name");
+      if (t1 == null ? t2 != null : t1 !== t2)
+        break;
+      if (J.get$text$x(next.firstChild) !== "") {
+        $.store_area_product_display_view = next;
+        break;
+      } else
+        next0 = next.nextElementSibling;
+    }
+    t1 = $.store_area_product_display_view;
+    if (t1 != null) {
+      B.find_product_info(t1);
+      B.find_store_area();
+      B.store_area_product_display();
+    }
+  },
+  onPlus: [function(e) {
+    B.set_product_set("", H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null));
+    B.back(0);
+    B.store_loop();
+  }, "call$1", "onPlus$closure", 2, 0, 7],
+  onAbsract: [function(e) {
+    var num, p, n;
+    num = H.Primitives_parseInt(J.substring$1$s(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, 1), null, null);
+    p = $.groups_products.$index(0, $.group_name);
+    if (p != null) {
+      n = J.get$max$x(J.$index$asx(p, $.product_name));
+      if (n != null)
+        num = J.$sub$n(n, num);
+    }
+    B.set_product_set("", num);
+    B.back(0);
+    B.store_loop();
+  }, "call$1", "onAbsract$closure", 2, 0, 7],
+  onGotoDepot: [function(e) {
+  }, "call$1", "onGotoDepot$closure", 2, 0, 7],
+  onStoreLoop: [function(e) {
+    var t = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement");
+    if (t.textContent === "\u5faa\u73af") {
+      $.is_store_loop = true;
+      t.textContent = "\u5355\u4e00";
+    } else {
+      $.is_store_loop = false;
+      t.textContent = "\u5faa\u73af";
+    }
+  }, "call$1", "onStoreLoop$closure", 2, 0, 7],
+  onClear: [function(e) {
+    B.set_product_set("", 0);
+    B.back(0);
+  }, "call$1", "onClear$closure", 2, 0, 7],
+  set_product_remain: function(remain) {
+    var t1;
+    $.product_info.set$remain(remain);
+    t1 = $.store_area_product_display_view;
+    if (t1 != null)
+      B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
+    t1 = $.depot_area_product_display_view;
+    B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
+    t1 = $.group_product_display_view;
+    if (t1 != null)
+      B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
   },
   onGet: [function(e) {
-    var t1, t2, set;
-    t1 = H.Primitives_parseInt(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, null, null);
-    t2 = J.querySelectorAll$1$x($.depot_product_open_view, "span");
-    set = H.Primitives_parseInt(J.get$text$x(t2.elementAt$1(t2, 1)), null, null);
-    t2 = J.getInterceptor$n(set);
-    if (J.$gt$n(t2.$sub(set, t1), 0)) {
-      B.product_set("0", t2.$sub(set, t1));
-      $.product_info.set$remain("0");
-      t1 = $.store_product_open_view;
-      if (t1 != null) {
-        J.querySelector$1$x(t1, "span").textContent = "0";
-        B.set_remain($.store_product_open_view, "0");
-      }
-      J.querySelector$1$x($.depot_product_open_view, "span").textContent = "0";
-      B.set_remain($.depot_product_open_view, "0");
+    var get, t1, set;
+    get = H.Primitives_parseInt(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, null, null);
+    t1 = J.querySelectorAll$1$x($.depot_area_product_display_view, "span");
+    set = H.Primitives_parseInt(J.get$text$x(t1.elementAt$1(t1, 1)), null, null);
+    t1 = J.getInterceptor$n(set);
+    if (J.$gt$n(t1.$sub(set, get), 0)) {
+      B.set_product_set("0", t1.$sub(set, get));
+      B.set_product_remain("0");
     }
     B.back(0);
-  }, "call$1", "onGet$closure", 2, 0, 11],
+  }, "call$1", "onGet$closure", 2, 0, 7],
   onRemain: [function(e) {
-    B.product_remain(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent);
+    var num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
+    B.set_product_set(num_text, 0);
+    B.set_product_remain(num_text);
     B.back(0);
-  }, "call$1", "onRemain$closure", 2, 0, 11],
-  onBack: [function(e) {
+  }, "call$1", "onRemain$closure", 2, 0, 7],
+  onClearAll: [function(e) {
+    var spans, span1, span2, cur, next, t1, t2, next0;
+    if (J.get$text$x($.depot_area_product_display_view.firstChild) !== "") {
+      spans = J.querySelectorAll$1$x($.depot_area_product_display_view, "span");
+      span1 = spans.elementAt$1(spans, 0);
+      span2 = spans.elementAt$1(spans, 1);
+      if (J.get$text$x(span1) === "N" && J.get$text$x(span2) !== "0") {
+        B.set_product_set("N", 0);
+        B.set_product_remain("N");
+      }
+    }
+    cur = $.depot_area_product_display_view;
+    $.depot_area_product_display_view = null;
+    next = J.get$nextElementSibling$x(cur);
+    for (; next != null; cur = next, next = next0) {
+      t1 = next.getAttribute("group_name");
+      t2 = J.get$attributes$x(cur)._element.getAttribute("group_name");
+      if (t1 == null ? t2 != null : t1 !== t2)
+        break;
+      if (J.get$text$x(next.firstChild) !== "") {
+        spans = W._FrozenElementList$_wrap(next.querySelectorAll("span"), null);
+        span1 = spans.elementAt$1(spans, 0);
+        span2 = spans.elementAt$1(spans, 1);
+        if (J.get$text$x(span1) === "N" && J.get$text$x(span2) !== "0") {
+          $.depot_area_product_display_view = next;
+          B.find_product_info(next);
+          B.find_store_area_product_display();
+          B.find_group_product_display();
+          B.set_product_set("N", 0);
+          B.set_product_remain("N");
+        }
+      }
+      next0 = next.nextElementSibling;
+    }
     B.back(0);
-  }, "call$1", "onBack$closure", 2, 0, 11],
+  }, "call$1", "onClearAll$closure", 2, 0, 7],
   hide_last: function() {
     var l, t1;
     J.get$z$x(J.get$last$ax($.divs_list));
@@ -8838,27 +8281,30 @@ var $$ = Object.create(null);
     } else if ($.divs_list.length > 1)
       B.hide_last();
   },
-  onStoreLoop: [function(e) {
-    var t = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement");
-    if (t.textContent === "\u5faa\u73af") {
-      $.is_store_loop = true;
-      t.textContent = "\u5355\u4e00";
-    } else {
-      $.is_store_loop = false;
-      t.textContent = "\u5faa\u73af";
-    }
-  }, "call$1", "onStoreLoop$closure", 2, 0, 11],
-  onClear: [function(e) {
-    B.product_set("", 0);
-    B.back(0);
-  }, "call$1", "onClear$closure", 2, 0, 11],
-  divs_list_add: function(m, l) {
-    var t1 = $.z_index;
+  divs_list_add1: function(m, e) {
+    var t1, l;
+    t1 = $.z_index;
     if (typeof t1 !== "number")
       return t1.$add();
-    $.z_index = t1 + 1;
-    for (t1 = new H.ListIterator(l, l.length, 0, null); t1.moveNext$0();)
-      J.set$zIndex$x(J.get$style$x(t1._current), J.toString$0($.z_index));
+    ++t1;
+    $.z_index = t1;
+    J.set$zIndex$x(e.style, C.JSInt_methods.toString$0(t1));
+    l = H.setRuntimeTypeInfo([], [W.DivElement]);
+    l.push(e);
+    $.divs_list.push(B.Divs$(m, l));
+  },
+  divs_list_add2: function(m, e1, e2) {
+    var t1, l;
+    t1 = $.z_index;
+    if (typeof t1 !== "number")
+      return t1.$add();
+    ++t1;
+    $.z_index = t1;
+    J.set$zIndex$x(e1.style, C.JSInt_methods.toString$0(t1));
+    J.set$zIndex$x(e2.style, J.toString$0($.z_index));
+    l = H.setRuntimeTypeInfo([], [W.DivElement]);
+    l.push(e1);
+    l.push(e2);
     $.divs_list.push(B.Divs$(m, l));
   },
   Divs: {
@@ -8875,64 +8321,112 @@ var $$ = Object.create(null);
       }}
   },
   ProductInfo: {
-    "^": "Object;max>,set@,remain@,get,label,name,vender"
+    "^": "Object;max>,set@,remain@,get,label,name"
   },
   main_closure: {
-    "^": "Closure:14;httpRequest_0",
+    "^": "Closure:10;httpRequest_0",
     call$1: function(e) {
       B.processProductString(this.httpRequest_0.responseText);
       return;
     }
   },
   main_closure0: {
-    "^": "Closure:14;httpRequest_1",
+    "^": "Closure:10;httpRequest_1",
     call$1: function(e) {
       B.processStoreString(this.httpRequest_1.responseText);
       return;
     }
   },
   main_closure1: {
-    "^": "Closure:14;httpRequest_2",
+    "^": "Closure:10;httpRequest_2",
     call$1: function(e) {
       B.processDepotString(this.httpRequest_2.responseText);
       return;
     }
   },
+  gen_groups_products_view_closure: {
+    "^": "Closure:9;",
+    call$2: function(group_name, group_products) {
+      var group_products_view, t1, l, t2, count, columns_count, cur, i, row_e, j, cell, t3, product_name, span1, span2, product_info, remain;
+      group_products_view = document.createElement("div", null);
+      group_products_view.className = "top";
+      J.set$overflow$x(group_products_view.style, "scroll");
+      t1 = J.getInterceptor$x(group_products);
+      l = t1.get$keys(group_products);
+      t2 = J.getInterceptor$asx(l);
+      count = t2.get$length(l);
+      columns_count = C.JSInt_methods._tdivFast$1(count - 1, 8) + 1;
+      for (cur = 0, i = 0; i < 8; ++i) {
+        row_e = document.createElement("div", null);
+        J.set$whiteSpace$x(row_e.style, "nowrap");
+        for (j = 0; j < columns_count; ++j) {
+          cell = document.createElement("button", null);
+          t3 = cell.style;
+          J.getInterceptor$x(t3).set$width(t3, "2.4em");
+          C.CssStyleDeclaration_methods.set$height(t3, "5.2em");
+          C.CssStyleDeclaration_methods.set$whiteSpace(t3, "normal");
+          C.CssStyleDeclaration_methods.set$verticalAlign(t3, "middle");
+          product_name = cur < count ? t2.elementAt$1(l, cur) : "";
+          cell.setAttribute("group_name", group_name);
+          cell.appendChild(document.createTextNode(product_name));
+          cell.appendChild(document.createElement("br", null));
+          span1 = document.createElement("span", null);
+          cell.appendChild(span1);
+          cell.appendChild(document.createElement("br", null));
+          span2 = document.createElement("span", null);
+          cell.appendChild(span2);
+          product_info = t1.$index(group_products, product_name);
+          remain = product_info.get$remain();
+          if (!J.$eq(product_name, ""))
+            B.set_view_remain(cell, span1, remain);
+          B.set_view_set(span2, product_info.set);
+          ++cur;
+          row_e.appendChild(cell);
+        }
+        group_products_view.appendChild(row_e);
+      }
+      group_products_view.id = group_name;
+      $.groups_products_view.appendChild(group_products_view);
+    }
+  },
   unload_closure: {
-    "^": "Closure:13;box_2",
+    "^": "Closure:9;box_2",
     call$2: function(group_name, group_products) {
       var t1, t2;
-      t1 = this.box_2;
-      t2 = t1.product_text_2 += "\n\n";
-      t1.product_text_2 = C.JSString_methods.$add(t2, group_name);
-      J.forEach$1$ax(group_products, new B.unload__closure1(t1));
+      if (!J.$eq(group_name, "")) {
+        t1 = this.box_2;
+        t2 = t1.product_text_2 += "\n\n";
+        t1.product_text_2 = C.JSString_methods.$add(t2, group_name);
+        J.forEach$1$ax(group_products, new B.unload__closure1(t1));
+      }
     }
   },
   unload__closure1: {
-    "^": "Closure:13;box_2",
+    "^": "Closure:9;box_2",
     call$2: function(k, v) {
-      var t1, t2, product_text;
-      t1 = this.box_2;
-      t2 = t1.product_text_2 += "\n";
-      product_text = C.JSString_methods.$add(t2, J.$add$ns(k, ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.get$remain()), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.max), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.set), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.get), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.label), ","));
-      t1.product_text_2 = product_text;
-      product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.name), ","));
-      t1.product_text_2 = product_text;
-      t1.product_text_2 = C.JSString_methods.$add(product_text, J.toString$0(v.vender));
+      var t1, t2, t3, product_text;
+      t1 = J.getInterceptor(k);
+      if (!t1.$eq(k, "")) {
+        t2 = this.box_2;
+        t3 = t2.product_text_2 += "\n";
+        product_text = C.JSString_methods.$add(t3, t1.$add(k, ","));
+        t2.product_text_2 = product_text;
+        product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.get$remain()), ","));
+        t2.product_text_2 = product_text;
+        product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.max), ","));
+        t2.product_text_2 = product_text;
+        product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.set), ","));
+        t2.product_text_2 = product_text;
+        product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.get), ","));
+        t2.product_text_2 = product_text;
+        product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.label), ","));
+        t2.product_text_2 = product_text;
+        t2.product_text_2 = C.JSString_methods.$add(product_text, J.toString$0(v.name));
+      }
     }
   },
   unload_closure0: {
-    "^": "Closure:14;box_2",
+    "^": "Closure:10;box_2",
     call$1: function(area) {
       var area_name, t1, t2;
       H.interceptedTypeCast(area, "$isDivElement");
@@ -8944,7 +8438,7 @@ var $$ = Object.create(null);
     }
   },
   unload__closure0: {
-    "^": "Closure:14;box_2",
+    "^": "Closure:10;box_2",
     call$1: function(line) {
       var t1, t2, t3;
       t1 = {};
@@ -8958,7 +8452,7 @@ var $$ = Object.create(null);
     }
   },
   unload___closure0: {
-    "^": "Closure:14;box_0",
+    "^": "Closure:10;box_0",
     call$1: function(cell) {
       var t1, t2, t3;
       H.interceptedTypeCast(cell, "$isButtonElement");
@@ -8977,7 +8471,7 @@ var $$ = Object.create(null);
     }
   },
   unload_closure1: {
-    "^": "Closure:14;box_2",
+    "^": "Closure:10;box_2",
     call$1: function(area) {
       var area_name, t1, t2;
       H.interceptedTypeCast(area, "$isDivElement");
@@ -8989,7 +8483,7 @@ var $$ = Object.create(null);
     }
   },
   unload__closure: {
-    "^": "Closure:14;box_2",
+    "^": "Closure:10;box_2",
     call$1: function(line) {
       var t1, t2, t3;
       t1 = {};
@@ -9003,7 +8497,7 @@ var $$ = Object.create(null);
     }
   },
   unload___closure: {
-    "^": "Closure:14;box_1",
+    "^": "Closure:10;box_1",
     call$1: function(cell) {
       var t1, t2, t3;
       H.interceptedTypeCast(cell, "$isButtonElement");
@@ -9041,28 +8535,16 @@ $$ = null;
   _.$isNode = TRUE;
   _.$isObject = TRUE;
   P.num.$isObject = TRUE;
-  _ = W.BeforeUnloadEvent;
-  _.$isEvent = TRUE;
-  _.$isObject = TRUE;
   _ = P.Duration;
   _.$isDuration = TRUE;
   _.$isObject = TRUE;
   B.Divs.$isObject = TRUE;
+  P.Map.$isObject = TRUE;
+  B.ProductInfo.$isObject = TRUE;
   _ = W.DivElement;
   _.$isHtmlElement = TRUE;
   _.$isNode = TRUE;
   _.$isObject = TRUE;
-  _ = W.ProgressEvent;
-  _.$isEvent = TRUE;
-  _.$isObject = TRUE;
-  _ = W.Event;
-  _.$isEvent = TRUE;
-  _.$isObject = TRUE;
-  _ = W.MouseEvent;
-  _.$isEvent = TRUE;
-  _.$isObject = TRUE;
-  P.Map.$isObject = TRUE;
-  B.ProductInfo.$isObject = TRUE;
   H.RawReceivePortImpl.$isObject = TRUE;
   H._IsolateEvent.$isObject = TRUE;
   H._IsolateContext.$isObject = TRUE;
@@ -9074,6 +8556,9 @@ $$ = null;
   _.$isObject = TRUE;
   _ = P.StackTrace;
   _.$isStackTrace = TRUE;
+  _.$isObject = TRUE;
+  _ = W.Event;
+  _.$isEvent = TRUE;
   _.$isObject = TRUE;
   P.Object.$isObject = TRUE;
   _ = P._EventSink;
@@ -9278,6 +8763,9 @@ J.get$nextElementSibling$x = function(receiver) {
 J.get$onClick$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$onClick(receiver);
 };
+J.get$previousElementSibling$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$previousElementSibling(receiver);
+};
 J.get$style$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$style(receiver);
 };
@@ -9380,9 +8868,6 @@ C.UnknownJavaScriptObject_methods = J.UnknownJavaScriptObject.prototype;
 C.C_DynamicRuntimeType = new H.DynamicRuntimeType();
 C.C__RootZone = new P._RootZone();
 C.Duration_0 = new P.Duration(0);
-C.EventStreamProvider_click = new W.EventStreamProvider("click");
-C.EventStreamProvider_loadend = new W.EventStreamProvider("loadend");
-C.EventStreamProvider_unload = new W.EventStreamProvider("unload");
 C.JS_CONST_0 = function(hooks) {
   if (typeof dartExperimentalFixupGetTag != "function") return hooks;
   hooks.getTag = dartExperimentalFixupGetTag(hooks.getTag);
@@ -9515,7 +9000,6 @@ C.JS_CONST_rr7 = function(hooks) {
   hooks.prototypeForTag = prototypeForTagFixed;
 };
 C.JS_CONST_s8I = function(_, letter) { return letter.toUpperCase(); };
-C._BeforeUnloadEventStreamProvider_beforeunload = new W._BeforeUnloadEventStreamProvider("beforeunload");
 init.isHunkLoaded = function(hunkHash) {
   return !!$dart_deferred_initializers[hunkHash];
 };
@@ -9551,29 +9035,35 @@ $.Device__isFirefox = null;
 $.Device__isWebKit = null;
 $.Device__cachedCssPrefix = null;
 $.local_storage = null;
-$.top = null;
-$.store_areas_open_view = null;
-$.depot_areas_open_view = null;
+$.top_view = null;
 $.store_areas_view = null;
-$.depot_areas_view = null;
-$.store_area_open_view = null;
-$.depot_area_open_view = null;
 $.store_area_view = null;
+$.store_areas_products_view = null;
+$.store_area_products_view = null;
+$.store_area_product_display_view = null;
+$.depot_areas_view = null;
 $.depot_area_view = null;
-$.store_product_open_view = null;
-$.depot_product_open_view = null;
+$.depot_areas_products_view = null;
+$.depot_area_products_view = null;
+$.depot_area_product_display_view = null;
+$.groups_view = null;
+$.group_view = null;
+$.groups_products_view = null;
+$.group_products_view = null;
+$.group_product_display_view = null;
+$.store_area_product_view = null;
+$.depot_area_product_view = null;
+$.default_product_info = null;
 $.group_name = null;
 $.product_name = null;
 $.product_info = null;
-$.store_product_view = null;
-$.depot_product_view = null;
-$.default_product_info = null;
-$.delete_group_name = null;
-$.delete_product_name = null;
-$.delete_product_info = null;
-$.delete_depot_area_open_view = null;
-$.delete_depot_area_view = null;
-$.delete_depot_product_open_view = null;
+$.old_remain = null;
+$.old_remain_set = null;
+$.old_set = null;
+$.change_kind = null;
+$.change_area_view = null;
+$.change_area_products_view = null;
+$.change_area_product_display_view = null;
 $.store_num1 = null;
 $.store_num2 = null;
 $.depot_num1 = null;
@@ -9671,20 +9161,18 @@ Isolate.$lazy($, "_toStringVisiting", "IterableBase__toStringVisiting", "get$Ite
 init.metadata = [{func: "dynamic__String", args: [P.String]},
 {func: "void__void_", void: true, args: [{func: "void_", void: true}]},
 {func: "void_", void: true},
-{func: "void__dynamic", void: true, args: [null]},
-{func: "void__dynamic__StackTrace", void: true, args: [null], opt: [P.StackTrace]},
-,
 {func: "bool__dynamic_dynamic", ret: P.bool, args: [null, null]},
 {func: "int__dynamic", ret: P.$int, args: [null]},
 {func: "bool__Object_Object", ret: P.bool, args: [P.Object, P.Object]},
 {func: "int__Object", ret: P.$int, args: [P.Object]},
-{func: "String__Event", ret: P.String, args: [W.Event]},
 {func: "void__Event", void: true, args: [W.Event]},
 {func: "args0"},
 {func: "args2", args: [null, null]},
 {func: "args1", args: [null]},
 {func: "dynamic__dynamic_String", args: [null, P.String]},
 {func: "dynamic__void_", args: [{func: "void_", void: true}]},
+{func: "void__dynamic__StackTrace", void: true, args: [null], opt: [P.StackTrace]},
+,
 {func: "dynamic__dynamic__dynamic", args: [null], opt: [null]},
 {func: "bool_", ret: P.bool},
 {func: "dynamic__dynamic_StackTrace", args: [null, P.StackTrace]},
