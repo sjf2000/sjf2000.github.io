@@ -6011,6 +6011,7 @@ var $$ = Object.create(null);
   },
   TextAreaElement: {
     "^": "HtmlElement;name=,value=",
+    $isTextAreaElement: true,
     "%": "HTMLTextAreaElement"
   },
   Window: {
@@ -6875,7 +6876,7 @@ var $$ = Object.create(null);
 ["", "sjf.dart", , B, {
   "^": "",
   main: [function() {
-    var t1, httpRequest, d, text;
+    var t1, httpRequest, d, text, text_area_view, hidden_export_view;
     t1 = new B.ProductInfo(null, null, null, null, null, null, null, null, null);
     $.default_product_info = t1;
     t1.remain = "N";
@@ -6930,6 +6931,21 @@ var $$ = Object.create(null);
     B.gen_groups_products_view();
     B.gen_store_product_view();
     B.gen_depot_product_view();
+    t1 = document.createElement("div", null);
+    $.data_view = t1;
+    t1.className = "top";
+    J.set$flexFlow$x(t1.style, "column");
+    text_area_view = document.createElement("textarea", null);
+    J.set$flex$x(text_area_view.style, "1");
+    t1 = J.get$onClick$x(text_area_view);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onData$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    hidden_export_view = document.createElement("button", null);
+    hidden_export_view.textContent = "\u5173\u95ed";
+    J.set$height$x(hidden_export_view.style, "3em");
+    t1 = J.get$onClick$x(hidden_export_view);
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onHiddenExport$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    $.data_view.appendChild(text_area_view);
+    $.data_view.appendChild(hidden_export_view);
     $.top_view.appendChild($.depot_area_product_view);
     $.top_view.appendChild($.store_area_product_view);
     $.top_view.appendChild($.store_areas_view);
@@ -6938,6 +6954,7 @@ var $$ = Object.create(null);
     $.top_view.appendChild($.depot_areas_products_view);
     $.top_view.appendChild($.groups_view);
     $.top_view.appendChild($.groups_products_view);
+    $.top_view.appendChild($.data_view);
     J.set$display$x($.store_areas_view.style, "flex");
     B.divs_list_add1("store_areas", $.store_areas_view);
     t1 = H.setRuntimeTypeInfo(new W._EventStream(window, "unload", false), [null]);
@@ -6948,8 +6965,10 @@ var $$ = Object.create(null);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepot$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x(document.querySelector("#product"));
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onProduct$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    t1 = J.get$onClick$x(document.querySelector("#recently"));
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onRecently$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$onClick$x(document.querySelector("#urgent"));
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onUrgent$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
+    t1 = J.get$onClick$x(document.querySelector("#export"));
+    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDisplayData$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x(document.querySelector("#label"));
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onLabel$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     t1 = J.get$onClick$x(document.querySelector("#back"));
@@ -7625,24 +7644,27 @@ var $$ = Object.create(null);
       }
     }
   },
-  unload: [function(e) {
+  local: function() {
     var t1, areas_products_view, t2;
     t1 = {};
     t1.product_text_2 = "";
-    $.groups_products.forEach$1(0, new B.unload_closure(t1));
+    $.groups_products.forEach$1(0, new B.local_closure(t1));
     $.local_storage.setItem("product", C.JSString_methods.substring$1(t1.product_text_2, 2));
     areas_products_view = $.store_areas_products_view;
     t1.str_3 = "";
     areas_products_view.toString;
     t2 = new W._ChildNodeListLazy(areas_products_view);
-    t2.forEach$1(t2, new B.unload_closure0(t1));
+    t2.forEach$1(t2, new B.local_closure0(t1));
     $.local_storage.setItem("store", C.JSString_methods.substring$1(t1.str_3, 2));
     areas_products_view = $.depot_areas_products_view;
     t1.str_4 = "";
     areas_products_view.toString;
     t2 = new W._ChildNodeListLazy(areas_products_view);
-    t2.forEach$1(t2, new B.unload_closure1(t1));
+    t2.forEach$1(t2, new B.local_closure1(t1));
     $.local_storage.setItem("depot", C.JSString_methods.substring$1(t1.str_4, 2));
+  },
+  unload: [function(e) {
+    B.local();
   }, "call$1", "unload$closure", 2, 0, 7],
   onStore: [function(e) {
     var t1 = $.divs_list;
@@ -7671,8 +7693,32 @@ var $$ = Object.create(null);
         B.divs_list_add1("groups", $.groups_view);
       }
   }, "call$1", "onProduct$closure", 2, 0, 7],
-  onRecently: [function(e) {
-  }, "call$1", "onRecently$closure", 2, 0, 7],
+  onUrgent: [function(e) {
+  }, "call$1", "onUrgent$closure", 2, 0, 7],
+  onDisplayData: [function(e) {
+    var t1, str;
+    if ($.divs_list.length === 1) {
+      B.local();
+      t1 = $.local_storage.getItem("store");
+      if (t1 == null)
+        return t1.$add();
+      str = t1 + "\n\n\n";
+      t1 = $.local_storage.getItem("depot");
+      if (t1 == null)
+        return t1.$add();
+      str = C.JSString_methods.$add(str + (t1 + "\n\n\n"), $.local_storage.getItem("product"));
+      J.set$display$x($.data_view.style, "flex");
+      J.set$text$x($.data_view.firstChild, str);
+      B.divs_list_add1("export", $.data_view);
+    }
+  }, "call$1", "onDisplayData$closure", 2, 0, 7],
+  onData: [function(e) {
+    H.interceptedTypeCast($.data_view.firstChild, "$isTextAreaElement").select();
+  }, "call$1", "onData$closure", 2, 0, 7],
+  onHiddenExport: [function(e) {
+    J.set$text$x($.data_view.firstChild, "");
+    B.back("");
+  }, "call$1", "onHiddenExport$closure", 2, 0, 7],
   onLabel: [function(e) {
   }, "call$1", "onLabel$closure", 2, 0, 7],
   onBack: [function(e) {
@@ -8463,7 +8509,7 @@ var $$ = Object.create(null);
       $.groups_products_view.appendChild(group_products_view);
     }
   },
-  unload_closure: {
+  local_closure: {
     "^": "Closure:9;box_2",
     call$2: function(group_name, group_products) {
       var t1, t2;
@@ -8471,11 +8517,11 @@ var $$ = Object.create(null);
         t1 = this.box_2;
         t2 = t1.product_text_2 += "\n\n";
         t1.product_text_2 = C.JSString_methods.$add(t2, group_name);
-        J.forEach$1$ax(group_products, new B.unload__closure1(t1));
+        J.forEach$1$ax(group_products, new B.local__closure1(t1));
       }
     }
   },
-  unload__closure1: {
+  local__closure1: {
     "^": "Closure:9;box_2",
     call$2: function(k, v) {
       var t1, t2, t3, product_text;
@@ -8499,7 +8545,7 @@ var $$ = Object.create(null);
       }
     }
   },
-  unload_closure0: {
+  local_closure0: {
     "^": "Closure:10;box_2",
     call$1: function(area) {
       var area_name, t1, t2;
@@ -8508,10 +8554,10 @@ var $$ = Object.create(null);
       t1 = this.box_2;
       t1.str_3 = t1.str_3 + C.JSString_methods.$add("\n\n", area_name);
       t2 = new W._ChildNodeListLazy(area);
-      t2.forEach$1(t2, new B.unload__closure0(t1));
+      t2.forEach$1(t2, new B.local__closure0(t1));
     }
   },
-  unload__closure0: {
+  local__closure0: {
     "^": "Closure:10;box_2",
     call$1: function(line) {
       var t1, t2, t3;
@@ -8521,11 +8567,11 @@ var $$ = Object.create(null);
       t2.str_3 += "\n";
       t1.line_text_0 = "";
       t3 = new W._ChildNodeListLazy(line);
-      t3.forEach$1(t3, new B.unload___closure0(t1));
+      t3.forEach$1(t3, new B.local___closure0(t1));
       t2.str_3 = t2.str_3 + C.JSString_methods.substring$1(t1.line_text_0, 1);
     }
   },
-  unload___closure0: {
+  local___closure0: {
     "^": "Closure:10;box_0",
     call$1: function(cell) {
       var t1, t2, t3;
@@ -8544,7 +8590,7 @@ var $$ = Object.create(null);
       }
     }
   },
-  unload_closure1: {
+  local_closure1: {
     "^": "Closure:10;box_2",
     call$1: function(area) {
       var area_name, t1, t2;
@@ -8553,10 +8599,10 @@ var $$ = Object.create(null);
       t1 = this.box_2;
       t1.str_4 = t1.str_4 + C.JSString_methods.$add("\n\n", area_name);
       t2 = new W._ChildNodeListLazy(area);
-      t2.forEach$1(t2, new B.unload__closure(t1));
+      t2.forEach$1(t2, new B.local__closure(t1));
     }
   },
-  unload__closure: {
+  local__closure: {
     "^": "Closure:10;box_2",
     call$1: function(line) {
       var t1, t2, t3;
@@ -8566,11 +8612,11 @@ var $$ = Object.create(null);
       t2.str_4 += "\n";
       t1.line_text_1 = "";
       t3 = new W._ChildNodeListLazy(line);
-      t3.forEach$1(t3, new B.unload___closure(t1));
+      t3.forEach$1(t3, new B.local___closure(t1));
       t2.str_4 = t2.str_4 + C.JSString_methods.substring$1(t1.line_text_1, 1);
     }
   },
-  unload___closure: {
+  local___closure: {
     "^": "Closure:10;box_1",
     call$1: function(cell) {
       var t1, t2, t3;
@@ -9165,6 +9211,7 @@ $.store_num1_e = null;
 $.store_num2_e = null;
 $.depot_num1_e = null;
 $.depot_num2_e = null;
+$.data_view = null;
 $.state = null;
 $.z_index = null;
 $.store_areas_string = null;

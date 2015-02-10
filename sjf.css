@@ -59,11 +59,14 @@ body {
   flex: 1;
 }
 
-#recently {
+#urgent {
   flex: 1;
 }
 
 #label {
+  flex: 1;
+}
+#export {
   flex: 1;
 }
 #back {
