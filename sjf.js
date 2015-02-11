@@ -6879,7 +6879,7 @@ var $$ = Object.create(null);
     var t1, httpRequest, d, text, text_area_view, hidden_export_view;
     t1 = new B.ProductInfo(null, null, null, null, null, null, null, null, null);
     $.default_product_info = t1;
-    t1.remain = "N";
+    t1.remain = "**";
     t1.set = 0;
     $.z_index = 0;
     $.local_storage = window.localStorage;
@@ -6925,9 +6925,9 @@ var $$ = Object.create(null);
     text = $.local_storage.getItem("depot");
     B.processLocalDepotString(text == null ? "" : text);
     $.store_num1_e.textContent = J.toString$0($.store_num1);
-    B.set_view_set($.store_num2_e, $.store_num2);
+    B.set_view_set2($.store_num2_e, $.store_num2);
     $.depot_num1_e.textContent = J.toString$0($.depot_num1);
-    B.set_view_set($.depot_num2_e, $.depot_num2);
+    B.set_view_set2($.depot_num2_e, $.depot_num2);
     B.gen_groups_products_view();
     B.gen_store_product_view();
     B.gen_depot_product_view();
@@ -7138,8 +7138,10 @@ var $$ = Object.create(null);
       C.CssStyleDeclaration_methods.set$flex(t1, "1");
       for (j = 0; j < 5; ++j) {
         text = C.JSInt_methods.toString$0(count);
+        if (count >= 10)
+          text = C.JSInt_methods.toString$0(count - 9) + "*";
         if (count === 14)
-          text = "N";
+          text = "**";
         e = document.createElement("button", null);
         e.textContent = text;
         J.set$flex$x(e.style, "1");
@@ -7310,7 +7312,7 @@ var $$ = Object.create(null);
           if (product_name !== "")
             B.set_view_remain(column_e, span10, remain);
           set = product_info.set;
-          B.set_view_set(span20, set);
+          B.set_view_set2(span20, set);
           t2 = $.store_num1;
           if (typeof t2 !== "number")
             return t2.$add();
@@ -7349,7 +7351,7 @@ var $$ = Object.create(null);
         area_products_view.appendChild(row_e);
       }
       J.set$text$x(span1, C.JSNumber_methods.toString$0(num1));
-      B.set_view_set(span2, num2);
+      B.set_view_set2(span2, num2);
       $.store_areas_products_view.appendChild(area_products_view);
     }
   },
@@ -7493,7 +7495,7 @@ var $$ = Object.create(null);
           if (product_name !== "")
             B.set_view_remain(column_e, span10, remain);
           set = product_info.set;
-          B.set_view_set(span20, set);
+          B.set_view_set2(span20, set);
           t2 = $.depot_num1;
           if (typeof t2 !== "number")
             return t2.$add();
@@ -7532,7 +7534,7 @@ var $$ = Object.create(null);
         area_products_view.appendChild(row_e);
       }
       J.set$text$x(span1, C.JSNumber_methods.toString$0(num1));
-      B.set_view_set(span2, num2);
+      B.set_view_set2(span2, num2);
       $.depot_areas_products_view.appendChild(area_products_view);
     }
   },
@@ -7696,19 +7698,10 @@ var $$ = Object.create(null);
   onUrgent: [function(e) {
   }, "call$1", "onUrgent$closure", 2, 0, 7],
   onDisplayData: [function(e) {
-    var t1, str;
     if ($.divs_list.length === 1) {
       B.local();
-      t1 = $.local_storage.getItem("store");
-      if (t1 == null)
-        return t1.$add();
-      str = t1 + "\n\n\n";
-      t1 = $.local_storage.getItem("depot");
-      if (t1 == null)
-        return t1.$add();
-      str = C.JSString_methods.$add(str + (t1 + "\n\n\n"), $.local_storage.getItem("product"));
       J.set$display$x($.data_view.style, "flex");
-      J.set$text$x($.data_view.firstChild, str);
+      J.set$text$x($.data_view.firstChild, "addf");
       B.divs_list_add1("export", $.data_view);
     }
   }, "call$1", "onDisplayData$closure", 2, 0, 7],
@@ -8083,7 +8076,7 @@ var $$ = Object.create(null);
       t1.get$classes(e1).add$1(0, "remain");
     }
   },
-  set_view_set: function(e, n) {
+  set_view_set2: function(e, n) {
     var t1, t2;
     t1 = J.getInterceptor(n);
     t2 = J.getInterceptor$x(e);
@@ -8102,10 +8095,10 @@ var $$ = Object.create(null);
     span1 = spans.elementAt$1(spans, 0);
     span2 = spans.elementAt$1(spans, 1);
     B.set_view_remain(e, span1, $.product_info.get$remain());
-    B.set_view_set(span2, $.product_info.get$set());
+    B.set_view_set2(span2, $.product_info.get$set());
   },
   set_product_set: function(remain, set) {
-    var old_remain_set, remain_set_update, set_update, t1, area_spans, area_remain_set_span, area_set_span, area_remain_set, area_set;
+    var old_remain_set, remain_set_update, set_update, t1, area_spans, area_set_span, area_remain_set_span, area_set, area_remain_set;
     if (remain === "")
       remain = $.product_info.get$remain();
     if (J.$eq(set, -1))
@@ -8128,55 +8121,55 @@ var $$ = Object.create(null);
       B.set_product_display_view(t1);
     if ($.store_area_product_display_view != null) {
       area_spans = W._FrozenElementList$_wrap($.store_area_products_display_view.querySelectorAll("span"), null);
-      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
-      area_set_span = area_spans.elementAt$1(area_spans, 1);
-      t1 = J.getInterceptor$x(area_remain_set_span);
-      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
-      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
-      t1.set$text(area_remain_set_span, J.toString$0(J.$add$ns(area_remain_set, remain_set_update)));
-      B.set_view_set(area_set_span, J.$add$ns(area_set, set_update));
+      area_set_span = area_spans.elementAt$1(area_spans, 0);
+      area_remain_set_span = area_spans.elementAt$1(area_spans, 1);
+      t1 = J.getInterceptor$x(area_set_span);
+      area_set = H.Primitives_parseInt(t1.get$text(area_set_span), null, null);
+      area_remain_set = H.Primitives_parseInt(J.get$text$x(area_remain_set_span), null, null);
+      t1.set$text(area_set_span, J.toString$0(J.$add$ns(area_set, set_update)));
+      B.set_view_set2(area_remain_set_span, J.$add$ns(area_remain_set, remain_set_update));
       t1 = $.store_num1;
       if (typeof t1 !== "number")
         return t1.$add();
-      if (typeof remain_set_update !== "number")
-        return H.iae(remain_set_update);
-      t1 += remain_set_update;
+      if (typeof set_update !== "number")
+        return H.iae(set_update);
+      t1 += set_update;
       $.store_num1 = t1;
       $.store_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
       t1 = $.store_num2;
       if (typeof t1 !== "number")
         return t1.$add();
-      if (typeof set_update !== "number")
-        return H.iae(set_update);
-      t1 += set_update;
-      $.store_num2 = t1;
-      B.set_view_set($.store_num2_e, t1);
-    }
-    if ($.depot_area_product_display_view != null) {
-      area_spans = W._FrozenElementList$_wrap($.depot_area_products_display_view.querySelectorAll("span"), null);
-      area_remain_set_span = area_spans.elementAt$1(area_spans, 0);
-      area_set_span = area_spans.elementAt$1(area_spans, 1);
-      t1 = J.getInterceptor$x(area_remain_set_span);
-      area_remain_set = H.Primitives_parseInt(t1.get$text(area_remain_set_span), null, null);
-      area_set = H.Primitives_parseInt(J.get$text$x(area_set_span), null, null);
-      t1.set$text(area_remain_set_span, J.toString$0(J.$add$ns(area_remain_set, remain_set_update)));
-      B.set_view_set(area_set_span, J.$add$ns(area_set, set_update));
-      t1 = $.depot_num1;
-      if (typeof t1 !== "number")
-        return t1.$add();
       if (typeof remain_set_update !== "number")
         return H.iae(remain_set_update);
       t1 += remain_set_update;
+      $.store_num2 = t1;
+      B.set_view_set2($.store_num2_e, t1);
+    }
+    if ($.depot_area_product_display_view != null) {
+      area_spans = W._FrozenElementList$_wrap($.depot_area_products_display_view.querySelectorAll("span"), null);
+      area_set_span = area_spans.elementAt$1(area_spans, 0);
+      area_remain_set_span = area_spans.elementAt$1(area_spans, 1);
+      t1 = J.getInterceptor$x(area_set_span);
+      area_set = H.Primitives_parseInt(t1.get$text(area_set_span), null, null);
+      area_remain_set = H.Primitives_parseInt(J.get$text$x(area_remain_set_span), null, null);
+      t1.set$text(area_set_span, J.toString$0(J.$add$ns(area_set, set_update)));
+      B.set_view_set2(area_remain_set_span, J.$add$ns(area_remain_set, remain_set_update));
+      t1 = $.depot_num1;
+      if (typeof t1 !== "number")
+        return t1.$add();
+      if (typeof set_update !== "number")
+        return H.iae(set_update);
+      t1 += set_update;
       $.depot_num1 = t1;
       $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
       t1 = $.depot_num2;
       if (typeof t1 !== "number")
         return t1.$add();
-      if (typeof set_update !== "number")
-        return H.iae(set_update);
-      t1 += set_update;
+      if (typeof remain_set_update !== "number")
+        return H.iae(remain_set_update);
+      t1 += remain_set_update;
       $.depot_num2 = t1;
-      B.set_view_set($.depot_num2_e, t1);
+      B.set_view_set2($.depot_num2_e, t1);
     }
   },
   store_loop: function() {
@@ -8278,10 +8271,8 @@ var $$ = Object.create(null);
       spans = J.querySelectorAll$1$x($.depot_area_product_display_view, "span");
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
-      if (J.get$text$x(span1) === "N" && J.get$text$x(span2) !== "0") {
-        B.set_product_set("N", 0);
-        B.set_product_remain("N");
-      }
+      if (J.get$text$x(span1) !== "0" && J.get$text$x(span2) !== "0")
+        B.set_product_set("", 0);
     }
     cur = $.depot_area_product_display_view;
     $.depot_area_product_display_view = null;
@@ -8295,7 +8286,7 @@ var $$ = Object.create(null);
         spans = W._FrozenElementList$_wrap(next.querySelectorAll("span"), null);
         span1 = spans.elementAt$1(spans, 0);
         span2 = spans.elementAt$1(spans, 1);
-        if (J.get$text$x(span1) === "N" && J.get$text$x(span2) !== "0") {
+        if (J.get$text$x(span1) !== "0" && J.get$text$x(span2) !== "0") {
           $.depot_area_product_display_view = next;
           B.find_product_info(next);
           if ($.product_info.get$store() != null) {
@@ -8309,8 +8300,7 @@ var $$ = Object.create(null);
             $.group_product_display_view = t1;
             $.group_products_view = J.get$parent$x(t1).parentElement;
           }
-          B.set_product_set("N", 0);
-          B.set_product_remain("N");
+          B.set_product_set("", 0);
         }
       }
       next0 = next.nextElementSibling;
@@ -8499,7 +8489,7 @@ var $$ = Object.create(null);
           remain = product_info.get$remain();
           if (!t3.$eq(product_name, ""))
             B.set_view_remain(cell, span1, remain);
-          B.set_view_set(span2, product_info.set);
+          B.set_view_set2(span2, product_info.set);
           ++cur;
           row_e.appendChild(cell);
         }
