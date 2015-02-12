@@ -7706,7 +7706,7 @@ var $$ = Object.create(null);
     }
   }, "call$1", "onDisplayData$closure", 2, 0, 7],
   onData: [function(e) {
-    H.interceptedTypeCast($.data_view.firstChild, "$isTextAreaElement").select();
+    H.interceptedTypeCast($.data_view.firstChild, "$isTextAreaElement");
   }, "call$1", "onData$closure", 2, 0, 7],
   onHiddenExport: [function(e) {
     J.set$text$x($.data_view.firstChild, "");
