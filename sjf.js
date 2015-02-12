@@ -6937,8 +6937,6 @@ var $$ = Object.create(null);
     J.set$flexFlow$x(t1.style, "column");
     text_area_view = document.createElement("textarea", null);
     J.set$flex$x(text_area_view.style, "1");
-    t1 = J.get$onClick$x(text_area_view);
-    H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onData$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     hidden_export_view = document.createElement("button", null);
     hidden_export_view.textContent = "\u5173\u95ed";
     J.set$height$x(hidden_export_view.style, "3em");
@@ -7701,15 +7699,11 @@ var $$ = Object.create(null);
     if ($.divs_list.length === 1) {
       B.local();
       J.set$display$x($.data_view.style, "flex");
-      J.set$text$x($.data_view.firstChild, "addf");
       B.divs_list_add1("export", $.data_view);
+      H.interceptedTypeCast($.data_view.firstChild, "$isTextAreaElement").value = "addf";
     }
   }, "call$1", "onDisplayData$closure", 2, 0, 7],
-  onData: [function(e) {
-    H.interceptedTypeCast($.data_view.firstChild, "$isTextAreaElement").select();
-  }, "call$1", "onData$closure", 2, 0, 7],
   onHiddenExport: [function(e) {
-    J.set$text$x($.data_view.firstChild, "");
     B.back("");
   }, "call$1", "onHiddenExport$closure", 2, 0, 7],
   onLabel: [function(e) {
