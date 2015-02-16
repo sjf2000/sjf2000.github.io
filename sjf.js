@@ -968,7 +968,7 @@ var $$ = Object.create(null);
         return;
       t1 = this.pauseTokens;
       t1.remove$1(0, resume);
-      if (t1._length === 0) {
+      if (t1._collection$_length === 0) {
         for (t1 = this.delayedEvents; t2 = t1.length, t2 !== 0;) {
           if (0 >= t2)
             return H.ioore(t1, 0);
@@ -1063,7 +1063,7 @@ var $$ = Object.create(null);
     handleUncaughtError$2: function(error, stackTrace) {
       var t1, message, t2;
       t1 = this.errorPorts;
-      if (t1._length === 0) {
+      if (t1._collection$_length === 0) {
         if (this.errorsAreFatal === true && this === init.globalState.rootContext)
           return;
         if (self.console && self.console.error)
@@ -1123,7 +1123,7 @@ var $$ = Object.create(null);
       t1.$indexSet(0, portId, port);
     },
     _updateGlobalState$0: function() {
-      if (this.ports._length - this.weakPorts._length > 0 || this.isPaused || !this.initialized)
+      if (this.ports._collection$_length - this.weakPorts._collection$_length > 0 || this.isPaused || !this.initialized)
         init.globalState.isolates.$indexSet(0, this.id, this);
       else
         this.kill$0();
@@ -1165,10 +1165,10 @@ var $$ = Object.create(null);
       var $event, t1, t2;
       $event = this.dequeue$0();
       if ($event == null) {
-        if (init.globalState.rootContext != null && init.globalState.isolates.containsKey$1(0, init.globalState.rootContext.id) && init.globalState.fromCommandLine === true && init.globalState.rootContext.ports._length === 0)
+        if (init.globalState.rootContext != null && init.globalState.isolates.containsKey$1(0, init.globalState.rootContext.id) && init.globalState.fromCommandLine === true && init.globalState.rootContext.ports._collection$_length === 0)
           H.throwExpression(P.Exception_Exception("Program exited with open ReceivePorts."));
         t1 = init.globalState;
-        if (t1.isWorker === true && t1.isolates._length === 0 && t1.topEventLoop._activeJsAsyncCount === 0) {
+        if (t1.isWorker === true && t1.isolates._collection$_length === 0 && t1.topEventLoop._activeJsAsyncCount === 0) {
           t1 = t1.mainManager;
           t2 = H._serializeMessage(P.LinkedHashMap_LinkedHashMap$_literal(["command", "close"], null, null));
           t1.toString;
@@ -3511,7 +3511,7 @@ var $$ = Object.create(null);
       this._addListener$1(new P._FutureListener(null, result, 8, action, null));
       return result;
     },
-    get$_async$_value: function() {
+    get$_value: function() {
       return this._resultOrListeners;
     },
     get$_error: function() {
@@ -3612,7 +3612,7 @@ var $$ = Object.create(null);
             P._Future__propagateToListeners(t1.source_4, listeners);
           }
           t3.listenerHasValue_1 = true;
-          sourceValue = hasError ? null : t1.source_4.get$_async$_value();
+          sourceValue = hasError ? null : t1.source_4.get$_value();
           t3.listenerValueOrError_2 = sourceValue;
           t3.isPropagationAborted_3 = false;
           t2 = !hasError;
@@ -4227,9 +4227,9 @@ var $$ = Object.create(null);
     return t1.charCodeAt(0) == 0 ? t1 : t1;
   },
   _HashMap: {
-    "^": "Object;_length,_strings,_nums,_rest,_keys",
+    "^": "Object;_collection$_length,_strings,_nums,_rest,_keys",
     get$length: function(_) {
-      return this._length;
+      return this._collection$_length;
     },
     get$keys: function(_) {
       return H.setRuntimeTypeInfo(new P.HashMapKeyIterable(this), [H.getTypeArgumentByIndex(this, 0)]);
@@ -4299,7 +4299,7 @@ var $$ = Object.create(null);
       bucket = rest[hash];
       if (bucket == null) {
         P._HashMap__setTableEntry(rest, hash, [key, value]);
-        ++this._length;
+        ++this._collection$_length;
         this._keys = null;
       } else {
         index = this._findBucketIndex$2(bucket, key);
@@ -4307,7 +4307,7 @@ var $$ = Object.create(null);
           bucket[index + 1] = value;
         else {
           bucket.push(key, value);
-          ++this._length;
+          ++this._collection$_length;
           this._keys = null;
         }
       }
@@ -4327,7 +4327,7 @@ var $$ = Object.create(null);
       t1 = this._keys;
       if (t1 != null)
         return t1;
-      result = Array(this._length);
+      result = Array(this._collection$_length);
       result.fixed$length = init;
       strings = this._strings;
       if (strings != null) {
@@ -4366,7 +4366,7 @@ var $$ = Object.create(null);
     },
     _addHashTableEntry$3: function(table, key, value) {
       if (table[key] == null) {
-        ++this._length;
+        ++this._collection$_length;
         this._keys = null;
       }
       P._HashMap__setTableEntry(table, key, value);
@@ -4407,7 +4407,7 @@ var $$ = Object.create(null);
   HashMapKeyIterable: {
     "^": "IterableBase;_map",
     get$length: function(_) {
-      return this._map._length;
+      return this._map._collection$_length;
     },
     get$iterator: function(_) {
       var t1 = this._map;
@@ -4448,9 +4448,9 @@ var $$ = Object.create(null);
     }
   },
   _LinkedHashMap: {
-    "^": "Object;_length,_strings,_nums,_rest,_first,_last,_modifications",
+    "^": "Object;_collection$_length,_strings,_nums,_rest,_first,_last,_modifications",
     get$length: function(_) {
-      return this._length;
+      return this._collection$_length;
     },
     get$keys: function(_) {
       return H.setRuntimeTypeInfo(new P.LinkedHashMapKeyIterable(this), [H.getTypeArgumentByIndex(this, 0)]);
@@ -4481,13 +4481,13 @@ var $$ = Object.create(null);
         if (strings == null)
           return;
         cell = strings[key];
-        return cell == null ? null : cell.get$_value();
+        return cell == null ? null : cell.get$_collection$_value();
       } else if (typeof key === "number" && (key & 0x3ffffff) === key) {
         nums = this._nums;
         if (nums == null)
           return;
         cell = nums[key];
-        return cell == null ? null : cell.get$_value();
+        return cell == null ? null : cell.get$_collection$_value();
       } else
         return this._get$1(key);
     },
@@ -4500,7 +4500,7 @@ var $$ = Object.create(null);
       index = this._findBucketIndex$2(bucket, key);
       if (index < 0)
         return;
-      return bucket[index].get$_value();
+      return bucket[index].get$_collection$_value();
     },
     $indexSet: function(_, key, value) {
       var strings, nums;
@@ -4535,7 +4535,7 @@ var $$ = Object.create(null);
       else {
         index = this._findBucketIndex$2(bucket, key);
         if (index >= 0)
-          bucket[index].set$_value(value);
+          bucket[index].set$_collection$_value(value);
         else
           bucket.push(this._newLinkedCell$2(key, value));
       }
@@ -4559,16 +4559,16 @@ var $$ = Object.create(null);
         return;
       cell = bucket.splice(index, 1)[0];
       this._unlinkCell$1(cell);
-      return cell.get$_value();
+      return cell.get$_collection$_value();
     },
     clear$0: function(_) {
-      if (this._length > 0) {
+      if (this._collection$_length > 0) {
         this._last = null;
         this._first = null;
         this._rest = null;
         this._nums = null;
         this._strings = null;
-        this._length = 0;
+        this._collection$_length = 0;
         this._modifications = this._modifications + 1 & 67108863;
       }
     },
@@ -4577,7 +4577,7 @@ var $$ = Object.create(null);
       cell = this._first;
       modifications = this._modifications;
       for (; cell != null;) {
-        action.call$2(cell.get$_key(cell), cell._value);
+        action.call$2(cell.get$_key(cell), cell._collection$_value);
         if (modifications !== this._modifications)
           throw H.wrapException(P.ConcurrentModificationError$(this));
         cell = cell._next;
@@ -4588,7 +4588,7 @@ var $$ = Object.create(null);
       if (cell == null)
         table[key] = this._newLinkedCell$2(key, value);
       else
-        cell.set$_value(value);
+        cell.set$_collection$_value(value);
     },
     _removeHashTableEntry$2: function(table, key) {
       var cell;
@@ -4599,7 +4599,7 @@ var $$ = Object.create(null);
         return;
       this._unlinkCell$1(cell);
       delete table[key];
-      return cell.get$_value();
+      return cell.get$_collection$_value();
     },
     _newLinkedCell$2: function(key, value) {
       var cell, last;
@@ -4613,7 +4613,7 @@ var $$ = Object.create(null);
         last.set$_next(cell);
         this._last = cell;
       }
-      ++this._length;
+      ++this._collection$_length;
       this._modifications = this._modifications + 1 & 67108863;
       return cell;
     },
@@ -4629,7 +4629,7 @@ var $$ = Object.create(null);
         this._last = previous;
       else
         next.set$_previous(previous);
-      --this._length;
+      --this._collection$_length;
       this._modifications = this._modifications + 1 & 67108863;
     },
     _computeHashCode$1: function(key) {
@@ -4664,12 +4664,12 @@ var $$ = Object.create(null);
     }
   },
   LinkedHashMapCell: {
-    "^": "Object;_key>,_value@,_next@,_previous@"
+    "^": "Object;_key>,_collection$_value@,_next@,_previous@"
   },
   LinkedHashMapKeyIterable: {
     "^": "IterableBase;_map",
     get$length: function(_) {
-      return this._map._length;
+      return this._map._collection$_length;
     },
     get$iterator: function(_) {
       var t1, t2;
@@ -4715,14 +4715,14 @@ var $$ = Object.create(null);
     }
   },
   _LinkedHashSet: {
-    "^": "_HashSetBase;_length,_strings,_nums,_rest,_first,_last,_modifications",
+    "^": "_HashSetBase;_collection$_length,_strings,_nums,_rest,_first,_last,_modifications",
     get$iterator: function(_) {
       var t1 = new P.LinkedHashSetIterator(this, this._modifications, null, null);
       t1._cell = this._first;
       return t1;
     },
     get$length: function(_) {
-      return this._length;
+      return this._collection$_length;
     },
     contains$1: function(_, object) {
       var strings, nums;
@@ -4842,13 +4842,13 @@ var $$ = Object.create(null);
       return true;
     },
     clear$0: function(_) {
-      if (this._length > 0) {
+      if (this._collection$_length > 0) {
         this._last = null;
         this._first = null;
         this._rest = null;
         this._nums = null;
         this._strings = null;
-        this._length = 0;
+        this._collection$_length = 0;
         this._modifications = this._modifications + 1 & 67108863;
       }
     },
@@ -4881,7 +4881,7 @@ var $$ = Object.create(null);
         last.set$_next(cell);
         this._last = cell;
       }
-      ++this._length;
+      ++this._collection$_length;
       this._modifications = this._modifications + 1 & 67108863;
       return cell;
     },
@@ -4897,7 +4897,7 @@ var $$ = Object.create(null);
         this._last = previous;
       else
         next.set$_previous(previous);
-      --this._length;
+      --this._collection$_length;
       this._modifications = this._modifications + 1 & 67108863;
     },
     _computeHashCode$1: function(element) {
@@ -5909,6 +5909,9 @@ var $$ = Object.create(null);
   },
   Node: {
     "^": "EventTarget;firstChild=,parent:parentElement=,text:textContent%",
+    get$nodes: function(receiver) {
+      return new W._ChildNodeListLazy(receiver);
+    },
     toString$0: function(receiver) {
       var t1 = receiver.nodeValue;
       return t1 == null ? J.Interceptor.prototype.toString$0.call(this, receiver) : t1;
@@ -6457,11 +6460,11 @@ var $$ = Object.create(null);
     $isEfficientLength: true
   },
   FixedSizeListIterator: {
-    "^": "Object;_array,_html$_length,_position,_html$_current",
+    "^": "Object;_array,_length,_position,_html$_current",
     moveNext$0: function() {
       var nextPosition, t1;
       nextPosition = this._position + 1;
-      t1 = this._html$_length;
+      t1 = this._length;
       if (nextPosition < t1) {
         this._html$_current = J.$index$asx(this._array, nextPosition);
         this._position = nextPosition;
@@ -6501,6 +6504,10 @@ var $$ = Object.create(null);
     "^": "GraphicsElement;target=",
     "%": "SVGAElement"
   },
+  FEColorMatrixElement: {
+    "^": "SvgElement;values=",
+    "%": "SVGFEColorMatrixElement"
+  },
   GraphicsElement: {
     "^": "SvgElement;",
     "%": "SVGAltGlyphElement|SVGCircleElement|SVGClipPathElement|SVGDefsElement|SVGEllipseElement|SVGForeignObjectElement|SVGGElement|SVGGeometryElement|SVGImageElement|SVGLineElement|SVGPathElement|SVGPolygonElement|SVGPolylineElement|SVGRectElement|SVGSVGElement|SVGSwitchElement|SVGTSpanElement|SVGTextContentElement|SVGTextElement|SVGTextPathElement|SVGTextPositioningElement|SVGUseElement;SVGGraphicsElement"
@@ -6516,7 +6523,7 @@ var $$ = Object.create(null);
       return H.setRuntimeTypeInfo(new W._ElementEventStreamImpl(receiver, "click", false), [null]);
     },
     $isEventTarget: true,
-    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEBlendElement|SVGFEColorMatrixElement|SVGFEComponentTransferElement|SVGFECompositeElement|SVGFEConvolveMatrixElement|SVGFEDiffuseLightingElement|SVGFEDisplacementMapElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFloodElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEGaussianBlurElement|SVGFEImageElement|SVGFEMergeElement|SVGFEMergeNodeElement|SVGFEMorphologyElement|SVGFEOffsetElement|SVGFEPointLightElement|SVGFESpecularLightingElement|SVGFESpotLightElement|SVGFETileElement|SVGFETurbulenceElement|SVGFilterElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMaskElement|SVGMetadataElement|SVGMissingGlyphElement|SVGPatternElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
+    "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEBlendElement|SVGFEComponentTransferElement|SVGFECompositeElement|SVGFEConvolveMatrixElement|SVGFEDiffuseLightingElement|SVGFEDisplacementMapElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFloodElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEGaussianBlurElement|SVGFEImageElement|SVGFEMergeElement|SVGFEMergeNodeElement|SVGFEMorphologyElement|SVGFEOffsetElement|SVGFEPointLightElement|SVGFESpecularLightingElement|SVGFESpotLightElement|SVGFETileElement|SVGFETurbulenceElement|SVGFilterElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMaskElement|SVGMetadataElement|SVGMissingGlyphElement|SVGPatternElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
   },
   _AttributeClassSet: {
     "^": "CssClassSetImpl;_element",
@@ -6839,7 +6846,7 @@ var $$ = Object.create(null);
       this.readClasses$0().forEach$1(0, f);
     },
     get$length: function(_) {
-      return this.readClasses$0()._length;
+      return this.readClasses$0()._collection$_length;
     },
     lookup$1: function(value) {
       return this.readClasses$0().contains$1(0, value) ? value : null;
@@ -6875,8 +6882,44 @@ var $$ = Object.create(null);
 }],
 ["", "sjf.dart", , B, {
   "^": "",
+  loadStore: function() {
+    var httpRequest, t1, d;
+    if ($.store_string == null) {
+      httpRequest = new XMLHttpRequest();
+      C.HttpRequest_methods.open$3$async(httpRequest, "GET", "store.txt", false);
+      t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
+      d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.loadStore_closure(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
+      d._tryResume$0();
+      httpRequest.send("");
+      d.cancel$0();
+    }
+  },
+  loadDepot: function() {
+    var httpRequest, t1, d;
+    if ($.depot_string == null) {
+      httpRequest = new XMLHttpRequest();
+      C.HttpRequest_methods.open$3$async(httpRequest, "GET", "depot.txt", false);
+      t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
+      d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.loadDepot_closure(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
+      d._tryResume$0();
+      httpRequest.send("");
+      d.cancel$0();
+    }
+  },
+  loadProduct: function() {
+    var httpRequest, t1, d;
+    if ($.product_string == null) {
+      httpRequest = new XMLHttpRequest();
+      C.HttpRequest_methods.open$3$async(httpRequest, "GET", "product.txt", false);
+      t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
+      d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.loadProduct_closure(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
+      d._tryResume$0();
+      httpRequest.send("");
+      d.cancel$0();
+    }
+  },
   main: [function() {
-    var t1, httpRequest, d, text, text_area_view, hidden_export_view;
+    var t1, text, text_area_view, hidden_export_view;
     t1 = new B.ProductInfo(null, null, null, null, null, null, null, null, null);
     $.default_product_info = t1;
     t1.remain = "**";
@@ -6896,34 +6939,27 @@ var $$ = Object.create(null);
     $.store_num2 = 0;
     $.depot_num1 = 0;
     $.depot_num2 = 0;
-    $.store_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
-    $.depot_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
-    httpRequest = new XMLHttpRequest();
-    C.HttpRequest_methods.open$3$async(httpRequest, "GET", "product.txt", false);
-    t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
-    d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.main_closure(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
-    d._tryResume$0();
-    httpRequest.send("");
-    d.cancel$0();
     text = $.local_storage.getItem("product");
     if (text != null)
-      B.processLocalProductString(text);
-    C.HttpRequest_methods.open$3$async(httpRequest, "GET", "store.txt", false);
-    t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
-    d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.main_closure0(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
-    d._tryResume$0();
-    httpRequest.send("");
-    d.cancel$0();
+      B.processProductString(text);
+    else {
+      B.loadProduct();
+      B.processProductString($.product_string);
+    }
     text = $.local_storage.getItem("store");
-    B.processLocalStoreString(text == null ? "" : text);
-    C.HttpRequest_methods.open$3$async(httpRequest, "GET", "depot.txt", false);
-    t1 = H.setRuntimeTypeInfo(new W._EventStream(httpRequest, "loadend", false), [null]);
-    d = H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(new B.main_closure1(httpRequest)), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)]);
-    d._tryResume$0();
-    httpRequest.send("");
-    d.cancel$0();
+    if (text != null)
+      B.processStoreString(text);
+    else {
+      B.loadStore();
+      B.processStoreString($.store_string);
+    }
     text = $.local_storage.getItem("depot");
-    B.processLocalDepotString(text == null ? "" : text);
+    if (text != null)
+      B.processDepotString(text);
+    else {
+      B.loadDepot();
+      B.processDepotString($.depot_string);
+    }
     $.store_num1_e.textContent = J.toString$0($.store_num1);
     B.set_view_set2($.store_num2_e, $.store_num2);
     $.depot_num1_e.textContent = J.toString$0($.depot_num1);
@@ -6984,7 +7020,7 @@ var $$ = Object.create(null);
     t1 = $.groups_products;
     t1.toString;
     l = H.setRuntimeTypeInfo(new P.LinkedHashMapKeyIterable(t1), [H.getTypeArgumentByIndex(t1, 0)]);
-    count = l._map._length;
+    count = l._map._collection$_length;
     columns_count = C.JSInt_methods._tdivFast$1(count - 1, 8) + 1;
     for (cur = 0, i = 0; i < 8; ++i) {
       row_e = document.createElement("div", null);
@@ -7170,9 +7206,9 @@ var $$ = Object.create(null);
     $.depot_area_product_view.appendChild(remain_view);
     $.depot_area_product_view.appendChild(last_line_view);
   },
-  processStoreString: function(store_string) {
-    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string;
-    area_products_strings = store_string.split("\n\n");
+  genAreasString: function(string, areas_string) {
+    var area_products_strings, areas_count, i, area_products_string, t1, pos;
+    area_products_strings = string.split("\n\n");
     areas_count = area_products_strings.length;
     for (i = 0; i < areas_count; ++i) {
       if (i >= area_products_strings.length)
@@ -7180,34 +7216,20 @@ var $$ = Object.create(null);
       area_products_string = area_products_strings[i];
       t1 = J.getInterceptor$asx(area_products_string);
       pos = t1.indexOf$1(area_products_string, "\n");
-      area_name = t1.substring$2(area_products_string, 0, pos);
-      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
-      $.store_areas_string.$indexSet(0, area_name, products_string);
+      areas_string.$indexSet(0, t1.substring$2(area_products_string, 0, pos), C.JSString_methods.substring$1(area_products_string, pos + 1));
     }
   },
-  processLocalStoreString: function(store_string) {
-    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_view, spans, span1, span2, rows_string, rows_count, area_products_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, text, span10, span20, product_info, products, info, remain, set, t10, result;
-    if (store_string !== "") {
-      area_products_strings = store_string.split("\n\n");
-      areas_count = area_products_strings.length;
-      for (i = 0; i < areas_count; ++i) {
-        if (i >= area_products_strings.length)
-          return H.ioore(area_products_strings, i);
-        area_products_string = area_products_strings[i];
-        t1 = J.getInterceptor$asx(area_products_string);
-        pos = t1.indexOf$1(area_products_string, "\n");
-        area_name = t1.substring$2(area_products_string, 0, pos);
-        products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
-        $.store_areas_string.$indexSet(0, area_name, products_string);
-      }
-    }
+  processStoreString: function(store_string) {
+    var store_areas_string, t1, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_name, row, column, area_view, spans, span1, span2, rows_string, rows_count, area_products_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, pos, group_name, product_name, text, span10, span20, product_info, products, info, remain, set, t10, result;
+    store_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
+    B.genAreasString(store_string, store_areas_string);
     t1 = document.createElement("div", null);
     $.store_areas_view = t1;
     t1.className = "top";
     J.set$flexFlow$x(t1.style, "column");
     t1 = J.get$onClick$x($.store_areas_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreAreaProductsDisplay$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    areas_count = $.store_areas_string._length;
+    areas_count = store_areas_string._collection$_length;
     areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count - 1, 8) + 1;
     for (i = 0; i < 8; ++i) {
       line_view = document.createElement("div", null);
@@ -7233,11 +7255,9 @@ var $$ = Object.create(null);
     t1 = J.get$onClick$x(t1);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onStoreAreaProductDisplay$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     for (area_no = 0; area_no < areas_count; ++area_no) {
-      t1 = $.store_areas_string;
-      t1.toString;
-      t2 = new P.LinkedHashMapKeyIterable(t1);
-      t2.$builtinTypeInfo = [H.getTypeArgumentByIndex(t1, 0)];
-      area_name = t2.elementAt$1(0, area_no);
+      t1 = new P.LinkedHashMapKeyIterable(store_areas_string);
+      t1.$builtinTypeInfo = [H.getTypeArgumentByIndex(store_areas_string, 0)];
+      area_name = t1.elementAt$1(0, area_no);
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
       t1 = $.store_areas_view;
@@ -7250,8 +7270,7 @@ var $$ = Object.create(null);
       spans = W._FrozenElementList$_wrap(area_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
-      t1 = $.store_areas_string;
-      t1 = t1.get$values(t1);
+      t1 = store_areas_string.get$values(store_areas_string);
       rows_string = J.split$1$s(t1._f$1(t1._iterable.elementAt$1(0, area_no)), "\n");
       rows_count = rows_string.length;
       area_products_view = document.createElement("div", null);
@@ -7354,43 +7373,16 @@ var $$ = Object.create(null);
     }
   },
   processDepotString: function(depot_string) {
-    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string;
-    area_products_strings = depot_string.split("\n\n");
-    areas_count = area_products_strings.length;
-    for (i = 0; i < areas_count; ++i) {
-      if (i >= area_products_strings.length)
-        return H.ioore(area_products_strings, i);
-      area_products_string = area_products_strings[i];
-      t1 = J.getInterceptor$asx(area_products_string);
-      pos = t1.indexOf$1(area_products_string, "\n");
-      area_name = t1.substring$2(area_products_string, 0, pos);
-      products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
-      $.depot_areas_string.$indexSet(0, area_name, products_string);
-    }
-  },
-  processLocalDepotString: function(depot_string) {
-    var area_products_strings, areas_count, i, area_products_string, t1, pos, area_name, products_string, areas_columns_count, line_view, j, cell, area_no, t2, row, column, area_display_view, spans, span1, span2, rows_string, rows_count, area_products_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, group_name, product_name, text, span10, span20, product_info, products, info, remain, set, t10, result;
-    if (depot_string !== "") {
-      area_products_strings = depot_string.split("\n\n");
-      areas_count = area_products_strings.length;
-      for (i = 0; i < areas_count; ++i) {
-        if (i >= area_products_strings.length)
-          return H.ioore(area_products_strings, i);
-        area_products_string = area_products_strings[i];
-        t1 = J.getInterceptor$asx(area_products_string);
-        pos = t1.indexOf$1(area_products_string, "\n");
-        area_name = t1.substring$2(area_products_string, 0, pos);
-        products_string = C.JSString_methods.substring$1(area_products_string, pos + 1);
-        $.depot_areas_string.$indexSet(0, area_name, products_string);
-      }
-    }
+    var depot_areas_string, t1, areas_count, areas_columns_count, i, line_view, j, cell, area_no, area_name, row, column, area_display_view, spans, span1, span2, rows_string, rows_count, area_products_view, num1, num2, row_str, row_e, columns_str, columns_count, column_str, column_e, t2, pos, group_name, product_name, text, span10, span20, product_info, products, info, remain, set, t10, result;
+    depot_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
+    B.genAreasString(depot_string, depot_areas_string);
     t1 = document.createElement("div", null);
     $.depot_areas_view = t1;
     t1.className = "top";
     J.set$flexFlow$x(t1.style, "column");
     t1 = J.get$onClick$x($.depot_areas_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotAreaProductsDisplay$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    areas_count = $.depot_areas_string._length;
+    areas_count = depot_areas_string._collection$_length;
     areas_columns_count = C.JSInt_methods._tdivFast$1(areas_count - 1, 8) + 1;
     for (i = 0; i < 8; ++i) {
       line_view = document.createElement("div", null);
@@ -7416,11 +7408,9 @@ var $$ = Object.create(null);
     t1 = J.get$onClick$x(t1);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onDepotAreaProductDisplay$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
     for (area_no = 0; area_no < areas_count; ++area_no) {
-      t1 = $.depot_areas_string;
-      t1.toString;
-      t2 = new P.LinkedHashMapKeyIterable(t1);
-      t2.$builtinTypeInfo = [H.getTypeArgumentByIndex(t1, 0)];
-      area_name = t2.elementAt$1(0, area_no);
+      t1 = new P.LinkedHashMapKeyIterable(depot_areas_string);
+      t1.$builtinTypeInfo = [H.getTypeArgumentByIndex(depot_areas_string, 0)];
+      area_name = t1.elementAt$1(0, area_no);
       row = C.JSInt_methods.$tdiv(area_no, areas_columns_count);
       column = C.JSInt_methods.$mod(area_no, areas_columns_count);
       t1 = $.depot_areas_view;
@@ -7433,8 +7423,7 @@ var $$ = Object.create(null);
       spans = W._FrozenElementList$_wrap(area_display_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
-      t1 = $.depot_areas_string;
-      t1 = t1.get$values(t1);
+      t1 = depot_areas_string.get$values(depot_areas_string);
       rows_string = J.split$1$s(t1._f$1(t1._iterable.elementAt$1(0, area_no)), "\n");
       rows_count = rows_string.length;
       area_products_view = document.createElement("div", null);
@@ -7536,66 +7525,11 @@ var $$ = Object.create(null);
       $.depot_areas_products_view.appendChild(area_products_view);
     }
   },
-  processLocalProductString: function(product_string) {
-    var groups_string, groups_count, group, group_string, t1, pos, group_name, products, products_string, products_count, product, strs, product_name, product_info, t2;
-    groups_string = product_string.split("\n\n");
-    groups_count = groups_string.length;
-    for (group = 0; group < groups_count; ++group) {
-      if (group >= groups_string.length)
-        return H.ioore(groups_string, group);
-      group_string = groups_string[group];
-      t1 = J.getInterceptor$asx(group_string);
-      pos = t1.indexOf$1(group_string, "\n");
-      if (pos !== -1) {
-        group_name = t1.substring$2(group_string, 0, pos);
-        products = $.groups_products.$index(0, group_name);
-        if (products == null) {
-          products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, B.ProductInfo);
-          products.$indexSet(0, "", $.default_product_info);
-          $.groups_products.$indexSet(0, group_name, products);
-        }
-        products_string = C.JSString_methods.substring$1(group_string, pos + 1).split("\n");
-        products_count = products_string.length;
-        for (t1 = J.getInterceptor$asx(products), product = 0; product < products_count; ++product) {
-          if (product >= products_string.length)
-            return H.ioore(products_string, product);
-          strs = J.split$1$s(products_string[product], ",");
-          if (0 >= strs.length)
-            return H.ioore(strs, 0);
-          product_name = strs[0];
-          product_info = t1.$index(products, product_name);
-          if (product_info == null)
-            product_info = new B.ProductInfo(null, null, null, null, null, null, null, null, null);
-          if (1 >= strs.length)
-            return H.ioore(strs, 1);
-          product_info.set$remain(strs[1]);
-          if (2 >= strs.length)
-            return H.ioore(strs, 2);
-          product_info.max = H.Primitives_parseInt(strs[2], null, null);
-          if (3 >= strs.length)
-            return H.ioore(strs, 3);
-          product_info.set = H.Primitives_parseInt(strs[3], null, null);
-          if (4 >= strs.length)
-            return H.ioore(strs, 4);
-          product_info.get = H.Primitives_parseInt(strs[4], null, null);
-          t2 = strs.length;
-          if (5 >= t2)
-            return H.ioore(strs, 5);
-          product_info.label = strs[5];
-          if (6 >= t2)
-            return H.ioore(strs, 6);
-          product_info.name = strs[6];
-          t1.$indexSet(products, product_name, product_info);
-        }
-      }
-    }
-  },
-  processProductString: function(product_string) {
+  genGroupsProducts: function(product_string, groups_products) {
     var group_products, groups_string, groups_count, group, group_string, t1, pos, group_name, products_string, products_count, products, product, strs, product_name, product_info;
-    $.groups_products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, [P.Map, P.String, B.ProductInfo]);
     group_products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, B.ProductInfo);
     group_products.$indexSet(0, "", $.default_product_info);
-    $.groups_products.$indexSet(0, "", group_products);
+    groups_products.$indexSet(0, "", group_products);
     groups_string = product_string.split("\n\n");
     groups_count = groups_string.length;
     for (group = 0; group < groups_count; ++group) {
@@ -7637,12 +7571,17 @@ var $$ = Object.create(null);
           product_info.label = strs[5];
           if (6 >= t1)
             return H.ioore(strs, 6);
-          product_info.name = strs[6];
+          product_info.comment = strs[6];
           products.$indexSet(0, product_name, product_info);
         }
-        $.groups_products.$indexSet(0, group_name, products);
+        groups_products.$indexSet(0, group_name, products);
       }
     }
+  },
+  processProductString: function(product_string) {
+    var t1 = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, [P.Map, P.String, B.ProductInfo]);
+    $.groups_products = t1;
+    B.genGroupsProducts(product_string, t1);
   },
   local: function() {
     var t1, areas_products_view, t2;
@@ -7696,11 +7635,146 @@ var $$ = Object.create(null);
   onUrgent: [function(e) {
   }, "call$1", "onUrgent$closure", 2, 0, 7],
   onDisplayData: [function(e) {
+    var store_areas_string, areas_count, str1, area_no, t1, area_name, table_string, t, area_products_view, rows_string, rows_count, row, row_str, row_e, columns_str, columns_count, column, t2, cell_e, column_str, pos, group_name, product_name, new_group_name, new_product_name, str, depot_areas_string, str2, old_groups_products, groups_count, str3, group, group_products, old_group_products, products_count, product, info, old_info, not_same;
     if ($.divs_list.length === 1) {
-      B.local();
+      B.loadStore();
+      store_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
+      B.genAreasString($.store_string, store_areas_string);
+      areas_count = store_areas_string._collection$_length;
+      for (str1 = "", area_no = 0; area_no < areas_count; ++area_no) {
+        t1 = new P.LinkedHashMapKeyIterable(store_areas_string);
+        t1.$builtinTypeInfo = [H.getTypeArgumentByIndex(store_areas_string, 0)];
+        area_name = t1.elementAt$1(0, area_no);
+        t1 = store_areas_string.get$values(store_areas_string);
+        table_string = t1._f$1(t1._iterable.elementAt$1(0, area_no));
+        t = C.JSString_methods.$add("#", area_name);
+        area_products_view = $.store_areas_products_view.querySelector(t);
+        rows_string = J.split$1$s(table_string, "\n");
+        rows_count = rows_string.length;
+        for (row = 0; row < rows_count; ++row) {
+          if (row >= rows_string.length)
+            return H.ioore(rows_string, row);
+          row_str = rows_string[row];
+          area_products_view.toString;
+          t1 = new W._ChildNodeListLazy(area_products_view);
+          row_e = t1.elementAt$1(t1, row);
+          columns_str = J.split$1$s(row_str, ",");
+          columns_count = columns_str.length;
+          for (t1 = J.getInterceptor$x(row_e), column = 0; column < columns_count; ++column) {
+            t2 = t1.get$nodes(row_e);
+            cell_e = H.interceptedTypeCast(t2.elementAt$1(t2, column), "$isButtonElement");
+            if (column >= columns_str.length)
+              return H.ioore(columns_str, column);
+            column_str = columns_str[column];
+            t2 = J.getInterceptor(column_str);
+            if (!t2.$eq(column_str, "-")) {
+              pos = t2.indexOf$1(column_str, ".");
+              group_name = t2.substring$2(column_str, 0, pos);
+              product_name = C.JSString_methods.substring$1(column_str, pos + 1);
+            } else {
+              group_name = "";
+              product_name = "";
+            }
+            new_group_name = cell_e.getAttribute("group_name");
+            new_product_name = J.get$text$x(cell_e.firstChild);
+            if (group_name !== new_group_name || product_name !== new_product_name)
+              str1 += C.JSString_methods.$add("\n", area_name) + "," + C.JSInt_methods.toString$0(row) + "," + C.JSInt_methods.toString$0(column) + "," + group_name + "," + product_name;
+          }
+        }
+      }
+      str = (str1 !== "" ? C.JSString_methods.substring$1(str1, 1) : "") + "\n\n";
+      B.loadDepot();
+      depot_areas_string = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.String);
+      B.genAreasString($.depot_string, depot_areas_string);
+      areas_count = depot_areas_string._collection$_length;
+      for (str2 = "", area_no = 0; area_no < areas_count; ++area_no) {
+        t1 = new P.LinkedHashMapKeyIterable(depot_areas_string);
+        t1.$builtinTypeInfo = [H.getTypeArgumentByIndex(depot_areas_string, 0)];
+        area_name = t1.elementAt$1(0, area_no);
+        t1 = depot_areas_string.get$values(depot_areas_string);
+        table_string = t1._f$1(t1._iterable.elementAt$1(0, area_no));
+        t = C.JSString_methods.$add("#", area_name);
+        area_products_view = $.depot_areas_products_view.querySelector(t);
+        rows_string = J.split$1$s(table_string, "\n");
+        rows_count = rows_string.length;
+        for (row = 0; row < rows_count; ++row) {
+          if (row >= rows_string.length)
+            return H.ioore(rows_string, row);
+          row_str = rows_string[row];
+          area_products_view.toString;
+          t1 = new W._ChildNodeListLazy(area_products_view);
+          row_e = t1.elementAt$1(t1, row);
+          columns_str = J.split$1$s(row_str, ",");
+          columns_count = columns_str.length;
+          for (t1 = J.getInterceptor$x(row_e), column = 0; column < columns_count; ++column) {
+            t2 = t1.get$nodes(row_e);
+            cell_e = H.interceptedTypeCast(t2.elementAt$1(t2, column), "$isButtonElement");
+            if (column >= columns_str.length)
+              return H.ioore(columns_str, column);
+            column_str = columns_str[column];
+            t2 = J.getInterceptor(column_str);
+            if (!t2.$eq(column_str, "-")) {
+              pos = t2.indexOf$1(column_str, ".");
+              group_name = t2.substring$2(column_str, 0, pos);
+              product_name = C.JSString_methods.substring$1(column_str, pos + 1);
+            } else {
+              group_name = "";
+              product_name = "";
+            }
+            new_group_name = cell_e.getAttribute("group_name");
+            new_product_name = J.get$text$x(cell_e.firstChild);
+            if (group_name !== new_group_name || product_name !== new_product_name)
+              str2 += C.JSString_methods.$add("\n", area_name) + "," + C.JSInt_methods.toString$0(row) + "," + C.JSInt_methods.toString$0(column) + "," + group_name + "," + product_name;
+          }
+        }
+      }
+      if (str2 !== "")
+        str += C.JSString_methods.substring$1(str2, 1);
+      B.loadProduct();
+      old_groups_products = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, [P.Map, P.String, B.ProductInfo]);
+      B.genGroupsProducts($.product_string, old_groups_products);
+      groups_count = $.groups_products._collection$_length;
+      for (str3 = "", group = 0; group < groups_count; ++group) {
+        t1 = $.groups_products;
+        t1.toString;
+        t2 = new P.LinkedHashMapKeyIterable(t1);
+        t2.$builtinTypeInfo = [H.getTypeArgumentByIndex(t1, 0)];
+        group_name = t2.elementAt$1(0, group);
+        t1 = $.groups_products;
+        t1 = t1.get$values(t1);
+        group_products = t1._f$1(t1._iterable.elementAt$1(0, group));
+        t1 = old_groups_products.get$values(old_groups_products);
+        old_group_products = t1._f$1(t1._iterable.elementAt$1(0, group));
+        t1 = J.getInterceptor$asx(group_products);
+        products_count = t1.get$length(group_products);
+        if (typeof products_count !== "number")
+          return H.iae(products_count);
+        t2 = J.getInterceptor$x(old_group_products);
+        product = 0;
+        for (; product < products_count; ++product) {
+          product_name = J.elementAt$1$ax(t1.get$keys(group_products), product);
+          info = J.elementAt$1$ax(t1.get$values(group_products), product);
+          old_info = J.elementAt$1$ax(t2.get$values(old_group_products), product);
+          not_same = !J.$eq(info.get$remain(), old_info.get$remain()) && true;
+          if (!J.$eq(info.max, old_info.max))
+            not_same = true;
+          if (!J.$eq(info.set, old_info.set))
+            not_same = true;
+          if (!J.$eq(info.get, old_info.get))
+            not_same = true;
+          if (!J.$eq(info.label, old_info.label))
+            not_same = true;
+          if (!J.$eq(info.remain, old_info.remain))
+            not_same = true;
+          if (!J.$eq(info.comment, old_info.comment) ? true : not_same)
+            str3 += C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add("\n", group_name) + ",", J.$add$ns(product_name, ",")), J.$add$ns(J.toString$0(info.remain), ",")), J.$add$ns(J.toString$0(info.max), ",")), J.$add$ns(J.toString$0(info.set), ",")), J.$add$ns(J.toString$0(info.get), ",")), J.$add$ns(J.toString$0(info.label), ",")), J.toString$0(info.comment));
+        }
+      }
+      if (str3 !== "")
+        str += C.JSString_methods.substring$1(str3, 1);
       J.set$display$x($.data_view.style, "flex");
       B.divs_list_add1("export", $.data_view);
-      H.interceptedTypeCast($.data_view.firstChild, "$isTextAreaElement").value = "addf";
+      H.interceptedTypeCast($.data_view.firstChild, "$isTextAreaElement").value = str;
     }
   }, "call$1", "onDisplayData$closure", 2, 0, 7],
   onHiddenExport: [function(e) {
@@ -7786,6 +7860,10 @@ var $$ = Object.create(null);
       $.store_area_product_display_view = t1;
       t = C.JSString_methods.$add("*[name=\"", t1.parentElement.parentElement.id) + "\"]";
       $.store_area_products_display_view = $.store_areas_view.querySelector(t);
+    } else {
+      $.store_area_products_display_view = null;
+      $.store_area_products_view = null;
+      $.store_area_product_display_view = null;
     }
   },
   find_depot_area_product_display: function() {
@@ -7795,6 +7873,10 @@ var $$ = Object.create(null);
       $.depot_area_product_display_view = t1;
       t = C.JSString_methods.$add("*[name=\"", t1.parentElement.parentElement.id) + "\"]";
       $.depot_area_products_display_view = $.depot_areas_view.querySelector(t);
+    } else {
+      $.depot_area_products_display_view = null;
+      $.depot_area_products_view = null;
+      $.depot_area_product_display_view = null;
     }
   },
   find_group_product_display: function() {
@@ -7802,6 +7884,10 @@ var $$ = Object.create(null);
       var t1 = $.product_info.get$group();
       $.group_product_display_view = t1;
       $.group_products_view = J.get$parent$x(t1).parentElement;
+    } else {
+      $.group_products_display_view = null;
+      $.group_products_view = null;
+      $.group_product_display_view = null;
     }
   },
   display_store_area_product: function() {
@@ -8236,7 +8322,8 @@ var $$ = Object.create(null);
     if (t1 != null)
       B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
     t1 = $.depot_area_product_display_view;
-    B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
+    if (t1 != null)
+      B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
     t1 = $.group_product_display_view;
     if (t1 != null)
       B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
@@ -8260,7 +8347,7 @@ var $$ = Object.create(null);
     B.back("");
   }, "call$1", "onRemain$closure", 2, 0, 7],
   onClearAll: [function(e) {
-    var spans, span1, span2, cur, next, t1, t2, t, next0;
+    var spans, span1, span2, cur, next, t1, t2, next0;
     if (J.get$text$x($.depot_area_product_display_view.firstChild) !== "") {
       spans = J.querySelectorAll$1$x($.depot_area_product_display_view, "span");
       span1 = spans.elementAt$1(spans, 0);
@@ -8283,17 +8370,8 @@ var $$ = Object.create(null);
         if (J.get$text$x(span1) !== "0" && J.get$text$x(span2) !== "0") {
           $.depot_area_product_display_view = next;
           B.find_product_info(next);
-          if ($.product_info.get$store() != null) {
-            t1 = $.product_info.get$store();
-            $.store_area_product_display_view = t1;
-            t = C.JSString_methods.$add("*[name=\"", t1.parentElement.parentElement.id) + "\"]";
-            $.store_area_products_display_view = $.store_areas_view.querySelector(t);
-          }
-          if ($.product_info.get$group() != null) {
-            t1 = $.product_info.get$group();
-            $.group_product_display_view = t1;
-            $.group_products_view = J.get$parent$x(t1).parentElement;
-          }
+          B.find_store_area_product_display();
+          B.find_group_product_display();
           B.set_product_set("", 0);
         }
       }
@@ -8302,11 +8380,15 @@ var $$ = Object.create(null);
     B.back("");
   }, "call$1", "onClearAll$closure", 2, 0, 7],
   onNoLabelRemainZero: [function(e) {
-    var group_products = $.groups_products.$index(0, $.group_name);
-    if (group_products != null) {
+    var old1, old2, group_products;
+    old1 = $.depot_area_products_display_view;
+    old2 = $.depot_area_products_view;
+    group_products = $.groups_products.$index(0, $.group_name);
+    if (group_products != null)
       J.forEach$1$ax(group_products, new B.onNoLabelRemainZero_closure());
-      B.back("");
-    }
+    B.back("");
+    $.depot_area_products_display_view = old1;
+    $.depot_area_products_view = old2;
   }, "call$1", "onNoLabelRemainZero$closure", 2, 0, 7],
   hide_last: function() {
     var last_divs, l, t1;
@@ -8420,26 +8502,26 @@ var $$ = Object.create(null);
       }}
   },
   ProductInfo: {
-    "^": "Object;max>,set@,remain@,get,label,name,store@,depot@,group@"
+    "^": "Object;max>,set@,remain@,get,label,comment,store@,depot@,group@"
   },
-  main_closure: {
+  loadStore_closure: {
     "^": "Closure:10;httpRequest_0",
     call$1: function(e) {
-      B.processProductString(this.httpRequest_0.responseText);
+      $.store_string = this.httpRequest_0.responseText;
       return;
     }
   },
-  main_closure0: {
-    "^": "Closure:10;httpRequest_1",
+  loadDepot_closure: {
+    "^": "Closure:10;httpRequest_0",
     call$1: function(e) {
-      B.processStoreString(this.httpRequest_1.responseText);
+      $.depot_string = this.httpRequest_0.responseText;
       return;
     }
   },
-  main_closure1: {
-    "^": "Closure:10;httpRequest_2",
+  loadProduct_closure: {
+    "^": "Closure:10;httpRequest_0",
     call$1: function(e) {
-      B.processDepotString(this.httpRequest_2.responseText);
+      $.product_string = this.httpRequest_0.responseText;
       return;
     }
   },
@@ -8525,7 +8607,7 @@ var $$ = Object.create(null);
         t2.product_text_2 = product_text;
         product_text = C.JSString_methods.$add(product_text, J.$add$ns(J.toString$0(v.label), ","));
         t2.product_text_2 = product_text;
-        t2.product_text_2 = C.JSString_methods.$add(product_text, J.toString$0(v.name));
+        t2.product_text_2 = C.JSString_methods.$add(product_text, J.toString$0(v.comment));
       }
     }
   },
@@ -9153,6 +9235,9 @@ $.Device__isFirefox = null;
 $.Device__isWebKit = null;
 $.Device__cachedCssPrefix = null;
 $.local_storage = null;
+$.store_string = null;
+$.depot_string = null;
+$.product_string = null;
 $.top_view = null;
 $.store_areas_view = null;
 $.store_area_products_display_view = null;
@@ -9198,8 +9283,6 @@ $.depot_num2_e = null;
 $.data_view = null;
 $.state = null;
 $.z_index = null;
-$.store_areas_string = null;
-$.depot_areas_string = null;
 $.divs_list = null;
 $.groups_products = null;
 $.is_store_loop = null;
