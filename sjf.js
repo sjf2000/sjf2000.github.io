@@ -7100,16 +7100,16 @@ var $$ = Object.create(null);
       J.set$whiteSpace$x(row_e.style, "nowrap");
       for (j = 0; j < columns_count; ++j) {
         cell = document.createElement("button", null);
-        cell.appendChild(document.createElement("label", null));
         t1 = cell.style;
         J.getInterceptor$x(t1).set$width(t1, "3.4em");
         C.CssStyleDeclaration_methods.set$height(t1, "5.9em");
         C.CssStyleDeclaration_methods.set$whiteSpace(t1, "normal");
         C.CssStyleDeclaration_methods.set$verticalAlign(t1, "middle");
-        if (cur < count)
-          J.set$text$x(cell.firstChild, l.elementAt$1(0, cur));
-        else
-          J.set$text$x(cell.firstChild, "");
+        if (cur < count) {
+          cell.textContent = l.elementAt$1(0, cur);
+          cell.setAttribute("name", l.elementAt$1(0, cur));
+        } else
+          cell.textContent = "";
         ++cur;
         row_e.appendChild(cell);
       }
@@ -7345,6 +7345,7 @@ var $$ = Object.create(null);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
       area_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
       J.set$text$x(area_view.firstChild, area_name);
+      area_view.setAttribute("name", area_name);
       spans = W._FrozenElementList$_wrap(area_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
@@ -7497,6 +7498,7 @@ var $$ = Object.create(null);
       t1 = new W._ChildNodeListLazy(H.interceptedTypeCast(t1.elementAt$1(t1, row), "$isDivElement"));
       area_display_view = H.interceptedTypeCast(t1.elementAt$1(t1, column), "$isButtonElement");
       J.set$text$x(area_display_view.firstChild, area_name);
+      area_display_view.setAttribute("name", area_name);
       spans = W._FrozenElementList$_wrap(area_display_view.querySelectorAll("span"), null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
@@ -7945,49 +7947,42 @@ var $$ = Object.create(null);
         $.product_info = info;
     }
   },
-  find_store_area: function() {
-    var t1, area_name, n, t2;
-    $.store_area_products_view = null;
-    $.store_area_products_display_view = null;
-    t1 = $.store_area_product_display_view;
-    if (t1 != null) {
-      t1 = t1.parentElement.parentElement;
-      $.store_area_products_view = t1;
-      area_name = t1.id;
-      for (t1 = C.NodeList_methods.get$iterator($.store_areas_view.childNodes); t1.moveNext$0();) {
-        n = t1._html$_current;
-        t2 = J.get$text$x(n.firstChild);
-        if (t2 == null ? area_name == null : t2 === area_name) {
-          $.store_area_products_display_view = n;
-          break;
-        }
-      }
+  find_store_area_product_display: function() {
+    var t1, t;
+    if ($.product_info.get$store() != null) {
+      t1 = $.product_info.get$store();
+      $.store_area_product_display_view = t1;
+      t = C.JSString_methods.$add("*[name=\"", t1.parentElement.parentElement.id) + "\"]";
+      $.store_area_products_display_view = $.store_areas_view.querySelector(t);
+    } else {
+      $.store_area_products_display_view = null;
+      $.store_area_products_view = null;
+      $.store_area_product_display_view = null;
     }
   },
-  find_depot_area: function() {
-    var t1, area_name, n, t2;
-    $.depot_area_products_view = null;
-    $.depot_area_products_display_view = null;
-    t1 = $.depot_area_product_display_view;
-    if (t1 != null) {
-      t1 = t1.parentElement.parentElement;
-      $.depot_area_products_view = t1;
-      area_name = t1.id;
-      for (t1 = C.NodeList_methods.get$iterator($.depot_areas_view.childNodes); t1.moveNext$0();) {
-        n = t1._html$_current;
-        t2 = J.get$text$x(n.firstChild);
-        if (t2 == null ? area_name == null : t2 === area_name) {
-          $.depot_area_products_display_view = n;
-          break;
-        }
-      }
+  find_depot_area_product_display: function() {
+    var t1, t;
+    if ($.product_info.get$depot() != null) {
+      t1 = $.product_info.get$depot();
+      $.depot_area_product_display_view = t1;
+      t = C.JSString_methods.$add("*[name=\"", t1.parentElement.parentElement.id) + "\"]";
+      $.depot_area_products_display_view = $.depot_areas_view.querySelector(t);
+    } else {
+      $.depot_area_products_display_view = null;
+      $.depot_area_products_view = null;
+      $.depot_area_product_display_view = null;
     }
   },
-  find_group: function() {
-    $.group_products_view = null;
-    var t1 = $.group_product_display_view;
-    if (t1 != null)
+  find_group_product_display: function() {
+    if ($.product_info.get$group() != null) {
+      var t1 = $.product_info.get$group();
+      $.group_product_display_view = t1;
       $.group_products_view = J.get$parent$x(t1).parentElement;
+    } else {
+      $.group_products_display_view = null;
+      $.group_products_view = null;
+      $.group_product_display_view = null;
+    }
   },
   display_store_area_product: function() {
     J.set$text$x($.store_area_product_view.firstChild, $.product_name);
@@ -8004,10 +7999,8 @@ var $$ = Object.create(null);
       $.store_area_product_display_view = t1;
     }
     B.find_product_info(t1);
-    $.depot_area_product_display_view = $.product_info.get$depot();
-    B.find_depot_area();
-    $.group_product_display_view = $.product_info.get$group();
-    B.find_group();
+    B.find_depot_area_product_display();
+    B.find_group_product_display();
     if ($.state === 1) {
       B.change();
       if (J.get$last$ax($.divs_list).get$mark() === "change_use_store")
@@ -8037,10 +8030,8 @@ var $$ = Object.create(null);
       $.depot_area_product_display_view = t1;
     }
     B.find_product_info(t1);
-    $.store_area_product_display_view = $.product_info.get$store();
-    B.find_store_area();
-    $.group_product_display_view = $.product_info.get$group();
-    B.find_group();
+    B.find_store_area_product_display();
+    B.find_group_product_display();
     if (!J.$eq($.product_name, "")) {
       $.space_click_count = 0;
       J.set$text$x($.depot_area_product_view.firstChild, $.product_name);
@@ -8167,7 +8158,7 @@ var $$ = Object.create(null);
     t1 = !J.$eq(remain, "0") ? set : 0;
     remain_set_update = J.$sub$n(t1, !J.$eq(old_remain, "0") ? old_set : 0);
     set_update = J.$sub$n(set, old_set);
-    spans = J.querySelectorAll$1$x($.change_area_products_display_view, "span");
+    spans = W._FrozenElementList$_wrap($.change_area_products_display_view.querySelectorAll("span"), null);
     span1 = spans.elementAt$1(spans, 0);
     span2 = spans.elementAt$1(spans, 1);
     t1 = J.getInterceptor$x(span1);
@@ -8233,17 +8224,14 @@ var $$ = Object.create(null);
     }
   }, "call$1", "onGroupProductDisplay$closure", 2, 0, 7],
   change_use: function() {
-    var prev, t1, t2, l;
+    var prev, l;
     prev = J.get$previousElementSibling$x($.change_area_product_display_view);
     if (prev != null)
       B.find_product_info(prev);
     else
       B.find_product_info($.change_area_product_display_view);
-    t1 = $.change_kind;
-    t2 = $.product_info;
-    if (t1 === "store") {
-      $.group_product_display_view = t2.get$group();
-      B.find_group();
+    if ($.change_kind === "store") {
+      B.find_group_product_display();
       if ($.group_products_view == null)
         return;
       l = H.setRuntimeTypeInfo([], [W.DivElement]);
@@ -8255,8 +8243,7 @@ var $$ = Object.create(null);
       J.set$top$x(J.get$style$x($.group_products_view), J.get$height$x($.change_area_products_view.style));
       J.set$bottom$x(J.get$style$x($.group_products_view), $.bottom_height);
     } else {
-      $.store_area_product_display_view = t2.get$store();
-      B.find_store_area();
+      B.find_store_area_product_display();
       if ($.store_area_products_view == null)
         return;
       J.set$height$x($.change_area_products_view.style, J.get$height$x(J.get$style$x($.change_area_product_display_view)));
@@ -8349,8 +8336,7 @@ var $$ = Object.create(null);
     B.divs_list_add1("groups", $.groups_view);
     if (J.get$previousElementSibling$x($.change_area_product_display_view) != null) {
       B.find_product_info($.change_area_product_display_view);
-      $.group_product_display_view = $.product_info.get$group();
-      B.find_group();
+      B.find_group_product_display();
       if ($.group_products_view != null) {
         J.set$display$x($.groups_products_view.style, "inline");
         J.set$display$x(J.get$style$x($.group_products_view), "inline");
@@ -8439,7 +8425,7 @@ var $$ = Object.create(null);
     if (t1 != null)
       B.set_product_display_view(t1);
     if ($.store_area_product_display_view != null) {
-      area_spans = J.querySelectorAll$1$x($.store_area_products_display_view, "span");
+      area_spans = W._FrozenElementList$_wrap($.store_area_products_display_view.querySelectorAll("span"), null);
       area_set_span = area_spans.elementAt$1(area_spans, 0);
       area_remain_set_span = area_spans.elementAt$1(area_spans, 1);
       t1 = J.getInterceptor$x(area_set_span);
@@ -8465,7 +8451,7 @@ var $$ = Object.create(null);
       B.set_view_set2($.store_num2_e, t1);
     }
     if ($.depot_area_product_display_view != null) {
-      area_spans = J.querySelectorAll$1$x($.depot_area_products_display_view, "span");
+      area_spans = W._FrozenElementList$_wrap($.depot_area_products_display_view.querySelectorAll("span"), null);
       area_set_span = area_spans.elementAt$1(area_spans, 0);
       area_remain_set_span = area_spans.elementAt$1(area_spans, 1);
       t1 = J.getInterceptor$x(area_set_span);
@@ -8512,10 +8498,8 @@ var $$ = Object.create(null);
     t1 = $.store_area_product_display_view;
     if (t1 != null) {
       B.find_product_info(t1);
-      $.depot_area_product_display_view = $.product_info.get$depot();
-      B.find_depot_area();
-      $.group_product_display_view = $.product_info.get$group();
-      B.find_group();
+      B.find_depot_area_product_display();
+      B.find_group_product_display();
       B.display_store_area_product();
     }
   },
@@ -8611,13 +8595,8 @@ var $$ = Object.create(null);
         if (J.get$text$x(span1) !== "0" && J.get$text$x(span2) !== "0") {
           $.depot_area_product_display_view = next;
           B.find_product_info(next);
-          $.store_area_product_display_view = $.product_info.get$store();
-          B.find_store_area();
-          t1 = $.product_info.get$group();
-          $.group_product_display_view = t1;
-          $.group_products_view = null;
-          if (t1 != null)
-            $.group_products_view = J.get$parent$x(t1).parentElement;
+          B.find_store_area_product_display();
+          B.find_group_product_display();
           B.set_product_set("", 0);
         }
       }
@@ -8956,12 +8935,9 @@ var $$ = Object.create(null);
     call$2: function($name, info) {
       $.product_name = $name;
       $.product_info = info;
-      $.store_area_product_display_view = info.get$store();
-      B.find_store_area();
-      $.depot_area_product_display_view = $.product_info.get$depot();
-      B.find_depot_area();
-      $.group_product_display_view = $.product_info.get$group();
-      B.find_group();
+      B.find_store_area_product_display();
+      B.find_depot_area_product_display();
+      B.find_group_product_display();
       if ($.depot_area_product_display_view == null) {
         B.set_product_set("0", -1);
         B.set_product_remain("0");
