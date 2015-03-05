@@ -7386,6 +7386,7 @@ var $$ = Object.create(null);
           }
           column_e.setAttribute("group_name", group_name);
           text = document.createElement("label", null);
+          text.textContent = product_name;
           column_e.appendChild(text);
           column_e.appendChild(document.createElement("br", null));
           span10 = document.createElement("span", null);
@@ -7401,11 +7402,11 @@ var $$ = Object.create(null);
               window.alert(column_str);
             else
               product_info = info;
-          }
+          } else
+            window.alert(group_name);
           if (!J.$eq(product_info, $.default_product_info))
             if (product_info.get$store() == null) {
               product_info.store = column_e;
-              text.textContent = product_name;
               remain = product_info.remain;
               if (product_name !== "")
                 B.set_view_remain(column_e, span10, remain);
@@ -7561,7 +7562,8 @@ var $$ = Object.create(null);
               product_info = info;
             else
               window.alert(column_str);
-          }
+          } else
+            window.alert(group_name);
           if (!J.$eq(product_info, $.default_product_info))
             if (product_info.get$depot() == null) {
               product_info.depot = column_e;
