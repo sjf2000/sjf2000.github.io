@@ -8244,41 +8244,41 @@ var $$ = Object.create(null);
     span1 = spans.elementAt$1(spans, 0);
     span2 = spans.elementAt$1(spans, 1);
     t1 = J.getInterceptor$x(span1);
-    t1.set$text(span1, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span1), null, null), remain_set_update)));
+    t1.set$text(span1, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span1), null, null), set_update)));
     t1 = J.getInterceptor$x(span2);
-    t1.set$text(span2, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span2), null, null), set_update)));
+    t1.set$text(span2, J.toString$0(J.$add$ns(H.Primitives_parseInt(t1.get$text(span2), null, null), remain_set_update)));
     if ($.change_kind === "store") {
       t1 = $.store_num1;
-      if (typeof t1 !== "number")
-        return t1.$add();
-      if (typeof remain_set_update !== "number")
-        return H.iae(remain_set_update);
-      t1 += remain_set_update;
-      $.store_num1 = t1;
-      $.store_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
-      t1 = $.store_num2;
       if (typeof t1 !== "number")
         return t1.$add();
       if (typeof set_update !== "number")
         return H.iae(set_update);
       t1 += set_update;
+      $.store_num1 = t1;
+      $.store_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
+      t1 = $.store_num2;
+      if (typeof t1 !== "number")
+        return t1.$add();
+      if (typeof remain_set_update !== "number")
+        return H.iae(remain_set_update);
+      t1 += remain_set_update;
       $.store_num2 = t1;
       $.store_num2_e.textContent = C.JSNumber_methods.toString$0(t1);
     } else {
       t1 = $.depot_num1;
       if (typeof t1 !== "number")
         return t1.$add();
-      if (typeof remain_set_update !== "number")
-        return H.iae(remain_set_update);
-      t1 += remain_set_update;
+      if (typeof set_update !== "number")
+        return H.iae(set_update);
+      t1 += set_update;
       $.depot_num1 = t1;
       $.depot_num1_e.textContent = C.JSNumber_methods.toString$0(t1);
       t1 = $.depot_num2;
       if (typeof t1 !== "number")
         return t1.$add();
-      if (typeof set_update !== "number")
-        return H.iae(set_update);
-      t1 += set_update;
+      if (typeof remain_set_update !== "number")
+        return H.iae(remain_set_update);
+      t1 += remain_set_update;
       $.depot_num2 = t1;
       $.depot_num2_e.textContent = C.JSNumber_methods.toString$0(t1);
     }
