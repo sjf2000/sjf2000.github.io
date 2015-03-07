@@ -6385,7 +6385,7 @@ var $$ = Object.create(null);
     },
     get$keys: function(_) {
       var attributes, keys, len, i;
-      attributes = this._element.attributes;
+      attributes = this._html$_element.attributes;
       keys = H.setRuntimeTypeInfo([], [P.String]);
       for (len = attributes.length, i = 0; i < len; ++i) {
         if (i >= attributes.length)
@@ -6400,7 +6400,7 @@ var $$ = Object.create(null);
     },
     get$values: function(_) {
       var attributes, values, len, i;
-      attributes = this._element.attributes;
+      attributes = this._html$_element.attributes;
       values = H.setRuntimeTypeInfo([], [P.String]);
       for (len = attributes.length, i = 0; i < len; ++i) {
         if (i >= attributes.length)
@@ -6419,12 +6419,12 @@ var $$ = Object.create(null);
     }
   },
   _ElementAttributeMap: {
-    "^": "_AttributeMap;_element",
+    "^": "_AttributeMap;_html$_element",
     $index: function(_, key) {
-      return this._element.getAttribute(key);
+      return this._html$_element.getAttribute(key);
     },
     $indexSet: function(_, key, value) {
-      this._element.setAttribute(key, value);
+      this._html$_element.setAttribute(key, value);
     },
     get$length: function(_) {
       return this.get$keys(this).length;
@@ -6434,11 +6434,11 @@ var $$ = Object.create(null);
     }
   },
   _ElementCssClassSet: {
-    "^": "CssClassSetImpl;_element",
+    "^": "CssClassSetImpl;_html$_element",
     readClasses$0: function() {
       var s, t1, trimmed;
       s = P.LinkedHashSet_LinkedHashSet(null, null, null, P.String);
-      for (t1 = J.get$className$x(this._element).split(" "), t1 = new H.ListIterator(t1, t1.length, 0, null); t1.moveNext$0();) {
+      for (t1 = J.get$className$x(this._html$_element).split(" "), t1 = new H.ListIterator(t1, t1.length, 0, null); t1.moveNext$0();) {
         trimmed = J.trim$0$s(t1._current);
         if (trimmed.length !== 0)
           s.add$1(0, trimmed);
@@ -6447,7 +6447,7 @@ var $$ = Object.create(null);
     },
     writeClasses$1: function(s) {
       P.List_List$from(s, true, null);
-      J.set$className$x(this._element, s.join$1(0, " "));
+      J.set$className$x(this._html$_element, s.join$1(0, " "));
     }
   },
   _EventStream: {
@@ -6559,10 +6559,10 @@ var $$ = Object.create(null);
     "%": "SVGAltGlyphDefElement|SVGAltGlyphItemElement|SVGAnimateElement|SVGAnimateMotionElement|SVGAnimateTransformElement|SVGAnimationElement|SVGComponentTransferFunctionElement|SVGCursorElement|SVGDescElement|SVGDiscardElement|SVGFEBlendElement|SVGFEComponentTransferElement|SVGFECompositeElement|SVGFEConvolveMatrixElement|SVGFEDiffuseLightingElement|SVGFEDisplacementMapElement|SVGFEDistantLightElement|SVGFEDropShadowElement|SVGFEFloodElement|SVGFEFuncAElement|SVGFEFuncBElement|SVGFEFuncGElement|SVGFEFuncRElement|SVGFEGaussianBlurElement|SVGFEImageElement|SVGFEMergeElement|SVGFEMergeNodeElement|SVGFEMorphologyElement|SVGFEOffsetElement|SVGFEPointLightElement|SVGFESpecularLightingElement|SVGFESpotLightElement|SVGFETileElement|SVGFETurbulenceElement|SVGFilterElement|SVGFontElement|SVGFontFaceElement|SVGFontFaceFormatElement|SVGFontFaceNameElement|SVGFontFaceSrcElement|SVGFontFaceUriElement|SVGGlyphElement|SVGGlyphRefElement|SVGGradientElement|SVGHKernElement|SVGLinearGradientElement|SVGMPathElement|SVGMarkerElement|SVGMaskElement|SVGMetadataElement|SVGMissingGlyphElement|SVGPatternElement|SVGRadialGradientElement|SVGScriptElement|SVGSetElement|SVGStopElement|SVGStyleElement|SVGSymbolElement|SVGTitleElement|SVGVKernElement|SVGViewElement;SVGElement"
   },
   _AttributeClassSet: {
-    "^": "CssClassSetImpl;_svg$_element",
+    "^": "CssClassSetImpl;_element",
     readClasses$0: function() {
       var classname, s, t1, trimmed;
-      classname = this._svg$_element.getAttribute("class");
+      classname = this._element.getAttribute("class");
       s = P.LinkedHashSet_LinkedHashSet(null, null, null, P.String);
       if (classname == null)
         return s;
@@ -6574,7 +6574,7 @@ var $$ = Object.create(null);
       return s;
     },
     writeClasses$1: function(s) {
-      this._svg$_element.setAttribute("class", s.join$1(0, " "));
+      this._element.setAttribute("class", s.join$1(0, " "));
     }
   }
 }],
@@ -7432,7 +7432,7 @@ var $$ = Object.create(null);
             result = row_e.lastChild;
             if (result == null)
               H.throwExpression(P.StateError$("No elements"));
-            t2 = J.get$attributes$x(result)._element.getAttribute("group_name");
+            t2 = J.get$attributes$x(result)._html$_element.getAttribute("group_name");
             if (t10 == null ? t2 != null : t10 !== t2) {
               J.set$borderLeftColor$x(column_e.style, "rgb(255,0,0)");
               J.set$borderRightColor$x(result.style, "rgb(255,0,0)");
@@ -7445,7 +7445,7 @@ var $$ = Object.create(null);
               H.throwExpression(P.StateError$("No elements"));
             t2 = new W._ChildNodeListLazy(result);
             e = t2.elementAt$1(t2, column);
-            t2 = J.get$attributes$x(e)._element.getAttribute("group_name");
+            t2 = J.get$attributes$x(e)._html$_element.getAttribute("group_name");
             if (t10 == null ? t2 != null : t10 !== t2) {
               J.set$borderTopColor$x(column_e.style, "rgb(255,0,0)");
               J.set$borderBottomColor$x(e.style, "rgb(255,0,0)");
@@ -7593,7 +7593,7 @@ var $$ = Object.create(null);
             result = row_e.lastChild;
             if (result == null)
               H.throwExpression(P.StateError$("No elements"));
-            t2 = J.get$attributes$x(result)._element.getAttribute("group_name");
+            t2 = J.get$attributes$x(result)._html$_element.getAttribute("group_name");
             if (t10 == null ? t2 != null : t10 !== t2) {
               J.set$borderLeftColor$x(column_e.style, "rgb(255,0,0)");
               J.set$borderRightColor$x(result.style, "rgb(255,0,0)");
@@ -7606,7 +7606,7 @@ var $$ = Object.create(null);
               H.throwExpression(P.StateError$("No elements"));
             t2 = new W._ChildNodeListLazy(result);
             e = t2.elementAt$1(t2, column);
-            t2 = J.get$attributes$x(e)._element.getAttribute("group_name");
+            t2 = J.get$attributes$x(e)._html$_element.getAttribute("group_name");
             if (t10 == null ? t2 != null : t10 !== t2) {
               J.set$borderTopColor$x(column_e.style, "rgb(255,0,0)");
               J.set$borderBottomColor$x(e.style, "rgb(255,0,0)");
@@ -7897,7 +7897,9 @@ var $$ = Object.create(null);
   onStoreAreaProductsDisplay: [function(e) {
     var t1, str;
     t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
+    if (!!J.getInterceptor(t1.get$target(e)).$isDivElement)
+      return;
+    else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
       t1 = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
       $.store_area_products_display_view = t1;
     } else {
@@ -7920,7 +7922,9 @@ var $$ = Object.create(null);
   onDepotAreaProductsDisplay: [function(e) {
     var t1, str;
     t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
+    if (!!J.getInterceptor(t1.get$target(e)).$isDivElement)
+      return;
+    else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
       t1 = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
       $.depot_area_products_display_view = t1;
     } else {
@@ -7943,7 +7947,9 @@ var $$ = Object.create(null);
   onGroupProductsDisplay: [function(e) {
     var t1, str;
     t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
+    if (!!J.getInterceptor(t1.get$target(e)).$isDivElement)
+      return;
+    else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
       t1 = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
       $.group_products_display_view = t1;
     } else {
@@ -7977,7 +7983,7 @@ var $$ = Object.create(null);
   },
   find_product_info_of_elem: function(e) {
     var t1;
-    $.group_name = J.get$attributes$x(e)._element.getAttribute("group_name");
+    $.group_name = J.get$attributes$x(e)._html$_element.getAttribute("group_name");
     t1 = J.get$text$x(e.firstChild);
     $.product_name = t1;
     $.product_info = B.find_product_info_of_product($.group_name, t1);
@@ -8048,7 +8054,9 @@ var $$ = Object.create(null);
   },
   onStoreAreaProductDisplay: [function(e) {
     var t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
+    if (!!J.getInterceptor(t1.get$target(e)).$isDivElement)
+      return;
+    else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
       t1 = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
       $.store_area_product_display_view = t1;
     } else {
@@ -8081,7 +8089,9 @@ var $$ = Object.create(null);
   onDepotAreaProductDisplay: [function(e) {
     var t1, text;
     t1 = J.getInterceptor$x(e);
-    if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
+    if (!!J.getInterceptor(t1.get$target(e)).$isDivElement)
+      return;
+    else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
       t1 = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
       $.depot_area_product_display_view = t1;
     } else {
@@ -8124,7 +8134,7 @@ var $$ = Object.create(null);
   }, "call$1", "onDepotAreaProductDisplay$closure", 2, 0, 7],
   change0: function(e, group_name, product_name) {
     var change_group_name, change_product_name, change_product_info, product_info, t, product_display_views, t1, product_display_view, t2, change_area_products_display_view, row_prev_e, row_next_e, i, column_prev_e, column_next_e, old_remain, old_set, remain, set, remain_set_update, set_update, spans, span1, span2;
-    change_group_name = J.get$attributes$x(e)._element.getAttribute("group_name");
+    change_group_name = J.get$attributes$x(e)._html$_element.getAttribute("group_name");
     change_product_name = J.get$text$x(e.firstChild);
     change_product_info = B.find_product_info_of_product(change_group_name, change_product_name);
     if (change_product_info != null && !J.$eq(change_product_info, $.default_product_info))
@@ -8204,7 +8214,7 @@ var $$ = Object.create(null);
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       column_prev_e = t1.elementAt$1(t1, i);
-      t2 = J.get$attributes$x(column_prev_e)._element.getAttribute("group_name");
+      t2 = J.get$attributes$x(column_prev_e)._html$_element.getAttribute("group_name");
       t1 = e.style;
       if (group_name == null ? t2 != null : group_name !== t2) {
         J.set$borderTopColor$x(t1, "rgb(255,0,0)");
@@ -8223,7 +8233,7 @@ var $$ = Object.create(null);
       t1.toString;
       t1 = new W._ChildNodeListLazy(t1);
       column_next_e = t1.elementAt$1(t1, i);
-      t2 = J.get$attributes$x(column_next_e)._element.getAttribute("group_name");
+      t2 = J.get$attributes$x(column_next_e)._html$_element.getAttribute("group_name");
       t1 = e.style;
       if (group_name == null ? t2 != null : group_name !== t2) {
         J.set$borderBottomColor$x(t1, "rgb(255,0,0)");
@@ -8305,16 +8315,16 @@ var $$ = Object.create(null);
     var t1;
     if ($.state === 1) {
       t1 = J.getInterceptor$x(e);
-      if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
-        t1 = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
-        $.group_product_display_view = t1;
-      } else {
-        t1 = H.interceptedTypeCast(J.get$parent$x(t1.get$target(e)), "$isButtonElement");
-        $.group_product_display_view = t1;
-      }
-      B.find_product_info_of_elem(t1);
+      if (!!J.getInterceptor(t1.get$target(e)).$isDivElement)
+        return;
+      else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
+        $.group_product_display_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+      else
+        $.group_product_display_view = H.interceptedTypeCast(J.get$parent$x(t1.get$target(e)), "$isButtonElement");
+      J.get$last$ax($.divs_list).get$mark();
+      B.find_product_info_of_elem($.group_product_display_view);
       B.change();
-      if (J.get$last$ax($.divs_list).get$mark() === "change_use_store" || J.get$last$ax($.divs_list).get$mark() === "change_use_depot")
+      if (J.get$last$ax($.divs_list).get$mark() === "change_use_store" || J.get$last$ax($.divs_list).get$mark() === "change_use_product")
         B.change_next();
     }
   }, "call$1", "onGroupProductDisplay$closure", 2, 0, 7],
@@ -8331,7 +8341,7 @@ var $$ = Object.create(null);
     $.change_product_info = $.product_info;
     B.back("");
     prev = J.get$previousElementSibling$x($.change_area_product_display_view);
-    if (prev != null)
+    if (prev != null && prev.getAttribute("group_name") !== "")
       B.find_product_info_of_elem(prev);
     else
       B.find_product_info_of_elem($.change_area_product_display_view);
@@ -8392,16 +8402,24 @@ var $$ = Object.create(null);
       B.change_set(prev_e);
   }, "call$1", "onChangePrev$closure", 2, 0, 7],
   change_set: function(e) {
+    var t1 = $.change_area_product_display_view;
+    if (t1 != null) {
+      J.get$classes$x(t1).remove$1(0, "has_outline");
+      J.get$classes$x($.change_area_product_display_view).add$1(0, "has_no_outline");
+    }
     $.change_area_product_display_view = e;
-    B.find_product_info_of_elem(e);
+    J.get$classes$x(e).add$1(0, "has_outline");
+    B.find_product_info_of_elem($.change_area_product_display_view);
     $.change_group_name = $.group_name;
     $.change_product_name = $.product_name;
     $.change_product_info = $.product_info;
   },
   change_next: function() {
     var next_e = J.get$nextElementSibling$x($.change_area_product_display_view);
-    if (next_e != null)
+    if (next_e != null) {
+      J.scrollIntoView$0$x(next_e);
       B.change_set(next_e);
+    }
   },
   onChangeNext: [function(e) {
     B.change_next();
@@ -8428,7 +8446,7 @@ var $$ = Object.create(null);
       J.set$bottom$x(J.get$style$x($.group_products_view), $.bottom_height);
       div_list.push($.groups_products_view);
       div_list.push($.group_products_view);
-      J.get$last$ax($.divs_list).set$mark("chang_use_product");
+      J.get$last$ax($.divs_list).set$mark("change_use_product");
     }
   }, "call$1", "onChangeUseProduct$closure", 2, 0, 7],
   onChangeUseStore: [function(e) {
@@ -8458,12 +8476,14 @@ var $$ = Object.create(null);
         J.scrollIntoView$0$x(t1);
       div_list.push($.store_areas_products_view);
       div_list.push($.store_area_products_view);
-      J.get$last$ax($.divs_list).set$mark("chang_use_store");
+      J.get$last$ax($.divs_list).set$mark("change_use_store");
     }
   }, "call$1", "onChangeUseStore$closure", 2, 0, 7],
   onChangeClose: [function(e) {
     var l;
     B.back("");
+    J.get$classes$x($.change_area_product_display_view).remove$1(0, "has_outline");
+    J.get$classes$x($.change_area_product_display_view).add$1(0, "has_no_outline");
     l = H.setRuntimeTypeInfo([], [W.DivElement]);
     l.push($.change_areas_products_view);
     l.push($.change_area_products_view);
@@ -8652,7 +8672,7 @@ var $$ = Object.create(null);
     next = J.get$nextElementSibling$x(cur);
     for (; next != null; cur = next, next = next0) {
       t1 = next.getAttribute("group_name");
-      t2 = J.get$attributes$x(cur)._element.getAttribute("group_name");
+      t2 = J.get$attributes$x(cur)._html$_element.getAttribute("group_name");
       if (t1 == null ? t2 != null : t1 !== t2)
         break;
       if (J.get$text$x(next.firstChild) !== "") {
@@ -8752,7 +8772,7 @@ var $$ = Object.create(null);
     next = J.get$nextElementSibling$x(cur);
     for (; next != null; cur = next, next = next0) {
       t1 = next.getAttribute("group_name");
-      t2 = J.get$attributes$x(cur)._element.getAttribute("group_name");
+      t2 = J.get$attributes$x(cur)._html$_element.getAttribute("group_name");
       if (t1 == null ? t2 != null : t1 !== t2)
         break;
       if (J.get$text$x(next.firstChild) !== "") {
@@ -8761,7 +8781,7 @@ var $$ = Object.create(null);
         span2 = spans.elementAt$1(spans, 1);
         if (J.get$text$x(span1) !== "0" && J.get$text$x(span2) !== "0") {
           $.depot_area_product_display_view = next;
-          $.group_name = J.get$attributes$x(next)._element.getAttribute("group_name");
+          $.group_name = J.get$attributes$x(next)._html$_element.getAttribute("group_name");
           t1 = J.get$text$x(next.firstChild);
           $.product_name = t1;
           t1 = B.find_product_info_of_product($.group_name, t1);
@@ -9345,6 +9365,9 @@ J.get$attributes$x = function(receiver) {
 };
 J.get$className$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$className(receiver);
+};
+J.get$classes$x = function(receiver) {
+  return J.getInterceptor$x(receiver).get$classes(receiver);
 };
 J.get$error$x = function(receiver) {
   return J.getInterceptor$x(receiver).get$error(receiver);
