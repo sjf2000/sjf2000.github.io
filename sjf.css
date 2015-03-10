@@ -9,6 +9,15 @@ body {
   flex-flow: column;
 }
 
+.full_screen{
+  display: none;
+  position: fixed;
+  top: 0px;
+  bottom:0px;
+  left: 0px;
+  width:100%;
+}
+
 .top {
   display: none;
   position: fixed;
