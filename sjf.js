@@ -7921,18 +7921,20 @@ var $$ = Object.create(null);
         product = 0;
         for (; product < products_count; ++product) {
           ++count;
-          product_name = J.elementAt$1$ax(t1.get$keys(group_products), product);
-          info = J.elementAt$1$ax(t1.get$values(group_products), product);
-          old_info = J.elementAt$1$ax(t2.get$values(old_group_products), product);
-          not_same = !J.$eq(info.get$remain(), old_info.get$remain()) && true;
-          if (!J.$eq(info.max, old_info.max))
-            not_same = true;
-          if (!J.$eq(info.set, old_info.set))
-            not_same = true;
-          if (!J.$eq(info.get, old_info.get))
-            not_same = true;
-          if (!J.$eq(info.label, old_info.label) ? true : not_same)
-            str3 += C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(";" + C.JSInt_methods.toString$0(count) + ",", J.$add$ns(product_name, ",")), J.$add$ns(J.toString$0(info.remain), ",")), J.$add$ns(J.toString$0(info.max), ",")), J.$add$ns(J.toString$0(info.set), ",")), J.$add$ns(J.toString$0(info.get), ",")), J.toString$0(info.label));
+          if (product !== 0) {
+            product_name = J.elementAt$1$ax(t1.get$keys(group_products), product);
+            info = J.elementAt$1$ax(t1.get$values(group_products), product);
+            old_info = J.elementAt$1$ax(t2.get$values(old_group_products), product);
+            not_same = !J.$eq(info.get$remain(), old_info.get$remain()) && true;
+            if (!J.$eq(info.max, old_info.max))
+              not_same = true;
+            if (!J.$eq(info.set, old_info.set))
+              not_same = true;
+            if (!J.$eq(info.get, old_info.get))
+              not_same = true;
+            if (!J.$eq(info.label, old_info.label) ? true : not_same)
+              str3 += C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(C.JSString_methods.$add(";" + C.JSInt_methods.toString$0(count) + ",", J.$add$ns(product_name, ",")), J.$add$ns(J.toString$0(info.remain), ",")), J.$add$ns(J.toString$0(info.max), ",")), J.$add$ns(J.toString$0(info.set), ",")), J.$add$ns(J.toString$0(info.get), ",")), J.toString$0(info.label));
+          }
         }
         ++count;
       }
@@ -8981,7 +8983,7 @@ var $$ = Object.create(null);
     set = H.Primitives_parseInt(J.get$text$x(t1.elementAt$1(t1, 1)), null, null);
     t1 = J.getInterceptor$n(set);
     if (J.$gt$n(t1.$sub(set, get), 0)) {
-      B.label_set(t1.$sub(set, get));
+      B.label_set(get);
       B.set_product_set("0", t1.$sub(set, get));
       B.set_product_remain("0");
     }
@@ -8991,9 +8993,10 @@ var $$ = Object.create(null);
     B.depot_loop();
   }, "call$1", "onGet$closure", 2, 0, 7],
   onRemain: [function(e) {
-    var num_text, old_depot_area_product_display_view;
+    var num_text, t1, old_depot_area_product_display_view;
     num_text = H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent;
-    B.label_set($.product_info.get$set());
+    t1 = J.querySelectorAll$1$x($.depot_area_product_display_view, "span");
+    B.label_set(H.Primitives_parseInt(J.get$text$x(t1.elementAt$1(t1, 1)), null, null));
     B.set_product_set(num_text, 0);
     B.set_product_remain(num_text);
     old_depot_area_product_display_view = $.depot_area_product_display_view;
@@ -9016,7 +9019,7 @@ var $$ = Object.create(null);
       span1 = spans.elementAt$1(spans, 0);
       span2 = spans.elementAt$1(spans, 1);
       if (J.get$text$x(span1) !== "0" && J.get$text$x(span2) !== "0") {
-        B.label_set($.product_info.get$set());
+        B.label_set(H.Primitives_parseInt(J.get$text$x(span2), null, null));
         B.set_product_set("", 0);
       }
     }
@@ -9043,7 +9046,7 @@ var $$ = Object.create(null);
           B.find_store_area();
           $.group_product_display_view = $.product_info.get$group();
           B.find_group();
-          B.label_set($.product_info.get$set());
+          B.label_set(H.Primitives_parseInt(J.get$text$x(span2), null, null));
           B.set_product_set("", 0);
         }
       }
