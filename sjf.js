@@ -6988,7 +6988,7 @@ var $$ = Object.create(null);
     $.labels = P.LinkedHashMap_LinkedHashMap(null, null, null, P.String, P.$int);
     t1 = new B.ProductInfo(null, null, null, null, null, null, null, null, null);
     $.default_product_info = t1;
-    t1.remain = "**";
+    t1.remain = "";
     t1.max = 0;
     t1.set = 0;
     t1.get = 0;
@@ -7132,8 +7132,8 @@ var $$ = Object.create(null);
     t1.toString;
     l = H.setRuntimeTypeInfo(new P.LinkedHashMapKeyIterable(t1), [H.getTypeArgumentByIndex(t1, 0)]);
     count = l._map._collection$_length;
-    columns_count = C.JSInt_methods._tdivFast$1(count - 1, 8) + 1;
-    for (cur = 0, i = 0; i < 8; ++i) {
+    columns_count = C.JSInt_methods._tdivFast$1(count - 1, 7) + 1;
+    for (cur = 0, i = 0; i < 7; ++i) {
       row_e = document.createElement("div", null);
       J.set$whiteSpace$x(row_e.style, "nowrap");
       for (j = 0; j < columns_count; ++j) {
@@ -7197,8 +7197,8 @@ var $$ = Object.create(null);
     t1 = plus_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
-    C.CssStyleDeclaration_methods.set$flex(t1, "2");
-    for (count = 0, i = 0; i < 2; ++i) {
+    C.CssStyleDeclaration_methods.set$flex(t1, "4");
+    for (count = 0, i = 0; i < 4; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
       J.getInterceptor$x(t1).set$display(t1, "flex");
@@ -7265,16 +7265,16 @@ var $$ = Object.create(null);
     t1 = noenough_view.style;
     J.getInterceptor$x(t1).set$display(t1, "flex");
     C.CssStyleDeclaration_methods.set$flexFlow(t1, "column");
-    C.CssStyleDeclaration_methods.set$flex(t1, "3");
+    C.CssStyleDeclaration_methods.set$flex(t1, "5");
     t1 = J.get$onClick$x(noenough_view);
     H.setRuntimeTypeInfo(new W._EventStreamSubscription(0, t1._target, t1._eventType, W._wrapZone(B.onGet$closure()), t1._useCapture), [H.getTypeArgumentByIndex(t1, 0)])._tryResume$0();
-    for (count = 0, i = 0; i < 3; ++i) {
+    for (count = 0, i = 0; i < 5; ++i) {
       line = document.createElement("div", null);
       t1 = line.style;
       J.getInterceptor$x(t1).set$display(t1, "flex");
       C.CssStyleDeclaration_methods.set$flexFlow(t1, "row");
       C.CssStyleDeclaration_methods.set$flex(t1, "1");
-      for (j = 0; j < 5; ++j) {
+      for (j = 0; j < 10; ++j) {
         e = document.createElement("button", null);
         e.textContent = "+" + C.JSInt_methods.toString$0(count);
         J.set$flex$x(e.style, "1");
@@ -8491,14 +8491,14 @@ var $$ = Object.create(null);
     var t1, t2;
     t1 = $.change_group_name;
     t2 = $.group_name;
-    if ((t1 == null ? t2 == null : t1 === t2) && J.$eq($.change_product_name, $.product_name))
-      return;
-    if ($.change_kind === "store") {
-      if ($.product_info.get$store() != null)
-        B.change0($.product_info.get$store(), $.group_name, "");
-    } else if ($.product_info.get$depot() != null)
-      B.change0($.product_info.get$depot(), $.group_name, "");
-    B.change0($.change_area_product_display_view, $.group_name, $.product_name);
+    if ((t1 == null ? t2 != null : t1 !== t2) || !J.$eq($.change_product_name, $.product_name)) {
+      if ($.change_kind === "store") {
+        if ($.product_info.get$store() != null)
+          B.change0($.product_info.get$store(), $.group_name, "");
+      } else if ($.product_info.get$depot() != null)
+        B.change0($.product_info.get$depot(), $.group_name, "");
+      B.change0($.change_area_product_display_view, $.group_name, $.product_name);
+    }
     if (J.get$last$ax($.divs_list).get$mark() === "group_products")
       if ($.change_kind === "store")
         B.back("store_area_products");
@@ -8511,12 +8511,14 @@ var $$ = Object.create(null);
       t1 = J.getInterceptor$x(e);
       if (!!J.getInterceptor(t1.get$target(e)).$isDivElement)
         return;
-      else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement)
-        $.group_product_display_view = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
-      else
-        $.group_product_display_view = H.interceptedTypeCast(J.get$parent$x(t1.get$target(e)), "$isButtonElement");
-      J.get$last$ax($.divs_list).get$mark();
-      B.find_product_info_of_elem($.group_product_display_view);
+      else if (!!J.getInterceptor(t1.get$target(e)).$isButtonElement) {
+        t1 = H.interceptedTypeCast(t1.get$target(e), "$isButtonElement");
+        $.group_product_display_view = t1;
+      } else {
+        t1 = H.interceptedTypeCast(J.get$parent$x(t1.get$target(e)), "$isButtonElement");
+        $.group_product_display_view = t1;
+      }
+      B.find_product_info_of_elem(t1);
       B.change();
       if (J.get$last$ax($.divs_list).get$mark() === "change_use_store" || J.get$last$ax($.divs_list).get$mark() === "change_use_product")
         B.change_next();
@@ -9227,8 +9229,8 @@ var $$ = Object.create(null);
       l = t1.get$keys(group_products);
       t2 = J.getInterceptor$asx(l);
       count = t2.get$length(l);
-      columns_count = C.JSInt_methods._tdivFast$1(count - 1, 8) + 1;
-      for (cur = 0, i = 0; i < 8; ++i) {
+      columns_count = C.JSInt_methods._tdivFast$1(count - 1, 7) + 1;
+      for (cur = 0, i = 0; i < 7; ++i) {
         row_e = document.createElement("div", null);
         J.set$whiteSpace$x(row_e.style, "nowrap");
         for (j = 0; j < columns_count; ++j) {
