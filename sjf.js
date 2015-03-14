@@ -530,11 +530,6 @@ var $$ = Object.create(null);
         throw H.wrapException(P.ArgumentError$(other));
       return receiver > other;
     },
-    $le: function(receiver, other) {
-      if (typeof other !== "number")
-        throw H.wrapException(P.ArgumentError$(other));
-      return receiver <= other;
-    },
     $ge: function(receiver, other) {
       if (typeof other !== "number")
         throw H.wrapException(P.ArgumentError$(other));
@@ -5309,13 +5304,10 @@ var $$ = Object.create(null);
       return P.Duration$(0, 0, this._duration - other.get$_duration(), 0, 0, 0);
     },
     $lt: function(_, other) {
-      return C.JSInt_methods.$lt(this._duration, other.get$_duration());
+      return this._duration < other.get$_duration();
     },
     $gt: function(_, other) {
       return C.JSInt_methods.$gt(this._duration, other.get$_duration());
-    },
-    $le: function(_, other) {
-      return this._duration <= other.get$_duration();
     },
     $ge: function(_, other) {
       return C.JSInt_methods.$ge(this._duration, other.get$_duration());
@@ -8985,18 +8977,18 @@ var $$ = Object.create(null);
       B.set_view_remain(t1, J.querySelector$1$x(t1, "span"), remain);
   },
   onGet: [function(e) {
-    var get, set, old_depot_area_product_display_view;
+    var get, set, t1, old_depot_area_product_display_view;
     get = H.Primitives_parseInt(H.interceptedTypeCast(J.get$target$x(e), "$isButtonElement").textContent, null, null);
     set = $.product_info.get$set();
-    if (J.$le$n(get, set)) {
-      B.label_set(get);
-      B.set_product_set("0", J.$sub$n(set, get));
+    B.label_set(get);
+    t1 = J.getInterceptor(set);
+    if (t1.$eq(set, 0))
+      ;
+    else if (J.$lt$n(get, set)) {
+      B.set_product_set("0", t1.$sub(set, get));
       B.set_product_remain("0");
-    } else {
-      B.label_set(get);
-      B.set_product_set("**", 0);
-      B.set_product_remain("**");
-    }
+    } else
+      B.set_product_set("", 0);
     old_depot_area_product_display_view = $.depot_area_product_display_view;
     B.back("");
     $.depot_area_product_display_view = old_depot_area_product_display_view;
@@ -9619,11 +9611,6 @@ J.$indexSet$ax = function(receiver, a0, a1) {
   if ((receiver.constructor == Array || H.isJsIndexable(receiver, receiver[init.dispatchPropertyName])) && !receiver.immutable$list && a0 >>> 0 === a0 && a0 < receiver.length)
     return receiver[a0] = a1;
   return J.getInterceptor$ax(receiver).$indexSet(receiver, a0, a1);
-};
-J.$le$n = function(receiver, a0) {
-  if (typeof receiver == "number" && typeof a0 == "number")
-    return receiver <= a0;
-  return J.getInterceptor$n(receiver).$le(receiver, a0);
 };
 J.$lt$n = function(receiver, a0) {
   if (typeof receiver == "number" && typeof a0 == "number")
